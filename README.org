@@ -1,0 +1,39 @@
+#+title: Born2beRoot
+
+* Table of Contents :TOC:
+- [[#what-is-virutal-box][What is virutal Box]]
+- [[#the-project][The Project]]
+  - [[#lvm][LVM]]
+  - [[#what-to-turn-in][What to turn in?]]
+- [[#disk-image-file][Disk image file]]
+  - [[#formats][formats]]
+
+* What is virutal Box
+VirtualBox is an open-source virtualization software developed by Oracle.
+It allows users to run multiple operating systems simultaneously on a single physical machine by creating and managing virtual machines.
+This can be useful for testing, development, and running applications that require different environments.
+
+* The Project
+We need to setup a server.
+** LVM
+- 2 encrypted partitions using *LVM* (Logical Volume Manager)
+[[file:imgs/partition_scheme.png]]
+** What to turn in?
+Only need to turn in a =signature.txt= file at the root of the repository.
+
+Will contain the signature of the machine's virtual disk, e.g.: =sha256sum yourdisk.vdi=
+
+The VM's signature may be altered after first evluation, need to virtual machin or use save state.
+
+During Evaluation, signature will be compared to the one of the virtual machine.
+
+* Disk image file
+contains metadata about the virtual disk
+- Disk geometry
+- Information about the virtual disk's size and type (dynamic or fixed)
+- Checksums and identifiers for data integrity and uniqueness
+** formats
+- =.vdi= VDI (Virtual Disk Image)
+- VHD (Virtual Hard Disk)
+- VMDK (Virtual Machin Disk)
+
