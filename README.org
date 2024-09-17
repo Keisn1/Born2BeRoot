@@ -5,6 +5,8 @@
 - [[#the-project][The Project]]
   - [[#lvm][LVM]]
   - [[#what-to-turn-in][What to turn in?]]
+  - [[#questions][Questions]]
+  - [[#bonus][Bonus]]
 - [[#disk-image-file][Disk image file]]
   - [[#formats][formats]]
 
@@ -26,6 +28,78 @@ Will contain the signature of the machine's virtual disk, e.g.: =sha256sum yourd
 The VM's signature may be altered after first evluation, need to virtual machin or use save state.
 
 During Evaluation, signature will be compared to the one of the virtual machine.
+** Questions
+*** theoretical
+- [X] How does a virtual machine work ? And what its purpose ?
+- [X] Why did you choose Debian or CentOS ?
+- [X] What's the difference between Debian and CentOS ?
+  - [X] If you chose Debian: what's the difference between aptitude, apt and what's APPArmor ?
+  - [X] If you chose CentOS: what's SELinux and DNF ?
+- [ ] What are the advantages/disadvantages of a strong password policy ? What can you say about its implementation ?
+- [ ] What's a partition ? And more generally how does LVM (Logical Volume Management) work ?
+- [ ] What's sudo ?
+- [ ] What's an UFW and what's the value of using it ?
+- [ ] What's SSH (Secure Shell) and what's the value of using it ?
+- [ ] What is cron ?
+*** practical
+- [ ] Check that the signature contained is identical to that of the ".vdi" file of the virtual machine to be evaluated.
+- [ ] \SSH service running on port 4242
+  - [ ] shall not be possible to connect using \SSH as root
+  - use of \SSH will be tested during the definse by setting up a new account
+- [ ] configure \UFW
+  - [ ] only leave 4242 open
+  - [ ] must be active when you launch your virtual machine
+- [ ] hostname = kfreyer42
+- [ ] in addition to root user, a user with your login as username has to be present
+  - [ ] user has to belong to the \user42 and \sudo groups
+  - during defense, you will have to create a new user and assign it to a group
+- [ ] implement a strong password policy
+  - [ ] expiration every 30 days
+  - [ ] minimum nbr of days allowed before modification = 2
+  - [ ] user receives a warning message 7 days before their password expires
+  - [ ] min 10 chars long
+  - [ ] must contain uppercase letter and a number
+  - [ ] must not contain more than 3 consecutive identical chars
+  - [ ] must not include the name of the user
+  - [ ] must have at least 7 chars that are not part of the former password
+  - [ ] root password has to comply with this policy
+  - After setting up your configuration files, you will have to change all the passwords of the accounts present on the virtual machine, including the root account.
+- [ ] configure \sudo following strict rules
+  - [ ] Authentication using \sudo has to be limited to 3 attempts (incorrect password)
+  - [ ] custom msg of your choice if an error due to a wrong pw occurs
+  - [ ] each action using \sudo has to be archived, both inputs and outputs
+    - [ ] log file saved in =/var/log/sudo/= folder
+    - [ ] =TTY mode= has to be enabled for security reasons
+    - [ ] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
+*** script - monitoring.sh
+- in bash
+- [ ] display information at server startup on all terminals every 10 minutes (*wall (1)*)
+- information
+  - [ ] architecture of OS and kernel version
+  - [ ] number of physical processors
+  - [ ] number of virtual processors
+  - [ ] The available RAM on your server and its utilization rate as a percentage.
+  - [ ] The available memory on your server and its utilization rate as a percentage.
+  - [ ] The utilization rate of your processors as a percentage.
+  - [ ] The date and time of the last reboot.
+  - [ ] Whether LVM is active or not.
+  - [ ] The number of active connections.
+  - [ ] The number of users using the server.
+  - [ ] The IPv4 address of your server and its MAC (Media Access Control) address.
+  - [ ] The number of commands executed with the sudo program.
+- [ ] will need to interrupt the script without modifying it
+  - take a look at *cron*
+[[file:imgs/script_output.png]]
+- =head -n 2 /etc/os-release=
+- =ss -tunlp=
+-
+** Bonus
+- Set up a functional WordPress website with the following services:
+  - lighttpd, MariaDB, and PHP.
+- Set up a service of your choice that you think is useful (NGINX / Apache2 excluded!)
+- During the defense, you will have to justify your choice.
+- may open more ports to suit your needs
+  - adapt UFW accordingly
 
 * Disk image file
 contains metadata about the virtual disk

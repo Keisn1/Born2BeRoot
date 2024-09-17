@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       5c677d87-fe06-40e7-b7d9-55d43fde3aed
+:END:
+#+title: special files / device files
+#+date: [2024-09-17 Tue 08:51]
+#+startup: overview
+
+[[https://en.wikipedia.org/wiki/Device_file][Device/Special file wikipedia]]
+- interface to a [[id:fecac048-7f3d-4ca4-806a-54a11202f47a][device driver]] that appears in a *[[id:e7b6e1e8-e8b5-470a-9994-ebe4cab5a631][file system]]* as if it were an ordinary *[[id:ac795948-2113-4a15-83ab-a2762dbfc2b6][file]]*
+
+- the idea is that a device appears as a file, meaning that the interaction with it, it via standard *input/output* system calls
+
+* [[id:ab053d74-1290-4f10-9344-9c0ebb7167e9][Character devices]]
+* [[id:2290051d-1a9c-41c8-9df0-5bce56561de3][Block devices]] (also Block special files)
+* [[id:549ff233-c9ea-409a-ba21-00563096cab2][Pseudo devices]] (on UNIX)
+* other special files
+- [[https://en.wikipedia.org/wiki/Named_pipe][named pipe]], [[https://en.wikipedia.org/wiki/Unix_domain_socket][sockets]], [[https://en.wikipedia.org/wiki/Symbolic_link][symbolic links]]

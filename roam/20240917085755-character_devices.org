@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       ab053d74-1290-4f10-9344-9c0ebb7167e9
+:END:
+#+title: Character devices
+#+date: [2024-09-17 Tue 08:57]
+#+startup: overview
+
+[[https://en.wikipedia.org/wiki/Device_file#Character_devices][Character devices wikipedia]]
+- unbuffered, direct access to hardware device
+- not necessarily allow programs to read or write single characters at a time
+  - e.g. hd require that all reads and writes be aligned to block boundaries

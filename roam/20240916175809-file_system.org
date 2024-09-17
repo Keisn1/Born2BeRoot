@@ -1,0 +1,52 @@
+:PROPERTIES:
+:ID:       e7b6e1e8-e8b5-470a-9994-ebe4cab5a631
+:END:
+#+title: file system
+#+date: [2024-09-16 Mon 17:58]
+#+startup: overview
+
+https://en.wikipedia.org/wiki/File_system
+
+- crucial component of the operating system that manages how [[id:ac795948-2113-4a15-83ab-a2762dbfc2b6][files]] are stored, organized, and accessed
+- without a filesystem, one wouldn't know how to access the files
+  - incompatibility
+  - data corruption
+  - data loss
+  - resource contention
+- *local* - a capability of the OS
+- *distributed* - file access between networked computers
+* What it does
+1. *Storage and Organization*:
+   - keeps track of where each file is stored on your storage devices (like your hard drive or SSD)
+   - organizes them into a structure, typically with directories and subdirectories
+2. *Access and Management*: I
+   - handles how you open, save, move, and delete files
+   - making sure you can quickly find and work with your stuff without getting lost in a sea of data.
+* Differences in file systems
+1. *Performance*:
+   - optimized for different types of hardware and use cases
+     - optimized for speeding up access times on SSDs
+     - optimized for handling large volumes of data on traditional hard drives
+
+2. *Compatibility*:
+   - Different operating systems (Windows, macOS, Linux, etc.) may use different file systems for better integration and compatibility.
+     - Windows ... NTFS
+     - macOS ... APFS.
+     - linux ... EXT4
+
+3. *Features*:
+   - advanced features like encryption, compression, journaling (which helps recover from crashes), and snapshots (saving the state of the system at a given point in time)
+
+4. *Scalability*:
+   - Certain file systems are better suited for small devices like USB drives (FAT32)
+   - massive data centers and servers (ZFS, Btrfs).
+
+5. *Reliability*:
+   - fault-tolerance
+   - handling data corruption or loss
+* [[id:3d3ea72b-12f0-47cc-9be3-ac0346344019][Formatting]] - [[id:c6885adc-f27a-46c7-902c-662632a668b0][setting up an empty file system]]
+* Special file systems
+https://en.wikipedia.org/wiki/File_system#Special_file_systems
+- expose elements of the OS as files (can be acted on via the file system API)
+- common in UNIX like systems
+- [[id:5c677d87-fe06-40e7-b7d9-55d43fde3aed][special files]]

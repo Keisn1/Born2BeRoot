@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       3215f99f-5524-4986-9fc7-58eb820d946c
+:END:
+#+title: virtual machine
+#+date: [2024-09-16 Mon 16:02]
+#+startup: overview
+
+* What is a Virtual Machine?
+- software-based emulation (imitation) of a physical computer
+- that enables you to run multiple operating systems or applications on a single physical machine
+- VM's run as if they were separate physical machines
+
+* [[id:7b33a4a9-c577-4885-ab9c-3710818f8e0e][virtual box]]

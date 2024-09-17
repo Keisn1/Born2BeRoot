@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       e5eea55e-75e8-4631-9a1a-45ff4991d666
+:END:
+#+title: Debian
+#+date: [2024-09-16 Mon 16:50]
+#+startup: overview
+
+* What is Debian?
+- known for stability, security, extensive software repository
+** Key features
+- a robust package management system (APT)
+- a strong commitment to free software
+- a rigorous release cycle that emphasizes reliability
+
+* Why Debian
+- Have been experimenting with linux OS before (including ubuntu)
+  - interested in what Debian offers
+  - may become my daily driver
+- Debian is one of the most beloved and used
+  - base for many other distributions, most notably Ubuntu and Linux Mint
+- apt package manager is very commonly used and robust
+- community - a lot of online help and information
+- very reliable
+- stable release cycle
+
+* Debian package manager
+[[id:b52d3445-d59d-4d43-bc92-3e9a70e5afe3][apt package manager]]
+* Security
+** [[id:ae006e35-647d-4e8d-9b71-85ff017c2cec][AppArmor]]
+
+* Differences between Centos and Debian
+
+|                    | Debian                   | Centos                                   |
+|--------------------+--------------------------+------------------------------------------|
+| *Package Management* | DEB and APT              | RPM and YUM/DNF                          |
+| *Release Cycle*      | stable release cycle     | rolling-release                          |
+| *Base Distribution*  | independent project      | based on Red Hat Enterprise Linux (RHEL) |
+| *Community Support*  | larger global user base  | also strong community                    |
+
+* [[id:e0d10334-00c4-4a7a-9530-4afa99b69ba5][Installation Debian]]

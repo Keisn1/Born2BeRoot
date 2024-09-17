@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       ae006e35-647d-4e8d-9b71-85ff017c2cec
+:END:
+#+title: AppArmor
+#+date: [2024-09-16 Mon 17:41]
+#+startup: overview
+
+* What is AppArmor?
+- linux kernel security module
+- per-program files
+  - permissions to read, write, execute files on matching paths
+  - network-access
+  - raw socket access
+- supplements the traditional Unix [[https://en.wikipedia.org/wiki/Discretionary_access_control][discretionary access control]] (DAC)
+  - based on identity of /subjects/ and/or groups
+- provides [[https://en.wikipedia.org/wiki/Mandatory_access_control][Mandatory Access control]] (MAC)
+  - constrains *subject* (process or thread) to access or modify *object* (files, dirs, TCP/UDP ports, shared memory segments, IODevices)
+- implemented using [[*\[\[https://en.wikipedia.org/wiki/Linux_Security_Modules\]\[Linux Security Modules\]\]][Linux Security Modules]]
+
+** learning mode
+- profile violations are logged but not prevented
+- generate AppArmor profile, based on program's typical behavior

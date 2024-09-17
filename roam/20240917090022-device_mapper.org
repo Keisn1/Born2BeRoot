@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       fd984049-c9b8-4680-be50-87c67e849d87
+:END:
+#+title: Device mapper
+#+date: [2024-09-17 Tue 09:00]
+#+startup: overview
+
+- framework that maps physical *[[id:2290051d-1a9c-41c8-9df0-5bce56561de3][block devices]]* onto higher-level /virtual block devices/
+- foundation for *[[id:54ac0f8b-f519-4eee-b3f6-8706f7d23145][LVM]]*, *RAID*, *dm-crypt*
+- offers features such as *file system snapshots*
+- passing data from a /virtual block device/ (provided by the device mapper itself) to another block device
+- during transition, data can also be modified (e.g. encryption)
+
+* Usage
+- Apps talk to device mapper (via =libdevmapper.so= shared library)
+  - e.g. creation of new mapped devicesj
+- device mapper issues =ioctls= to =/dev/mapper/control/= [[*Special files][device node]]
+- configuration of device mapper via [[https://man.cx/?page=dmsetup(8)][dmsetup]]

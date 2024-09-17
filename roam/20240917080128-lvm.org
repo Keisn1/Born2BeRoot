@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       54ac0f8b-f519-4eee-b3f6-8706f7d23145
+:END:
+#+title: LVM
+#+date: [2024-09-17 Tue 08:01]
+#+startup: overview
+
+* What is LVM?
+[[https://en.wikipedia.org/wiki/Logical_volume_management][LVM wikipedia]]
+- founded on [[id:fd984049-c9b8-4680-be50-87c67e849d87][Device mapper]]
+- more flexible way of doing [[id:95012461-8e52-4e4f-8129-d9afa2f293b0][Partitioning]]
+- concatenate, [[https://en.wikipedia.org/wiki/Data_striping][stripe]], combine partitions into larger virtual partitions
+- administrators can re-size or move them, potenttially without interrupting system use
+- part of the *device driver stack*  inside an OS
+* LVM Design
+** PV - physical volumes
+- hard disks, hard disk partitions, Logical Unit Numbers
+- VolManagement treats each *PV* as a sequence of chunks called *physical extents* (=PEs=)
+- PE's map one-to-one to *logical extents* =LEs=
+** volume groups
+- LEs are pooled into a /volume group/ (combining extents)
+- pooled LEs can be concatenated into virtual disk partitions (*logical volumes*)
+* [[id:775e81a9-36e2-41b9-8f61-0da557f12468][commands related to partitioning]]

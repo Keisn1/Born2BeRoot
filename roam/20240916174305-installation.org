@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       e0d10334-00c4-4a7a-9530-4afa99b69ba5
+:END:
+#+title: Installation Debian
+#+date: [2024-09-16 Mon 17:43]
+#+startup: overview
+
+- in VMBox, do it with graphic install, otherwise problems with selecting checkboxes
+* Downloading Debian
+[[https://www.debian.org/download]]
+* Check checksum and signature
+** why?
+1. used to check that the images have not been corrupted during download
+2. signatures allow to confirm that the images are the ones created and releaded by Debian
+** How to
+([[https://www.debian.org/CD/verify][Verifying authenticity of Debian images]])
+
+1. verify that checksums files themselves are correct
+   1. Accessing [[https://keyring.debian.org/][Debine Public Key Server]]
+      - provide HKP (HTTP Keyserver Protocol) /lookup/ and /add/ requests for Debian developer and maintainer *public keys*
+      - via pgp implementation (e.g. =gpg=)
+        =gpg --keyserver keyring.debian.org --recv-keys <key_id>=
+      - example key_ids on https://www.debian.org/CD/verify
+   2. Checksum verification
+      #+begin_src shell
+sha512sum -c <checksum_file>.sha512
+      #+end_src
+      - -c ... --check  ... read checksums from the files and check them
+* [[id:95012461-8e52-4e4f-8129-d9afa2f293b0][Partitioning]]
+1. manual
+2. Create new partition table on the hard disk
+3. Create new primary partition on the hard disk - boot partition (Mount Point =/boot=)
+4. Create encrypted partition (on the rest of the hard disk) (creates a logical )
+5. Configure [[id:54ac0f8b-f519-4eee-b3f6-8706f7d23145][LVM]]
+   - in names of the volumegroup and the volumes itself, a dash becomes a double-dash
+   - var-log is a sub-volume of var, I think it needs to have less space than var (otherwise I got an error)
