@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       5cce0070-5955-476b-a029-f719517f93cd
+:END:
+#+title: libpam-pwquality
+#+date: [2024-09-18 Wed 11:44]
+#+startup: overview
+
+https://www.server-world.info/en/note?os=Debian_12&p=pam&f=1
+https://manpages.debian.org/testing/libpam-pwquality/pam_pwquality.8.en.html
+* min 10 chars long
+since using credits
+#+begin_src shell
+minlen=10
+#+end_src
+* must contain uppercase letter and a number
+#+begin_src sh
+dcredit = -1
+#+end_src
+#+begin_src shell
+ucredit = -1
+#+end_src
+* must not contain more than 3 consecutive identical chars
+#+begin_src shell
+maxrepeat = 3
+#+end_src
+* must not include the name of the user
+Check whether the words longer than 3 characters from the GECOS field of the user's passwd entry are contained in the new password.
+#+begin_src shell
+gecoscheck = 1
+#+end_src
+* must have at least 7 chars that are not part of the former password
+#+begin_src shell
+difok = 7
+#+end_src
+* root password has to comply with this policy
+Enforce pwquality checks on the root user password
+#+begin_src shell
+enforce_for_root
+#+end_src

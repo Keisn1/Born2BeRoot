@@ -1,0 +1,30 @@
+:PROPERTIES:
+:ID:       13126145-0f4a-4901-aa9a-3e76d3ada7f5
+:END:
+#+title: /etc/login.defs
+#+date: [2024-09-18 Wed 11:13]
+#+startup: overview
+
+login.defs - shadow password suite configuration
+
+=login.defs= is a configuration file in Unix-based systems that defines default settings for user authentication and login behavior.
+
+It contains parameters such as password expiration policy, password complexity requirements, and login session settings.
+
+Modifying this file allows system administrators to customize how user logins are managed on the system.
+
+* Maximum password age
+#+begin_src sh
+PASS_MAX_DAYS 30
+#+end_src
+* Minimum password age
+#+begin_src sh
+PASS_MIN_DAYS 2
+#+end_src
+* Nbr of days warning given before a password expires
+#+begin_src sh
+PASS_WARN_AGE 2
+#+end_src
+* Obsoleted by PAM
+These options are handled by PAM. Need to edit the appropriate file in /etc/pam.d
+do with [[id:5cce0070-5955-476b-a029-f719517f93cd][libpam-pwquality]]

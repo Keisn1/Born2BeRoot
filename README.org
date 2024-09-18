@@ -35,43 +35,60 @@ During Evaluation, signature will be compared to the one of the virtual machine.
 - [X] What's the difference between Debian and CentOS ?
   - [X] If you chose Debian: what's the difference between aptitude, apt and what's APPArmor ?
   - [X] If you chose CentOS: what's SELinux and DNF ?
-- [ ] What are the advantages/disadvantages of a strong password policy ? What can you say about its implementation ?
-- [ ] What's a partition ? And more generally how does LVM (Logical Volume Management) work ?
+- [X] What's a partition ? And more generally how does LVM (Logical Volume Management) work ?
 - [ ] What's sudo ?
-- [ ] What's an UFW and what's the value of using it ?
+- [ ] What are the advantages/disadvantages of a strong password policy ? What can you say about its implementation ?
 - [ ] What's SSH (Secure Shell) and what's the value of using it ?
+- [ ] What's an UFW and what's the value of using it ?
 - [ ] What is cron ?
 *** practical
-- [ ] Check that the signature contained is identical to that of the ".vdi" file of the virtual machine to be evaluated.
-- [ ] \SSH service running on port 4242
-  - [ ] shall not be possible to connect using \SSH as root
-  - use of \SSH will be tested during the definse by setting up a new account
-- [ ] configure \UFW
-  - [ ] only leave 4242 open
-  - [ ] must be active when you launch your virtual machine
+**** DONE sudo
+- [X] configure \sudo following strict rules
+  - [X] Authentication using \sudo has to be limited to 3 attempts (incorrect password)
+  - [X] *custom msg* of your choice if an error due to a wrong pw occurs
+  - [X] each action using \sudo has to be archived, both inputs and outputs
+    - [X] log file saved in =/var/log/sudo/= folder
+  - [X] =TTY mode= has to be enabled for security reasons
+  - [X] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
+**** DONE password policy
+- [X] implement a strong password policy
+  - [X] expiration every 30 days
+  - [X] minimum nbr of days allowed before modification = 2
+  - [X] user receives a warning message 7 days before their password expires
+  - [X] min 10 chars long
+  - [X] must contain uppercase letter and a number
+  - [X] must not contain more than 3 consecutive identical chars
+  - [X] must not include the name of the user (gecos check)
+  - [X] must have at least 7 chars that are not part of the former password
+  - [X] root password has to comply with this policy
+- [X] After setting up your configuration files, you will have to change all the passwords of the accounts present on the virtual machine, including the root account.
+***** DONE Test
+- [X] implement a strong password policy
+  - [X] expiration every 30 days
+  - [X] minimum nbr of days allowed before modification = 2
+  - [X] user receives a warning message 7 days before their password expires
+  - [X] min 10 chars long
+  - [X] must contain uppercase letter and a number
+    - [X] number
+    - [X] uppercase
+  - [X] must not contain more than 3 consecutive identical chars
+  - [X] must not include the name of the user (gecos check)
+  - [X] must have at least 7 chars that are not part of the former password
+  - [X] root password has to comply with this policy
+**** TODO hostname and user
 - [ ] hostname = kfreyer42
 - [ ] in addition to root user, a user with your login as username has to be present
   - [ ] user has to belong to the \user42 and \sudo groups
   - during defense, you will have to create a new user and assign it to a group
-- [ ] implement a strong password policy
-  - [ ] expiration every 30 days
-  - [ ] minimum nbr of days allowed before modification = 2
-  - [ ] user receives a warning message 7 days before their password expires
-  - [ ] min 10 chars long
-  - [ ] must contain uppercase letter and a number
-  - [ ] must not contain more than 3 consecutive identical chars
-  - [ ] must not include the name of the user
-  - [ ] must have at least 7 chars that are not part of the former password
-  - [ ] root password has to comply with this policy
-  - After setting up your configuration files, you will have to change all the passwords of the accounts present on the virtual machine, including the root account.
-- [ ] configure \sudo following strict rules
-  - [ ] Authentication using \sudo has to be limited to 3 attempts (incorrect password)
-  - [ ] custom msg of your choice if an error due to a wrong pw occurs
-  - [ ] each action using \sudo has to be archived, both inputs and outputs
-    - [ ] log file saved in =/var/log/sudo/= folder
-    - [ ] =TTY mode= has to be enabled for security reasons
-    - [ ] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
-*** script - monitoring.sh
+**** TODO ssh
+- [ ] \SSH service running on port 4242
+  - [ ] shall not be possible to connect using \SSH as root
+  - use of \SSH will be tested during the definse by setting up a new account
+**** TODO firewall
+- [ ] configure \UFW
+  - [ ] only leave 4242 open
+  - [ ] must be active when you launch your virtual machine
+**** TODO script - monitoring.sh
 - in bash
 - [ ] display information at server startup on all terminals every 10 minutes (*wall (1)*)
 - information
@@ -93,6 +110,8 @@ During Evaluation, signature will be compared to the one of the virtual machine.
 - =head -n 2 /etc/os-release=
 - =ss -tunlp=
 -
+**** TODO Signature checking
+- [ ] Check that the signature contained is identical to that of the ".vdi" file of the virtual machine to be evaluated.
 ** Bonus
 - Set up a functional WordPress website with the following services:
   - lighttpd, MariaDB, and PHP.

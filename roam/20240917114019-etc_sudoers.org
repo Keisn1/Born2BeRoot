@@ -1,0 +1,110 @@
+:PROPERTIES:
+:ID:       ec59c6bb-a199-4fc2-8f73-9e2319212005
+:END:
+#+title: /etc/sudoers
+#+date: [2024-09-17 Tue 11:40]
+#+startup: overview
+
+https://wiki.debian.org/sudo
+https://wiki.archlinux.org/title/Sudo#Configuration
+
+- configuration file for [[id:8b70efb6-c0b2-4beb-b9c2-6672cfbe3f70][sudo]]
+- must be edited with [[id:7b9b8d69-6acb-475e-b5cd-a0b6f61ab888][visudo]]
+- detailed access permissions
+  - execute a subset of commands while having the priveleges of the [[id:a425d48c-03c5-481f-97ef-5d7ff2732d65][root]] user or another specified user
+  - enabling commands only from the invoking terminal
+  - require a password per [[id:e706d9cc-edb9-475a-bb5b-145188d0ac8c][user]] or [[id:120e00d9-48d9-41cd-8091-05d2b8bae4e7][group]]
+  - require re-entry of a password every time or never at all
+  - which user can use sudo
+- there is an *easter egg* that displays an insult every time an incorrect passsword is entered
+
+* Debian
+- [[id:73cae452-a7c0-4a97-8bb7-38d85ec5b83f][sudo group]]
+* Reading Man page
+** ::=
+- The symbol ::= is used in formal grammar definitions to mean "is defined as."
+- It originates from Backus-Naur Form (BNF), which is a notation for specifying the syntax of languages, including computer languages.
+
+In the context provided:
+
+#+begin_src plaintext
+Default_Entry ::= Default_Type Parameter_List
+#+end_src
+
+This means a "Default_Entry" is defined as a combination of a "Default_Type" followed by a "Parameter_List."
+** '!'*
+As in
+#+begin_example
+Host ::= '!'* host name |
+         '!'* ip_addr |
+         '!'* network(/netmask)? |
+         '!'* +netgroup |
+         '!'* Host_Alias |
+         '!'* ALL
+#+end_example
+
+- *'!'*: Place the exclamation mark before the host specification to negate it
+- '*': The asterisk means you can have many exclamation marks but it is redundant beyond one. (! can be there zero or more times)
+*** Without '!':
+- Matches the specified host, IP address, network, netgroup, Host_Alias, or ALL.
+
+*** With '!':
+- Negates the match, meaning it excludes the specified host, IP address, network, netgroup, Host_Alias, or ALL.
+
+* Default_Entry lines
+:PROPERTIES:
+:ID:       1deb0c89-9d71-4420-877a-cbb568be92b6
+:END:
+- may affect all users
+#+begin_src shell
+Default_Entry ::= Default_Type Parameter_List
+#+end_src
+** Default_Type
+- ='Defaults'= (all users on any host)
+- ='Defaults@'= (all users on a specific host)
+- ='Defaults:'= (a specific user)
+- ='Defaults!'= (a specific command)
+- ='Defaults>'= (commands being run as a specific user)
+
+* Logging
+** logging failed attempts
+- by default I couldn't find how failed attempts are being logged
+  - internet tells me inside /var/log/auth.log but couldn't find it
+  - created auth.log
+  - doesn't work
+** log_input and log_output flag
+- In  addition  to  flags  described  the  above,  the  log_input flag and LOG_INPUT command tag set both log_ttyin and log_stdin.
+- The  log_output flag   and  LOG_OUTPUT  command  tag  set  log_ttyout,  log_stdout, and log_stderr.
+*** log_input
+- If set, sudo will run the command in a pseudo-terminal (if sudo was run from a terminal) and log all user input.
+#+begin_src shell
+Defaults log_input
+#+end_src
+*** log_output
+- If set, sudo will run the command in a pseudo-terminal (if sudo was run from a terminal) and log all user output.
+#+begin_src shell
+Defaults log_output
+#+end_src
+** where to log
+- either to the local machine or to a remote log server
+- =iolog_dir=:
+  - For local logs, I/O  is  logged  to  the  directory  specified  by  the iolog_dir option (~/var/log/sudo-io~ by default)
+  - The =iolog_file=
+    - path name relative to iolog_dir
+    - store  input/output   logs   when  the  log_input  or log_output options are enabled
+- =log_servers=:
+  - For  remote logs, the log_servers setting is used to specify one or more log servers running sudo_logsrvd or another server that  implements the protocol described by sudo_logsrv.proto(5).
+*** set iolog_dir
+#+begin_src sh
+Defaults iolog_dir=/var/log/sudo/
+#+end_src
+* require tty
+#+begin_src sh
+Defaults requiretty
+#+end_src
+* secure_path - paths that can be used with \sudo
+#+begin_src sh
+secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
+#+end_src
+* SUDOERS OPTIONS
+- modified by [[id:1deb0c89-9d71-4420-877a-cbb568be92b6][Default_Entry lines]]

@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       a425d48c-03c5-481f-97ef-5d7ff2732d65
+:END:
+#+title: superuser
+#+date: [2024-09-17 Tue 11:28]
+#+startup: overview
+
+https://en.wikipedia.org/wiki/Superuser
+
+- special user account for system administration
+- might be *root*, *admin*, *administrator* or *supervisor*
+- in UNIX
+  - *root*
+  - [[id:e706d9cc-edb9-475a-bb5b-145188d0ac8c][user]] with UID 0

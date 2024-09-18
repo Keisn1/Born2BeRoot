@@ -1,0 +1,30 @@
+:PROPERTIES:
+:ID:       120e00d9-48d9-41cd-8091-05d2b8bae4e7
+:END:
+#+title: group / group identifier
+#+date: [2024-09-17 Tue 11:31]
+#+startup: overview
+
+https://en.wikipedia.org/wiki/Group_identifier
+
+=/etc/group=
+- putting [[id:e706d9cc-edb9-475a-bb5b-145188d0ac8c][user / user identifier]] into groups
+
+* wheel group
+:PROPERTIES:
+:ID:       945a5f9f-e16c-4e78-ba89-a47e35001478
+:END:
+https://en.wikipedia.org/wiki/Wheel_(computing)
+- a [[id:e706d9cc-edb9-475a-bb5b-145188d0ac8c][user account]] with a =wheel bit=
+- a system setting that provides additional system privileges
+- comes from *big whell*, a person with great power/influence
+- controls acces to the [[id:32e44f1e-6e8d-4cbb-8bec-ca3fa4151231][su]] and/or [[id:8b70efb6-c0b2-4beb-b9c2-6672cfbe3f70][sudo]] command
+* sudo group
+:PROPERTIES:
+:ID:       73cae452-a7c0-4a97-8bb7-38d85ec5b83f
+:END:
+- under debian [[id:945a5f9f-e16c-4e78-ba89-a47e35001478][wheel group]] is called sudo group
+- default config under debian allows users in the sudo group to run command via sudo
+- =groups= or =id= verifying sudo membership
+  - groups should see =<kfreyer42> sudo=
+  - id should see =uid=1001(kfreyer42) gid=1001(kfreyer42) groups=1001(kfreyer42),27(sudo)=

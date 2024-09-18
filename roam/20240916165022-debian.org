@@ -25,9 +25,7 @@
 
 * Debian package manager
 [[id:b52d3445-d59d-4d43-bc92-3e9a70e5afe3][apt package manager]]
-* Security
-** [[id:ae006e35-647d-4e8d-9b71-85ff017c2cec][AppArmor]]
-
+* [[id:ae006e35-647d-4e8d-9b71-85ff017c2cec][AppArmor]]
 * Differences between Centos and Debian
 
 |                    | Debian                   | Centos                                   |

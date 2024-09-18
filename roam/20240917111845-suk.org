@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       32e44f1e-6e8d-4cbb-8bec-ca3fa4151231
+:END:
+#+title: su
+#+date: [2024-09-17 Tue 11:18]
+#+startup: overview
+
+https://en.wikipedia.org/wiki/Su_(Unix)
+
+"substitute user"
+"su - run a command with substitute user and group ID"
+- execute commands with priveliges of another [[id:e706d9cc-edb9-475a-bb5b-145188d0ac8c][user]]
+- related command [[id:8b70efb6-c0b2-4beb-b9c2-6672cfbe3f70][sudo]]
+- *without argument*: runs a shell as *[[id:a425d48c-03c5-481f-97ef-5d7ff2732d65][root]]*

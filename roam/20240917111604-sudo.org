@@ -1,0 +1,93 @@
+:PROPERTIES:
+:ID:       8b70efb6-c0b2-4beb-b9c2-6672cfbe3f70
+:END:
+#+title: sudo
+#+date: [2024-09-17 Tue 11:16]
+#+startup: overview
+
+*Superuser do*
+
+https://en.wikipedia.org/wiki/Sudo
+https://wiki.debian.org/sudo
+https://wiki.archlinux.org/title/Sudo
+
+- by default not installed
+
+- related command [[id:32e44f1e-6e8d-4cbb-8bec-ca3fa4151231][su]]
+- executes command as another [[id:e706d9cc-edb9-475a-bb5b-145188d0ac8c][user]] but observes a set of constraints
+  - which user can execute which command
+- configured in [[id:ec59c6bb-a199-4fc2-8f73-9e2319212005][/etc/sudoers]]
+- editable by [[id:7b9b8d69-6acb-475e-b5cd-a0b6f61ab888][visudo]]
+- *default*: execute command as "[[id:a425d48c-03c5-481f-97ef-5d7ff2732d65][superuser]]"
+
+* behavior
+- users must supply their own password, rather than the password of the target user (different to [[id:32e44f1e-6e8d-4cbb-8bec-ca3fa4151231][su]])
+- allows authorized users to exercise altered privileges without compromising the secrecy of the other account's password
+- after authentification, and it [[id:ec59c6bb-a199-4fc2-8f73-9e2319212005][/etc/sudoers]] permits the user access, system executes requested commands
+- Users must be in a certain [[id:120e00d9-48d9-41cd-8091-05d2b8bae4e7][group]]
+  - typically [[id:945a5f9f-e16c-4e78-ba89-a47e35001478][wheel group]] or [[id:73cae452-a7c0-4a97-8bb7-38d85ec5b83f][sudo group]]
+- retains invocation rights through a grace period (typically ~5 minutes~)
+- may log each command run
+- exception indication can be configured
+- root user may be alerted via mail
+* Installation
+1. =su --login=
+   - shell as a login shell (see man)
+2. =apt install sudo=
+   - error no space left on device
+* visudo
+:PROPERTIES:
+:ID:       7b9b8d69-6acb-475e-b5cd-a0b6f61ab888
+:END:
+"visudo — edit the sudoers file"
+- [[id:ec59c6bb-a199-4fc2-8f73-9e2319212005][/etc/sudoers]]
+- editing in a safe fashion
+- locks sudoers file against multiple simultaneous edits
+
+* wheel group
+:PROPERTIES:
+:ID:       945a5f9f-e16c-4e78-ba89-a47e35001478
+:END:
+https://en.wikipedia.org/wiki/Wheel_(computing)
+- a [[id:e706d9cc-edb9-475a-bb5b-145188d0ac8c][user account]] with a =wheel bit=
+- a system setting that provides additional system privileges
+- comes from *big whell*, a person with great power/influence
+- controls acces to the [[id:32e44f1e-6e8d-4cbb-8bec-ca3fa4151231][su]] and/or [[id:8b70efb6-c0b2-4beb-b9c2-6672cfbe3f70][sudo]] command
+* sudo group
+:PROPERTIES:
+:ID:       73cae452-a7c0-4a97-8bb7-38d85ec5b83f
+:END:
+- under debian [[id:945a5f9f-e16c-4e78-ba89-a47e35001478][wheel group]] is called sudo group
+- default config under debian allows users in the sudo group to run command via sudo
+- =groups= or =id= verifying sudo membership
+  - groups should see =<kfreyer42> sudo=
+  - id should see =uid=1001(kfreyer42) gid=1001(kfreyer42) groups=1001(kfreyer42),27(sudo)=
+
+- Users in the =sudo= group are granted sudo permissions by the following line in the =/etc/sudoers= file, which typically exists by default:
+
+#+begin_src sh
+%sudo   ALL=(ALL:ALL) ALL
+#+end_src
+
+This line allows any user in the =sudo= group to execute any command as any user. So, there's no need to modify =/etc/sudoers= directly for this common use case.
+* Exercises
+
+** add user to sudo group
+=sudo adduser kfreyer42 sudo=
+** limit to 3 attempts
+- Default_entry line
+- =passwd_tries= option
+- adding a [[id:1deb0c89-9d71-4420-877a-cbb568be92b6][Default_Entry line]] that applies to all users
+#+begin_src sh
+Defaults passwd_tries=3
+#+end_src
+** custom message at failure
+#+begin_src sh
+Defaults authfail_message="Custom: You entered the wrong password %d times. Good bye."
+#+end_src
+** custom message  bad password
+#+begin_src sh
+Defaults badpass_message="Can you actually type?"
+#+end_src
+
+* [[id:fcb9864a-f3a0-4e63-8270-91cacb70b6dd][commands related to user management]]
