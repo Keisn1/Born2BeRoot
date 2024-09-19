@@ -92,4 +92,3 @@ Defaults authfail_message="Custom: You entered the wrong password %d times. Good
 Defaults badpass_message="Can you actually type?"
 #+end_src
 
-* [[id:fcb9864a-f3a0-4e63-8270-91cacb70b6dd][commands related to user management]]

@@ -51,10 +51,10 @@ During Evaluation, signature will be compared to the one of the virtual machine.
   - [X] =TTY mode= has to be enabled for security reasons
   - [X] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
 **** DONE password policy
-- [X] implement a strong password policy
-  - [X] expiration every 30 days
-  - [X] minimum nbr of days allowed before modification = 2
-  - [X] user receives a warning message 7 days before their password expires
+- [-] implement a strong password policy
+  - [ ] expiration every 30 days
+  - [ ] minimum nbr of days allowed before modification = 2
+  - [ ] user receives a warning message 7 days before their password expires
   - [X] min 10 chars long
   - [X] must contain uppercase letter and a number
   - [X] must not contain more than 3 consecutive identical chars
@@ -80,20 +80,38 @@ During Evaluation, signature will be compared to the one of the virtual machine.
 - [X] in addition to root user, a user with your login as username has to be present
   - [X] user has to belong to the \user42 and \sudo groups
   - during defense, you will have to create a new user and assign it to a group
-**** TODO ssh
+**** DONE ssh and ufw
 - [X] \SSH service running on port 4242
   - [X] shall not be possible to connect using \SSH as root
 - use of \SSH will be tested during the defense by setting up a new account
+- [X] configure \UFW
+   - [X] only leave 4242 open
+   - [X] must be active when you launch your virtual machine
 ***** how to
 1. install openssh-server
-2.
-***** Test
-- [ ] \SSH service running on port 4242
-  - [ ] shall not be possible to connect using \SSH as root
-**** TODO firewall
-- [X] configure \UFW
-  - [X] only leave 4242 open
-  - [X] must be active when you launch your virtual machine
+2. configure openssh with /etc/ssh/sshd_config file
+   #+begin_src shell
+   Port 4242
+   PermitRootLogin no
+   #+end_src
+3. restart and enable openssh-server
+4. install ufw
+   - ==sudo ufw default deny incoming=
+   - ==sudo ufw default allow outgoing=
+   - =sudo ufw allow OpenSSH=
+   - check with =sudo ufw app list=
+   - =sudo ufw allow 4242=
+   - show with =sudo ufw show added=
+5. checking statuses
+   - =lsof -i -P -n | grep LISTEN=
+   - =ss -ntlp | grep -i ssh=
+   - =netstat -ntlp | grep -i ssh=
+6. configure vbox and connect
+   1. NAT - configure port forwarding
+      =ssh -p port_number username@localhost=
+   2. Bridged adapter
+      - get ip address with =ip address=
+      =ssh -p port_number username@ipaddress=
 **** TODO script - monitoring.sh
 - in bash
 - [ ] display information at server startup on all terminals every 10 minutes (*wall (1)*)
@@ -115,7 +133,6 @@ During Evaluation, signature will be compared to the one of the virtual machine.
 [[file:imgs/script_output.png]]
 - =head -n 2 /etc/os-release=
 - =ss -tunlp=
--
 **** TODO Signature checking
 - [ ] Check that the signature contained is identical to that of the ".vdi" file of the virtual machine to be evaluated.
 ** Bonus

@@ -14,13 +14,22 @@ https://www.debian.org/doc/manuals/debian-reference/ch04.en.html
 * [[id:5cce0070-5955-476b-a029-f719517f93cd][libpam-pwquality]]
 * changing passwords
 - change with passwd command
+* applying changes to already existing users
+
+=sudo chage --maxdays 30 kfreyer42=
+=sudo chage --mindays 1 <username>=
+=sudo chage --warndays 7 <username>=
 * commands
 ** expiry
 https://manpages.debian.org/bookworm/passwd/expiry.1.en.html
 ** chage (change age)
+=sudo chage -l username==
 - [ ] expiration every 30 days (maximum password age)
   - -M, --maxdays MAX_DAYS
 - [ ] minimum nbr of days allowed before modification = 2 (minimum password age)
   - -m, --mindays MIN_DAYS
 - [ ] user receives a warning message 7 days before their password expires
   - -W, --warndays WARN_DAYS
+** getent
+"get entries from administrative database"
+=getent group group_name=

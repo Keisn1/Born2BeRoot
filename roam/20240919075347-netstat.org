@@ -5,4 +5,5 @@
 #+date: [2024-09-19 Thu 07:53]
 #+startup: overview
 
+=sudo apt install net-tools=
 =netstat -ntlp | grep -i ssh=
