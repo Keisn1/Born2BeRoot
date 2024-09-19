@@ -75,19 +75,25 @@ During Evaluation, signature will be compared to the one of the virtual machine.
   - [X] must not include the name of the user (gecos check)
   - [X] must have at least 7 chars that are not part of the former password
   - [X] root password has to comply with this policy
-**** TODO hostname and user
-- [ ] hostname = kfreyer42
-- [ ] in addition to root user, a user with your login as username has to be present
-  - [ ] user has to belong to the \user42 and \sudo groups
+**** DONE hostname and user
+- [X] hostname = kfreyer42
+- [X] in addition to root user, a user with your login as username has to be present
+  - [X] user has to belong to the \user42 and \sudo groups
   - during defense, you will have to create a new user and assign it to a group
 **** TODO ssh
+- [X] \SSH service running on port 4242
+  - [X] shall not be possible to connect using \SSH as root
+- use of \SSH will be tested during the defense by setting up a new account
+***** how to
+1. install openssh-server
+2.
+***** Test
 - [ ] \SSH service running on port 4242
   - [ ] shall not be possible to connect using \SSH as root
-  - use of \SSH will be tested during the definse by setting up a new account
 **** TODO firewall
-- [ ] configure \UFW
-  - [ ] only leave 4242 open
-  - [ ] must be active when you launch your virtual machine
+- [X] configure \UFW
+  - [X] only leave 4242 open
+  - [X] must be active when you launch your virtual machine
 **** TODO script - monitoring.sh
 - in bash
 - [ ] display information at server startup on all terminals every 10 minutes (*wall (1)*)

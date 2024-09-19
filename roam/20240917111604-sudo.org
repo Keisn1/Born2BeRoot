@@ -71,8 +71,10 @@ https://en.wikipedia.org/wiki/Wheel_(computing)
 
 This line allows any user in the =sudo= group to execute any command as any user. So, there's no need to modify =/etc/sudoers= directly for this common use case.
 * Exercises
-
 ** add user to sudo group
+:PROPERTIES:
+:ID:       69d45f6f-6430-4e3f-81db-33747ec8875b
+:END:
 =sudo adduser kfreyer42 sudo=
 ** limit to 3 attempts
 - Default_entry line

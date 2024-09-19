@@ -1,0 +1,63 @@
+:PROPERTIES:
+:ID:       98a0d172-e562-41a4-b161-5f253b7c322f
+:END:
+#+title: /etc/hosts
+#+date: [2024-09-18 Wed 15:45]
+#+startup: overview
+
+hosts - static table lookup for hostnames
+
+The =/etc/hosts= file is a plain text file used in Unix-based systems to map hostnames to IP addresses.
+
+It is an essential part of the operating system's networking configuration and is used to resolve hostnames to IP addresses locally before querying DNS servers.
+
+Entries in the =/etc/hosts= file have higher precedence than DNS lookups.
+
+* When is it used?
+The =/etc/hosts= file is used whenever your system needs to translate a hostname to an IP address. Common scenarios include:
+1. Connecting to a local server by hostname.
+2. Ensuring that services use specific IP addresses for given hostnames.
+3. Resolving hostnames for system commands like =ping=, =ssh=, and =sudo=.
+
+* Example Scenario
+Imagine you set your hostname to "mycomputer":
+
+1. *Setting hostname:*
+   #+begin_example sh
+   sudo hostnamectl set-hostname mycomputer
+   #+end_example
+
+2. *Updating /etc/hosts:*
+   Open the =/etc/hosts= file with a text editor:
+   #+begin_example sh
+   sudo nano /etc/hosts
+   #+end_example
+
+   Add the new hostname:
+   #+begin_example plaintext
+   127.0.0.1   localhost
+   127.0.1.1   mycomputer
+   #+end_example
+
+3. *Using sudo:*
+   Now, when you run a command with =sudo=:
+   #+begin_example sh
+   sudo apt update
+   #+end_example
+
+It's able to resolve "mycomputer" correctly to 127.0.1.1 as specified in =/etc/hosts=, preventing any hostname resolution errors.
+* Add hostname resolution
+https://www.baeldung.com/linux/sudo-host-resolution
+:PROPERTIES:
+:ID:       0a4efd6f-1fe7-4dd4-a553-11ce2a215b1f
+:END:
+1. Open the =/etc/hosts= file with a text editor using root privileges:
+
+2. Add an entry for your new hostname. It should look something like this:
+   #+begin_src plaintext
+   127.0.0.1   localhost
+   127.0.1.1   kfreyer42
+
+IPv6
+   ::1         kfreyer42
+   #+end_src

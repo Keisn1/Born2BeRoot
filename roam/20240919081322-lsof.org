@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       4c831606-2a79-4bba-a979-a65bf78908c1
+:END:
+#+title: lsof
+#+date: [2024-09-19 Thu 08:13]
+#+startup: overview
+
+
+lsof stands for "list open files" and is a command-line utility used to list all open files and the processes that opened them on a Unix-like system
+
+* =sudo lsof -i -P -n | grep LISTEN=
+
+The command "sudo lsof -i -P -n | grep LISTEN" lists open network connections that are in the listening state. It shows processes that are listening on network ports on the system.
+
+- =lsof=: Invokes the "list open files" command.
+- =-i=: Shows network files.
+- =-P=: Inhibits the conversion of port numbers to port names.
+- =-n=: Inhibits the conversion of network numbers to host names.
+- =| grep LISTEN=: Filters the output to show only lines containing the word "LISTEN".

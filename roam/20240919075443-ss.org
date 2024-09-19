@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       2a62c8d2-0a7b-4eea-b02a-3315031f5027
+:END:
+#+title: ss
+#+date: [2024-09-19 Thu 07:54]
+#+startup: overview
+
+=ss -ntlp | grep -i ssh=

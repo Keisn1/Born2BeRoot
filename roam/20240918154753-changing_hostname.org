@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       60d4bf5c-590f-4f24-8ae1-1529ec920ac1
+:END:
+#+title: changing hostname
+#+date: [2024-09-18 Wed 15:47]
+#+startup: overview
+
+[[id:28e4ac5e-774b-49c3-b792-81df5bc63c55][with argument (change hostname)]]
+[[id:0a4efd6f-1fe7-4dd4-a553-11ce2a215b1f][Add hostname resolution]]

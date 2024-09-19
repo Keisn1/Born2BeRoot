@@ -1,0 +1,47 @@
+:PROPERTIES:
+:ID:       13e1987c-d974-4534-835c-cb22e38cc8eb
+:END:
+#+title: ssh
+#+date: [2024-09-18 Wed 16:35]
+#+startup: overview
+
+
+SSH, or *Secure Shell*, is a *network protocol* used to securely access and manage remote systems over an unsecured network.
+
+It provides a secure channel for communication by encrypting the connection between the client and the server.
+SSH is commonly used for:
+
+1. *Remote command-line login:* Accessing a remote machine's terminal to execute commands.
+2. *Secure file transfer:* Using SCP (Secure Copy Protocol) or SFTP (SSH File Transfer Protocol) to transfer files between machines.
+3. *Tunneling and port forwarding:* Securing other network services by routing them through an encrypted SSH connection.
+
+The command typically used to initiate an SSH connection is:
+#+begin_example sh
+ssh username@hostname
+#+end_example
+
+This sets up a secure session with the specified remote machine, allowing you to perform administrative tasks, run applications, and transfer data securely.
+
+The command typically used to initiate an SSH connection is:
+#+begin_example sh
+ssh username@hostname
+#+end_example
+
+* [[id:a01e66e1-f691-4982-8b8e-1e31173c3cc2][openssh]]
+* [[id:1e013b51-2c02-4c88-817a-fcff6ad0f2a4][ssh-agent]]
+* Connecting to remote machine
+
+1. *Obtain the VM's IP Address:*
+   - You can typically find this in your VM management interface or by running =ifconfig= or =ip addr= inside the VM if you have console access
+   - =ip r=
+
+2. *Using SSH from Terminal (Linux/macOS/Windows with OpenSSH):*
+   - Connect to the VM using the =ssh= command:
+     #+begin_src sh
+     ssh username@vm-ip-address
+     #+end_src
+   - with port number (=-p=)
+     - Port to connect to on the remote host.  This can be specified on a per-host basis in the configuration file.
+     #+begin_src sh
+    ssh -p port_number username@hostname
+     #+end_src

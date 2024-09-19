@@ -10,6 +10,6 @@ https://en.wikipedia.org/wiki/User_identifier
 
 =/etc/passwd=
 identify user by a value called *user identifier* (UID)
-
 - together with [[id:120e00d9-48d9-41cd-8091-05d2b8bae4e7][group identifier]] determine which system resources a user can access
 - the [[id:0089a01b-2a89-4e06-9c5f-cb10188b6289][password file]] has map UserName -> UID
+* [[id:039a700c-4ffa-4e82-946a-dfdceb7cc954][add user to group]]

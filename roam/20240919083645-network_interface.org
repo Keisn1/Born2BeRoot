@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       92f11405-d294-4e28-811f-ef9631e1a51f
+:END:
+#+title: network interface
+#+date: [2024-09-19 Thu 08:36]
+#+startup: overview
+
+A network interface is a hardware or software component that enables a device to connect to a network.
+
+It allows the device to send and receive data over the network.
+
+Some typical network interfaces are Ethernet, Wi-Fi, Bluetooth, and virtual interfaces like loopback interfaces (lo).

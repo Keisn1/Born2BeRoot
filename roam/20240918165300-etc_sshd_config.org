@@ -1,0 +1,34 @@
+:PROPERTIES:
+:ID:       3384f1a8-d5ab-4151-b22d-7c7fd5d30830
+:END:
+#+title: /etc/ssh/sshd_config
+#+date: [2024-09-18 Wed 16:53]
+#+startup: overview
+
+* Need to restart the daemon
+=sudo systemctl status sshd=
+* Port Number:
+Change the default port from 22 to another number for security through obscurity.
+#+begin_example plaintext
+Port 2222
+#+end_example
+* PermitRootLogin
+- read man page to see the options
+
+If this option is set to no, root is not allowed to log in.
+#+begin_example plaintext
+PermitRootLogin no
+#+end_example
+* other
+- *Password Authentication:* Enable or disable password-based login.
+  #+begin_example plaintext
+  PasswordAuthentication no
+  #+end_example
+- *Public Key Authentication:* Ensure public key authentication is enabled.
+  #+begin_example plaintext
+  PubkeyAuthentication yes
+  #+end_example
+- *Max Startups:* Limit the number of unauthenticated connections.
+  #+begin_example plaintext
+  MaxStartups 10:30:60
+  #+end_example

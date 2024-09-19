@@ -1,0 +1,44 @@
+:PROPERTIES:
+:ID:       1e013b51-2c02-4c88-817a-fcff6ad0f2a4
+:END:
+#+title: ssh-agent
+#+date: [2024-09-18 Wed 16:48]
+#+startup: overview
+
+=ssh-agent= is a program that acts as a key manager for SSH (Secure Shell).
+
+It holds private keys used for public key authentication (key-based authentication) in memory, effectively managing your SSH keys and passphrases so you don't have to repeatedly enter your passphrase for each SSH connection.
+
+Here’s how it typically works:
+1. You start =ssh-agent=, which runs in the background.
+2. You add your private key to =ssh-agent= using the =ssh-add= command.
+3. =ssh-agent= caches the key in memory for the duration of your session.
+4. When you attempt to SSH into another machine, =ssh-agent= provides the necessary authentication without requiring you to re-enter your key's passphrase each time.
+
+Common commands associated with =ssh-agent= include:
+- Starting =ssh-agent=:
+  #+begin_example sh
+  eval $(ssh-agent)
+  #+end_example
+
+- Adding an SSH key to the agent:
+  #+begin_example sh
+  ssh-add ~/.ssh/id_rsa
+  #+end_example
+
+- Listing currently loaded keys in =ssh-agent=:
+  #+begin_example sh
+  ssh-add -l
+  #+end_example
+
+- Removing a key from the agent:
+  #+begin_example sh
+  ssh-add -d ~/.ssh/id_rsa
+  #+end_example
+
+- Stopping =ssh-agent=:
+  #+begin_example sh
+  eval $(ssh-agent -k)
+  #+end_example
+
+Using =ssh-agent= enhances convenience and security by reducing the need to repeatedly enter passphrases while maintaining the security benefits of SSH key-based authentication.

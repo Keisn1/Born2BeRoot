@@ -1,0 +1,67 @@
+:PROPERTIES:
+:ID:       bb420f28-36d8-41ce-b52b-f31c28901079
+:END:
+#+title: ufw
+#+date: [2024-09-19 Thu 08:19]
+#+startup: overview
+
+
+UFW stands for Uncomplicated Firewall.
+It is a front-end for managing iptables firewall rules on Ubuntu and other Linux distributions.
+It provides a user-friendly interface to configure and manage firewall settings.
+
+* Installation
+=sudo apt install ufw=
+- enabled but need to be restarted
+* enable
+=sudo ufw status=: ~Status: inactive~
+=sudo ufw enable=: ~Firewall is active and enabled on system startup~
+=sudo ufw status=: ~Status: active~
+
+* configure
+https://averagelinuxuser.com/linux-firewall/
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu
+https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands
+=sudo ufw default deny incoming=
+=sudo ufw default allow outgoing=
+** Block an IP address
+=sudo ufw deny from 203.0.113.100=: ~Rule added~
+=sudo status=: ~Rule added~
+#+begin_example
+Output
+Status: active
+
+To                         Action      From
+--                         ------      ----
+Anywhere                   DENY        203.0.113.100
+#+end_example
+** Block a subnet
+** Block incoming connections to a network interface
+** list which profiles are currently available
+=sudo ufw app list=
+** allowing ssh
+*** either allow by port number
+=sudo ufw allow 22=
+*** or allow by service name
+=sudo ufw allow ssh=
+- UFW knows which ports and protocols a service uses based on the /etc/services
+* commands
+Some common commands for =ufw= are =status=, =enable=, =disable=, =allow=, =deny=, =reset=, =reload=, =delete=, =default=, and =logging=.
+* setting up server
+** Make sure IPv6 is enabled
+- =/etc/default/ufw=
+  #+begin_src shell
+IPV6=yes
+  #+end_src
+** ufw default policies
+=sudo ufw default deny incoming=
+=sudo ufw default allow outgoing=
+- actually questionable in case a server is compromised, you wouldn't like it to communicate everywhere
+** allow OpenSSh UFW Application Profile
+=sudo ufw allow OpenSSH=
+- check with
+  =sudo ufw app list=
+** open port 4242
+=sudo ufw allow 4242=
+** see modifications
+=sudo ufw show added=

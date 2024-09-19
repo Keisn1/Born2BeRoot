@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       a01e66e1-f691-4982-8b8e-1e31173c3cc2
+:END:
+#+title: openssh
+#+date: [2024-09-18 Wed 16:39]
+#+startup: overview
+
+installed by default on most linux-distros
+
+[[id:e6bd10af-bd5c-4ea3-be8b-4004496fa169][openssh client]]
+[[id:2cadebc0-0afc-4f86-8a70-aa7ebe0ac5ff][openssh server]]

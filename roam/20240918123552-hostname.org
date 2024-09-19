@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       50ddf3ad-2281-4455-b13f-ef4e2a29c014
+:END:
+#+title: hostname
+#+date: [2024-09-18 Wed 12:35]
+#+startup: overview
+
+
+- label assigned to that machine
+- is used to identify it on a network
+
+- can be a simple alphanumeric name that helps differentiate one machine from another in a networked environment
+
+- typically set during the operating system installation
+- can be configured later to reflect a user-defined name for the system
+
+* [[id:68d178f1-90f8-4162-8ee0-84f35dbfd8d8][hostnamectl]]
+* [[id:c7a2fa4c-cb32-4af3-bbe4-faa3ed30543f][/etc/hostname]]
+* [[id:98a0d172-e562-41a4-b161-5f253b7c322f][/etc/hosts]]
+* [[id:60d4bf5c-590f-4f24-8ae1-1529ec920ac1][changing hostname]]

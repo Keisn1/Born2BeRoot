@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       68d178f1-90f8-4162-8ee0-84f35dbfd8d8
+:END:
+#+title: hostnamectl
+#+date: [2024-09-18 Wed 12:37]
+#+startup: overview
+
+
+hostnamectl - Control the system hostname
+
+* hostnamectl
+#+begin_example
+Static hostname: localhost
+Icon name: computer-vm
+...
+Operating System: Debian GNU/Linux 12 (bookworm)
+...
+#+end_example
+
+* hostname
+** without argument
+- print the hostname
+** with argument (change hostname)
+:PROPERTIES:
+:ID:       28e4ac5e-774b-49c3-b792-81df5bc63c55
+:END:
+#+begin_src shell
+hostnamectl hostname kfreyer42
+#+end_src
+*** before
+#+begin_src shell
+kfreyer42@localhost:~$
+#+end_src
+*** after
+#+begin_src shell
+kfreyer42@kfreyer42:~$
+#+end_src

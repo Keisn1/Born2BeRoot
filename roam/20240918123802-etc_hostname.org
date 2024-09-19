@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       c7a2fa4c-cb32-4af3-bbe4-faa3ed30543f
+:END:
+#+title: /etc/hostname
+#+date: [2024-09-18 Wed 12:38]
+#+startup: overview
+
+hostname - Local hostname configuration file
