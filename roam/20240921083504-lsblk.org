@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       4b9cc80b-03f7-4c1e-87b5-a3e80c52bf2d
+:END:
+#+title: lsblk
+#+date: [2024-09-21 Sat 08:35]
+#+startup: overview

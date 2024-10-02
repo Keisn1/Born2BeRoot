@@ -37,7 +37,7 @@ https://wiki.debian.org/BootLoader#Debian_default_boot_loaders
 - *Mounting Root Filesystem*: The kernel mounts the root filesystem specified in the boot parameters.
 ** 7. Init System
 - *Initrd/Initramfs*: The initial RAM disk mounts the real root filesystem and executes the initial system initialization process.
-- *Systemd/SysVinit*: Depending on the initialization system (like systemd or SysVinit), the init process takes over, starting essential services and setting up the user environment.
+- *[[id:040f1e6f-4bad-411a-9a9c-60a48d123bfa][Systemd]]/SysVinit*: Depending on the initialization system (like systemd or SysVinit), the init process takes over, starting essential services and setting up the user environment.
 ** 8. User Space
 - *Login*: Eventually, the system displays a login prompt or a graphical login screen if a display manager is configured.
 - *User Environment*: After logging in, the user is presented with the shell or desktop environment.

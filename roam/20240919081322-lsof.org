@@ -5,7 +5,6 @@
 #+date: [2024-09-19 Thu 08:13]
 #+startup: overview
 
-
 lsof stands for "list open files" and is a command-line utility used to list all open files and the processes that opened them on a Unix-like system
 
 * =sudo lsof -i -P -n | grep LISTEN=

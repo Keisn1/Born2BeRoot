@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       a2fc935e-dcf3-4a77-b3c4-4b97a14e9d6d
+:END:
+#+title: uname
+#+date: [2024-09-19 Thu 19:56]
+#+startup: overview
+
+uname - print system information
+
+Print certain system information.  With no OPTION, same as -s.

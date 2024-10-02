@@ -5,4 +5,55 @@
 #+date: [2024-09-19 Thu 07:54]
 #+startup: overview
 
-=ss -ntlp | grep -i ssh=
+* =ss -ntlp | grep -i ssh=
+[[id:a74c3f2c-8d6d-4428-ab6e-1a37b74eed6a][-n, --numeric]]
+[[id:3e44b21f-8497-4f7f-931f-34d19c1aa0e0][-t, --tcp]]
+[[id:7d1e0f9c-fc59-471b-8652-75221ad82a0f][-l, --listening]]
+[[id:f836b6e6-68e7-47bb-bece-15c207e266f0][-p, --processes]]
+See all listening tcp sockets and show the process (doesn't make big difference)
+* =ss -tna=
+[[id:3e44b21f-8497-4f7f-931f-34d19c1aa0e0][-t, --tcp]]
+[[id:a74c3f2c-8d6d-4428-ab6e-1a37b74eed6a][-n, --numeric]]
+[[id:ced101a2-6da3-4a44-b6cb-f6bd52156995][-a, --all]]
+Shows all tcp connections, listening and non-listening and do not try to resolce service names
+* =ss -Ht state established=
+[[id:dc4374e7-30e5-4ddf-bf82-b7b7dea2e832][-H, --no-header]]
+[[id:e6e97db4-c166-45b6-b603-334b0a867be7][STATE FILTER]]
+* Flags
+** -n, --numeric
+:PROPERTIES:
+:ID:       a74c3f2c-8d6d-4428-ab6e-1a37b74eed6a
+:END:
+Do not try to resolve service names. Show exact bandwidth values, instead of human-readable.
+** -t, --tcp
+:PROPERTIES:
+:ID:       3e44b21f-8497-4f7f-931f-34d19c1aa0e0
+:END:
+Display TCP sockets.
+** -l, --listening
+:PROPERTIES:
+:ID:       7d1e0f9c-fc59-471b-8652-75221ad82a0f
+:END:
+Display only listening sockets (these are omitted by default).
+** -p, --processes
+:PROPERTIES:
+:ID:       f836b6e6-68e7-47bb-bece-15c207e266f0
+:END:
+Show process using socket.
+** -a, --all
+:PROPERTIES:
+:ID:       ced101a2-6da3-4a44-b6cb-f6bd52156995
+:END:
+Display  both listening and non-listening (for TCP this means established connections) sockets.
+** -H, --no-header
+:PROPERTIES:
+:ID:       dc4374e7-30e5-4ddf-bf82-b7b7dea2e832
+:END:
+Suppress header line.
+* STATE FILTER
+:PROPERTIES:
+:ID:       e6e97db4-c166-45b6-b603-334b0a867be7
+:END:
+FILTER := [ state STATE-FILTER ] [ EXPRESSION ]
+Please  take a look at the official documentation for details regarding filters.
+** established

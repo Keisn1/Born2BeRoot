@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       8ea719ee-aee1-464b-95c6-cb99a40e68cd
+:END:
+#+title: TCP
+#+date: [2024-09-21 Sat 08:49]
+#+startup: overview
+
+tcp - TCP protocol
+
+TCP, or Transmission Control Protocol, is one of the core protocols of the Internet Protocol Suite.
+It provides reliable, ordered, and error-checked delivery of data between applications running on hosts in an IP network.
+
+Here are some key features of TCP:
+
+1. *Connection-oriented*: Establishes a connection before data can be sent.
+2. *Reliable*: Ensures data is delivered accurately and in the same order it was sent.
+3. *Error-checking*: Uses checksums to detect errors in data.
+4. *Flow control*: Manages the rate of data transmission between source and destination.
+5. *Congestion control*: Prevents network congestion by adjusting the rate of data transmission based on network conditions.
+
+TCP is used by many important internet applications, including web browsers (HTTP/HTTPS), email (SMTP/IMAP/POP), and file transfers (FTP).
+
+In contrast to [[id:8ca94259-150f-4207-8eca-eee7cfe7edab][UDP]]

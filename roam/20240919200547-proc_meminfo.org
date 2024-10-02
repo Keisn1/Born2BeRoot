@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       4241f5ee-367b-44c7-ae3f-35c9665d4a1e
+:END:
+#+title: /proc/meminfo
+#+date: [2024-09-19 Thu 20:05]
+#+startup: overview
+
+/proc/meminfo - memory usage
+
+This  file  reports  statistics about memory usage on the system.
+
+used by [[id:63194921-1dcf-47c3-85a2-ad162cfc4028][free]]

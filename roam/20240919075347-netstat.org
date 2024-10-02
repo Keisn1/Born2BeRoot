@@ -6,4 +6,7 @@
 #+startup: overview
 
 =sudo apt install net-tools=
+
 =netstat -ntlp | grep -i ssh=
+
+=netstat -t=

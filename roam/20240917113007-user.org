@@ -12,3 +12,6 @@ https://en.wikipedia.org/wiki/User_identifier
 identify user by a value called *user identifier* (UID)
 - together with [[id:120e00d9-48d9-41cd-8091-05d2b8bae4e7][group identifier]] determine which system resources a user can access
 - the [[id:0089a01b-2a89-4e06-9c5f-cb10188b6289][password file]] has map UserName -> UID
+
+* users command
+users - print the user names of users currently logged in to the current host

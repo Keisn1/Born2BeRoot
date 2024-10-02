@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       267d8066-c8cd-4b70-bbdb-1014057a04f5
+:END:
+#+title: lscpu
+#+date: [2024-09-19 Thu 17:24]
+#+startup: overview
+
+lscpu - display information about the CPU architecture

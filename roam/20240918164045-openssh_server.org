@@ -46,4 +46,6 @@
 netstat -ntlp | grep -i ssh
 ss -ntlp | grep -i ssh
   #+end_src
-- with [[id:11c38f3f-8ddb-4fc9-b7f1-c1531813d0c3][=sudo lsof -i -P -n | grep LISTEN=]]
+- with [[id:4c831606-2a79-4bba-a979-a65bf78908c1][lsof]]
+  =sudo lsof -i -P -n | grep LISTEN=
+* allow with [[id:bb420f28-36d8-41ce-b52b-f31c28901079][ufw]]

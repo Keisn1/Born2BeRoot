@@ -1,0 +1,152 @@
+:PROPERTIES:
+:ID:       b35074bc-77bd-4e23-9f0a-83e706499a6b
+:END:
+#+title: monitoring sh
+#+date: [2024-09-19 Thu 19:32]
+#+startup: overview
+
+* information about architecture
+[[id:a2fc935e-dcf3-4a77-b3c4-4b97a14e9d6d][uname]]
+#+begin_src shell
+uname -a
+#+end_src
+* processor information
+** physical
+[[id:267d8066-c8cd-4b70-bbdb-1014057a04f5][lscpu]]
+#+begin_src shell
+lscpu | grep "Socket(s):" | awk '{print $2}'
+#+end_src
+[[id:4605613d-108c-4d0b-8c90-8ede3e1e4353][/proc/cpuinfo]]
+#+begin_src shell
+grep "physical id" /proc/cpuinfo | uniq | wc -l
+#+end_src
+
+** virtual - cores
+[[id:267d8066-c8cd-4b70-bbdb-1014057a04f5][lscpu]]
+#+begin_src shell
+lscpu | grep "^CPU(s):" | awk '{print $2}'
+#+end_src
+[[id:4605613d-108c-4d0b-8c90-8ede3e1e4353][/proc/cpuinfo]]
+grep "^processor" /proc/cpuinfo | wc -l
+* Memory usage
+[[id:63194921-1dcf-47c3-85a2-ad162cfc4028][free]]
+[[id:4241f5ee-367b-44c7-ae3f-35c9665d4a1e][/proc/meminfo]]
+[[id:235d6527-e1bd-4a75-bca1-f0bbf2c93299][awk]]
+#+begin_src sh
+usedRAM=$(free -m | awk 'NR==2 {print $3}')
+totalRAM=$(free -m | awk 'NR==2 {print $2}')
+used_perc=$(awk "BEGIN {printf \"%.1f\", ($usedRAM / $totalRAM) * 100}")
+echo "#Memory Usage: $usedRAM/$totalRAM ($used_perc)%"
+#+end_src
+* Disk usage
+Using [[id:3126284b-cf23-4930-a408-2be75486dcf3][df]], [[id:8ecce091-bf8a-4907-9474-ed8e861ced72][grep]] and [[id:235d6527-e1bd-4a75-bca1-f0bbf2c93299][awk]]
+#+begin_example
+/dev/mapper/kfreyer42--vg-root       9509056 1046528   7957904  12% /
+/dev/mapper/kfreyer42--vg-home       4721184      80   4460600   1% /home
+/dev/mapper/kfreyer42--vg-tmp        2808488      40   2645632   1% /tmp
+/dev/mapper/kfreyer42--vg-srv        2808488      24   2645648   1% /srv
+/dev/mapper/kfreyer42--vg-var        2808488  240296   2405376  10% /var
+/dev/mapper/kfreyer42--vg-var--log   5090496  323740   4487412   7% /var/log
+#+end_example
+- 2 ways
+  - everything in that starts with /dev but isn't mounted on /boot
+    =df SIZE_FLAG | grep "^/dev/" | grep -v "/boot"=
+  - everything in our volumegroup
+    =df SIZE_FLAG | grep "^/dev/mapper/kfreyer42--vg"=
+#+begin_example
+/dev/mapper/kfreyer42--vg-root       9509056 1046528   7957904  12% /
+/dev/mapper/kfreyer42--vg-home       4721184      80   4460600   1% /home
+/dev/mapper/kfreyer42--vg-tmp        2808488      40   2645632   1% /tmp
+/dev/mapper/kfreyer42--vg-srv        2808488      24   2645648   1% /srv
+/dev/mapper/kfreyer42--vg-var        2808488  240296   2405376  10% /var
+/dev/mapper/kfreyer42--vg-var--log   5090496  323740   4487412   7% /var/log
+#+end_example
+** calculate memory
+- summing up with awk
+- need to take into account different ways of printing the size (MBytest, GB, in powers of 1024)
+*** full disk in MB
+#+begin_src shell
+fdisk_mb=$(df -BM | grep "^/dev/mapper/kfreyer42--vg" | awk '{ sum += $2 } END { print sum }')
+#+end_src
+*** full disk in GB
+- -h ... print sizes in powers of 1024 (e.g., 1023M)
+#+begin_src shell
+fdisk_gb=$(awk "BEGIN {printf \"%.1f\", ($fdisk_mb / 1024)}")
+#+end_src
+*** used disk in MB
+#+begin_src shell
+udisk_mb=$(df -BM | grep "^/dev/mapper/kfreyer42--vg" | awk '{ sum += $3 } END { print sum }')
+#+end_src
+*** used disk in perc
+#+begin_src shell
+udisk_perc=$(awk "BEGIN { printf \"%.1f\", ($udisk_mb / $fdisk_mb * 100) }")
+#+end_src
+* CPU load
+using [[id:f39a3f65-bfc8-42f5-849e-1b9e79612231][top]] and [[id:235d6527-e1bd-4a75-bca1-f0bbf2c93299][awk]]
+** consider CPU percentages
+#+begin_src shell
+top -bn1 | grep "%Cpu| cut -c 9-
+#+end_src
+** sumup
+#+begin_src shell
+top -bn1 | grep "%Cpu" | awk '{print("%.1f"), $2 + $4 + $6}'
+#+end_src
+* last reboot
+** with [[id:975cee1d-9e8f-4c5c-9999-b0ef61ab223c][last]]
+- get date
+  #+begin_src shell
+  last reboot --time-format iso  | head -n 1 | awk '{print $5}' | cut -d 'T' -f 1
+  #+end_src
+- get time
+  #+begin_src shell
+  last reboot --time-format iso  | head -n 1 | awk '{print $5}' | cut -d 'T' -f 2 | cut -d '+' -f 1 | cut -c -5
+  #+end_src
+- all
+  #+begin_src shell
+date_last_reboot=$(last reboot --time-format iso  | head -n 1 | awk '{print $5}' | cut -d 'T' -f 1)
+time_last_reboot=$(last reboot --time-format iso  | head -n 1 | awk '{print $5}' | cut -d 'T' -f 2 | cut -d '+' -f 1 | cut -c -5)
+echo "#Last boot: $date_last_reboot $time_last_reboot"
+  #+end_src
+** with [[id:6cf71b0e-7937-4281-ad53-719e3ca37460][who]]
+#+begin_src shell
+lb=$(who -b | awk '$1 == "system" {print $3 " " $4}')
+#+end_src
+* LVM active
+** using [[id:4b9cc80b-03f7-4c1e-87b5-a3e80c52bf2d][lsblk]]
+#+begin_src shell
+lsblk | grep "lvm" | wc -l | awk '{if ($1 > 0) {print "yes"} else {print "no"}}'
+#+end_src
+* number of active connections (TCP)
+[[id:8ea719ee-aee1-464b-95c6-cb99a40e68cd][TCP]]
+** with [[id:2a62c8d2-0a7b-4eea-b02a-3315031f5027][ss]]
+=ss -tn | grep ESTAB | wc -l=
+=ss -Ht state established | wc -l=
+** with [[id:3632f1a3-c403-4a77-be9a-e5ac031d186f][netstat]]
+=netstat -t | grep ESTABLISHED | wc -l=
+* number of users
+** with [[id:e706d9cc-edb9-475a-bb5b-145188d0ac8c][users]]
+=users | wc -l=
+* Ip address
+** with [[id:50ddf3ad-2281-4455-b13f-ef4e2a29c014][hostname]]
+IPv4 =hostname -I | cut -d ' ' -f 1=
+IPv6 =hostname -I | cut -d ' ' -f 2=
+** with [[id:f5116ff2-447a-43f7-9eef-e6bef8d2cbce][ip]]
+=ip address show $(ip route show default | cut -d ' ' -f5) | grep 'inet ' | awk '{print $2}' | cut -d '/' -f1=
+#+begin_src shell
+ipv4=$(ip address show $(ip route show default | cut -d ' ' -f5) | grep 'inet ' | awk '{print $2}' | cut -d '/' -f1)
+ipv6=$(ip address show $(ip route show default | cut -d ' ' -f5) | grep 'inet6' | awk '{print $2}' | cut -d '/' -f1)
+echo "#Network: IP $ipv4 ($ipv6)"
+#+end_src
+* Commands executed with sudo
+** with /var/log/secure
+** with /var/log/auth.log
+** with [[id:e6dba7a7-4df5-4e18-8ff9-4cff7d8ce05c][journalctl]]
+=journalctl _COMM=sudo | grep -c 'COMMAND'=
+- there are many variations of using grep and journalctl together
+* wall - write to all users
+
+* Cron
+- -u
+  Specifies the name of the user whose crontab is to  be  modified.
+  If  this  option  is  not  used, crontab examines "your" crontab, i.e., the crontab of the person  executing  the  command.
+  If  no crontab  exists for a particular user, it is created for them the first time the crontab -u command is used under their username.

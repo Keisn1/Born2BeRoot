@@ -18,3 +18,7 @@
 * [[id:c7a2fa4c-cb32-4af3-bbe4-faa3ed30543f][/etc/hostname]]
 * [[id:98a0d172-e562-41a4-b161-5f253b7c322f][/etc/hosts]]
 * [[id:60d4bf5c-590f-4f24-8ae1-1529ec920ac1][changing hostname]]
+* hostname command on debian
+https://manpages.debian.org/bookworm/hostname/hostname.1.en.html
+** -I, --all-ip-addresses
+Display all network addresses of the host. This option enumerates all configured addresses on all network interfaces. The loopback interface and IPv6 link-local addresses are omitted. Contrary to option -i, this option does not depend on name resolution. Do not make any assumptions about the order of the output.

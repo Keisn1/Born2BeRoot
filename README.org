@@ -6,6 +6,7 @@
   - [[#lvm][LVM]]
   - [[#what-to-turn-in][What to turn in?]]
   - [[#questions][Questions]]
+  - [[#test][Test]]
   - [[#bonus][Bonus]]
 - [[#disk-image-file][Disk image file]]
   - [[#formats][formats]]
@@ -29,7 +30,7 @@ The VM's signature may be altered after first evluation, need to virtual machin 
 
 During Evaluation, signature will be compared to the one of the virtual machine.
 ** Questions
-*** theoretical
+*** TODO theoretical
 - [X] How does a virtual machine work ? And what its purpose ?
 - [X] Why did you choose Debian or CentOS ?
 - [X] What's the difference between Debian and CentOS ?
@@ -41,7 +42,7 @@ During Evaluation, signature will be compared to the one of the virtual machine.
 - [ ] What's SSH (Secure Shell) and what's the value of using it ?
 - [ ] What's an UFW and what's the value of using it ?
 - [ ] What is cron ?
-*** practical
+*** DONE practical
 **** DONE sudo
 - [X] configure \sudo following strict rules
   - [X] Authentication using \sudo has to be limited to 3 attempts (incorrect password)
@@ -51,10 +52,10 @@ During Evaluation, signature will be compared to the one of the virtual machine.
   - [X] =TTY mode= has to be enabled for security reasons
   - [X] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
 **** DONE password policy
-- [-] implement a strong password policy
-  - [ ] expiration every 30 days
-  - [ ] minimum nbr of days allowed before modification = 2
-  - [ ] user receives a warning message 7 days before their password expires
+- [X] implement a strong password policy
+  - [X] expiration every 30 days
+  - [X] minimum nbr of days allowed before modification = 2
+  - [X] user receives a warning message 7 days before their password expires
   - [X] min 10 chars long
   - [X] must contain uppercase letter and a number
   - [X] must not contain more than 3 consecutive identical chars
@@ -112,37 +113,39 @@ During Evaluation, signature will be compared to the one of the virtual machine.
    2. Bridged adapter
       - get ip address with =ip address=
       =ssh -p port_number username@ipaddress=
-**** TODO script - monitoring.sh
+**** DONE script - monitoring.sh
 - in bash
-- [ ] display information at server startup on all terminals every 10 minutes (*wall (1)*)
-- information
-  - [ ] architecture of OS and kernel version
-  - [ ] number of physical processors
-  - [ ] number of virtual processors
-  - [ ] The available RAM on your server and its utilization rate as a percentage.
-  - [ ] The available memory on your server and its utilization rate as a percentage.
-  - [ ] The utilization rate of your processors as a percentage.
-  - [ ] The date and time of the last reboot.
-  - [ ] Whether LVM is active or not.
-  - [ ] The number of active connections.
-  - [ ] The number of users using the server.
-  - [ ] The IPv4 address of your server and its MAC (Media Access Control) address.
-  - [ ] The number of commands executed with the sudo program.
-- [ ] will need to interrupt the script without modifying it
+- [X] information
+  - [X] architecture of OS and kernel version
+  - [X] number of physical processors
+  - [X] number of virtual processors
+  - [X] The available RAM on your server and its utilization rate as a percentage.
+  - [X] The available memory on your server and its utilization rate as a percentage.
+  - [X] The utilization rate of your processors as a percentage.
+  - [X] The date and time of the last reboot.
+  - [X] Whether LVM is active or not.
+  - [X] The number of active connections.
+  - [X] The number of users using the server.
+  - [X] The IPv4 address of your server and its MAC (Media Access Control) address.
+  - [X] The number of commands executed with the sudo program.
+- [X] display information at server startup on all terminals every 10 minutes (*wall (1)*)
+- [X] will need to interrupt the script without modifying it
   - take a look at *cron*
 [[file:imgs/script_output.png]]
 - =head -n 2 /etc/os-release=
 - =ss -tunlp=
-**** TODO Signature checking
-- [ ] Check that the signature contained is identical to that of the ".vdi" file of the virtual machine to be evaluated.
-** Bonus
-- Set up a functional WordPress website with the following services:
-  - lighttpd, MariaDB, and PHP.
-- Set up a service of your choice that you think is useful (NGINX / Apache2 excluded!)
-- During the defense, you will have to justify your choice.
-- may open more ports to suit your needs
-  - adapt UFW accordingly
+**** DONE Signature checking
+- [X] Check that the signature contained is identical to that of the ".vdi" file of the virtual machine to be evaluated.
+** TODO Test
+** TODO Bonus
+- [ ] setup LVM
 
+- [ ] Set up a functional WordPress website with the following services:
+  - [ ] lighttpd, MariaDB, and PHP.
+- [ ] Set up a service of your choice that you think is useful (NGINX / Apache2 excluded!)
+- [ ] During the defense, you will have to justify your choice.
+- [ ] may open more ports to suit your needs
+  - [ ] adapt UFW accordingly
 * Disk image file
 contains metadata about the virtual disk
 - Disk geometry

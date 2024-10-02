@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       235d6527-e1bd-4a75-bca1-f0bbf2c93299
+:END:
+#+title: awk
+#+date: [2024-09-19 Thu 20:39]
+#+startup: overview
+
+
+awk — pattern scanning and processing language
+* Variables and Special Variables
+** NR
+The ordinal number of the current record from the start of in‐ put.
+Inside a BEGIN action the value shall be zero.
+Inside an END  action  the  value shall be the number of the last record processed.
+* Arithmetic
+** Summing up
+#+begin_src sh
+awk '{ sum += $1 } END { print sum }' data.txt
+#+end_src
+* BEGIN
+- The =BEGIN= block defines actions to be executed before any input is processed.
+- It's useful for initializing variables or, in this case, performing operations that don't depend on input data.

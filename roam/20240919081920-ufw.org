@@ -5,7 +5,6 @@
 #+date: [2024-09-19 Thu 08:19]
 #+startup: overview
 
-
 UFW stands for Uncomplicated Firewall.
 It is a front-end for managing iptables firewall rules on Ubuntu and other Linux distributions.
 It provides a user-friendly interface to configure and manage firewall settings.

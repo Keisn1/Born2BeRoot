@@ -29,6 +29,7 @@ ssh username@hostname
 
 * [[id:a01e66e1-f691-4982-8b8e-1e31173c3cc2][openssh]]
 * [[id:1e013b51-2c02-4c88-817a-fcff6ad0f2a4][ssh-agent]]
+* allowing connection with [[id:bb420f28-36d8-41ce-b52b-f31c28901079][ufw]]
 * Connecting to remote machine
 
 1. *Obtain the VM's IP Address:*
@@ -45,3 +46,4 @@ ssh username@hostname
      #+begin_src sh
     ssh -p port_number username@hostname
      #+end_src
+* [[id:df4b555a-26ce-40eb-bd8c-61d1bfdbf7d1][Configure virtualbox]]

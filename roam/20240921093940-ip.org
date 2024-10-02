@@ -1,0 +1,29 @@
+:PROPERTIES:
+:ID:       f5116ff2-447a-43f7-9eef-e6bef8d2cbce
+:END:
+#+title: ip
+#+date: [2024-09-21 Sat 09:39]
+#+startup: overview
+
+
+ip - show / manipulate routing, network devices, interfaces and tunnels
+
+~ip [ OPTIONS ] OBJECT { COMMAND | help }~
+
+* OBJECT
+** address
+- protocol (IP or IPv6) address on a device.
+** route
+- routing table entry.
+* COMMAND
+- Specifies the action to perform on the object.
+- The set of possible  actions  depends  on  the  object type.
+- As a rule, it is possible to add, delete and show (or list ) objects, but some objects do not allow all of these operations or have some additional commands.
+- The ~help~  command  is available  for  all  objects.
+  - It prints out a list of available commands and argument syntax conventions.
+- If no command is given, some default command is assumed.
+- Usually it is list or, if the objects of this class cannot be listed, help.
+** add
+** delete
+** show
+=show objects=

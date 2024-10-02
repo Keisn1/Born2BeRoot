@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       f39a3f65-bfc8-42f5-849e-1b9e79612231
+:END:
+#+title: top
+#+date: [2024-09-20 Fri 08:41]
+#+startup: overview
+
+top - display Linux processes
+
+* -bn1
+- b, --batch
+- Starts top  in Batch mode,  which could be useful  for sending output from top to other programs or to a file.  In this mode, top will not accept input  and runs until the iterations limit you've set with the `-n' command-line option or until killed.
+* CPU line
+#+begin_example
+%Cpu(s):  2.4 us,  3.6 sy,  0.0 ni, 92.9 id,  1.2 wa,  0.0 hi,  0.0 si,  0.0 st
+#+end_example
+- shows CPU state  percentages based on the interval since the last refresh.
+- default: percentages for these individual categories are displayed
+- non-idle
+  - =us= ... Percentage of CPU time spent on user processes (non-kernel code).
+  - =sy= ... Percentage of CPU time spent on system processes (kernel code).
+  - =ni= ... Percentage of CPU time spent on user processes with a manually set nice value.
+- idle
+  - =id= ... Percentage of CPU time spent idle.
+  - =wa= ... Percentage of CPU time spent waiting for I/O operations to complete.
+  - =hi= ... Percentage of CPU time spent handling hardware interrupts.
+  - =si= ... Percentage of CPU time spent handling software interrupts.
+  - =st= ... Percentage of CPU time stolen from a virtual machine by the hypervisor.
+** *Niceness*
+In Unix-like operating systems, =nice= levels (or niceness) are used to determine the priority of a process. When the =top= documentation mentions "niced" and "un-niced" processes, it is referring to processes with adjusted scheduling priorities.
+*** *Niced Processes:*
+- These are processes whose priority has been altered using the =nice= or =renice= commands.
+- Niceness values range from -20 (highest priority) to 19 (lowest priority).
+- A niced process typically has a positive niceness value (e.g., 10), meaning it is given lower priority by the scheduler.
+- In =top=, CPU time spent on these processes is indicated by the =ni= (nice) percentage in the CPU line.
+*** *Un-niced Processes:*
+- These processes have the default priority.
+- The default niceness value is 0.
+- Un-niced processes are neither given high priority (like -20) nor low priority (like 19).
+- In =top=, CPU time spent on these processes is indicated by the =us= (user) percentage in the CPU line when they execute user code and =sy= (system) when they execute kernel code.

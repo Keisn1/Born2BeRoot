@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       6cf71b0e-7937-4281-ad53-719e3ca37460
+:END:
+#+title: who
+#+date: [2024-09-20 Fri 10:00]
+#+startup: overview
+
+who - show who is logged on
+
+- -b, --boot ... time of last system boot

@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       a9a910b4-4ce0-418f-b8dd-caca1489ae06
+:END:
+#+title: bogomips
+#+date: [2024-09-19 Thu 17:20]
+#+startup: overview
+
+Bogomips (short for "bogus millions of instructions per second") are a measurement of CPU speed used by the Linux kernel to calibrate internal timing loops.
+
+It's calculated during system boot and primarily used for the kernel's internal timing purposes, not for performance benchmarking.
+
+Essentially, it represents the number of million times per second a processor can do nothing.
