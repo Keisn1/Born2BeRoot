@@ -41,16 +41,16 @@ We need to setup a server.
 - [ ] What's SSH (Secure Shell) and what's the value of using it ?
 - [ ] What's an UFW and what's the value of using it ?
 - [ ] What is cron ?
-*** DONE practical
-**** DONE sudo
-- [X] configure \sudo following strict rules
-  - [X] Authentication using \sudo has to be limited to 3 attempts (incorrect password)
-  - [X] *custom msg* of your choice if an error due to a wrong pw occurs
-  - [X] each action using \sudo has to be archived, both inputs and outputs
-    - [X] log file saved in =/var/log/sudo/= folder
-  - [X] =TTY mode= has to be enabled for security reasons
-  - [X] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
-**** DONE password policy
+*** TODO practical
+**** TODO sudo
+- [ ] configure \sudo following strict rules
+  - [ ] Authentication using \sudo has to be limited to 3 attempts (incorrect password)
+  - [ ] *custom msg* of your choice if an error due to a wrong pw occurs
+  - [ ] each action using \sudo has to be archived, both inputs and outputs
+    - [ ] log file saved in =/var/log/sudo/= folder
+  - [ ] =TTY mode= has to be enabled for security reasons
+  - [ ] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
+**** TODO password policy
 - [X] implement a strong password policy
   - [X] expiration every 30 days
   - [X] minimum nbr of days allowed before modification = 2
@@ -75,18 +75,18 @@ We need to setup a server.
   - [X] must not include the name of the user (gecos check)
   - [X] must have at least 7 chars that are not part of the former password
   - [X] root password has to comply with this policy
-**** DONE hostname and user
+**** TODO hostname and user
 - [X] hostname = kfreyer42
 - [X] in addition to root user, a user with your login as username has to be present
   - [X] user has to belong to the \user42 and \sudo groups
   - during defense, you will have to create a new user and assign it to a group
-**** DONE ssh and ufw
-- [X] \SSH service running on port 4242
-  - [X] shall not be possible to connect using \SSH as root
+**** TODO ssh and ufw
+- [ ] \SSH service running on port 4242
+  - [ ] shall not be possible to connect using \SSH as root
 - use of \SSH will be tested during the defense by setting up a new account
-- [X] configure \UFW
-   - [X] only leave 4242 open
-   - [X] must be active when you launch your virtual machine
+- [ ] configure \UFW
+   - [ ] only leave 4242 open
+   - [ ] must be active when you launch your virtual machine
 ***** how to
 1. install openssh-server
 2. configure openssh with /etc/ssh/sshd_config file
@@ -112,23 +112,23 @@ We need to setup a server.
    2. Bridged adapter
       - get ip address with =ip address=
       =ssh -p port_number username@ipaddress=
-**** DONE script - monitoring.sh
+**** TODO script - monitoring.sh
 - in bash
-- [X] information
-  - [X] architecture of OS and kernel version
-  - [X] number of physical processors
-  - [X] number of virtual processors
-  - [X] The available RAM on your server and its utilization rate as a percentage.
-  - [X] The available memory on your server and its utilization rate as a percentage.
-  - [X] The utilization rate of your processors as a percentage.
-  - [X] The date and time of the last reboot.
-  - [X] Whether LVM is active or not.
-  - [X] The number of active connections.
-  - [X] The number of users using the server.
-  - [X] The IPv4 address of your server and its MAC (Media Access Control) address.
-  - [X] The number of commands executed with the sudo program.
-- [X] display information at server startup on all terminals every 10 minutes (*wall (1)*)
-- [X] will need to interrupt the script without modifying it
+- [ ] information
+  - [ ] architecture of OS and kernel version
+  - [ ] number of physical processors
+  - [ ] number of virtual processors
+  - [ ] The available RAM on your server and its utilization rate as a percentage.
+  - [ ] The available memory on your server and its utilization rate as a percentage.
+  - [ ] The utilization rate of your processors as a percentage.
+  - [ ] The date and time of the last reboot.
+  - [ ] Whether LVM is active or not.
+  - [ ] The number of active connections.
+  - [ ] The number of users using the server.
+  - [ ] The IPv4 address of your server and its MAC (Media Access Control) address.
+  - [ ] The number of commands executed with the sudo program.
+- [ ] display information at server startup on all terminals every 10 minutes (*wall (1)*)
+- [ ] will need to interrupt the script without modifying it
   - take a look at *cron*
 [[file:imgs/script_output.png]]
 - =head -n 2 /etc/os-release=

@@ -24,7 +24,7 @@ https://en.wikipedia.org/wiki/Disk_partitioning
 ** extended partition
 - can be divided into logical partitions
 - no need to assign a drive letter and install a file system
-- may be used when limit of4 drives per physical disk are reached
+- may be used when limit of 4 drives per physical disk is reached
 ** logical partitions
 - Logical partitions are created within an extended partition, which is a special type of primary partition that can hold multiple logical partitions.
 - allow for more than four partitions on a disk and are commonly used for data storage rather than booting an operating system

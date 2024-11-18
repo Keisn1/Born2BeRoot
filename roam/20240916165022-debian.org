@@ -26,6 +26,9 @@
 * [[id:ae006e35-647d-4e8d-9b71-85ff017c2cec][AppArmor]]
 
 * Differences between Centos and Debian and Rocky
+:PROPERTIES:
+:ID:       2cc4639c-594b-43ea-bdb8-b00fb07643c3
+:END:
 
 |                    | Debian                  | Centos                                   | Rocky                                             |
 |--------------------+-------------------------+------------------------------------------+---------------------------------------------------|

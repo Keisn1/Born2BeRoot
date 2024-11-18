@@ -12,7 +12,7 @@
 * Types
 [[file:~/workspace/Born2BeRoot/imgs/hypervisor_types.png]]
 ** Bare-Metal - Type 1
-- run directly on the hardware and manage guest operating systems
+- runs directly on the hardware and manage guest operating systems
 - without the need for a host operating system
 - Examples include
   - VMware ESXi, Microsoft Hyper-V

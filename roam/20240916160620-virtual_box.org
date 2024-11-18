@@ -6,6 +6,7 @@
 #+startup: overview
 
 [[https://en.wikipedia.org/wiki/VirtualBox]]
+
 - VirtualBox is a [[id:e6d8db32-380a-4e00-b90e-8c7d773387d8][hosted]] [[id:8682f934-e8b4-404f-8120-c17a828b44b0][Hypervisor]]
 
 * Steps to launch a [[id:3215f99f-5524-4986-9fc7-58eb820d946c][Virtual Machine]]

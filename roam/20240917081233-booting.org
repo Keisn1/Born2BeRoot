@@ -78,8 +78,7 @@ Configuring GRUB involves editing its configuration file and then updating the G
    #+end_src
 
 ** Where is Grub installed?
-
-- Master Boot Record (MBR) - BIOS
+- Master Boot Record (*MBR*) - BIOS
 - EFI System Partition (ESP) of a disk - UEFI
 - *MBR (for BIOS systems):* GRUB is installed in the first 512 bytes of the disk. This is the MBR area, which is loaded by the BIOS and then GRUB handles the rest of the boot process.
 - *EFI System Partition (for UEFI systems):* GRUB is installed in a special partition formatted with a FAT file system, commonly referred to as the EFI System Partition (ESP). The path is usually:

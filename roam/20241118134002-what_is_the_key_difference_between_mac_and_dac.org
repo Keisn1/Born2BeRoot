@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       94c35248-4a61-4fc5-9ea2-89247376febe
+:END:
+#+title: what is the key difference between MAC and DAC?
+#+date: [2024-11-18 Mo 13:40]
+#+startup: overview
+
+
+The key difference between Mandatory Access Control (MAC) and Discretionary Access Control (DAC) lies in how access permissions are managed and enforced:
+
+1. *Discretionary Access Control (DAC):*
+   - *User Control:* In DAC, the owner of a resource, such as a file or directory, has the discretion to set access permissions for other users. This means the resource owner can determine who has read, write, or execute permissions.
+   - *Flexibility vs. Security:* While DAC is flexible and user-friendly, it relies on each user to set appropriate permissions, which can lead to security vulnerabilities if users do not configure settings carefully.
+   - *Common in Many Systems:* DAC is the default access control model in many operating systems, including standard UNIX and Linux file systems.
+
+2. *Mandatory Access Control (MAC):*
+   - *System Control:* In MAC, access policies are centrally defined by a system administrator or security policy, with strict enforcement by the system itself. Users cannot change permissions on their own.
+   - *Enhanced Security:* Since access controls are not left to the discretion of individual users, MAC provides a higher level of security, enforcing consistent policies across all users and applications.
+   - *Used in High-Security Environments:* MAC is often used in environments where security is crucial, such as military or government systems. Systems like SELinux and AppArmor are examples of MAC implementations in Linux.
+
+In summary, while DAC allows users significant control over their resources, MAC centralizes control under a security policy to ensure consistent and stringent access control.

@@ -1,0 +1,46 @@
+:PROPERTIES:
+:ID:       ff6af85f-0362-44ef-968d-46d74afdc6c3
+:END:
+#+title: evaluation
+#+date: [2024-11-18 Mo 11:56]
+#+startup: overview
+
+[[id:4e0d7e76-9216-44ac-ae4c-dc200d174a20][template_evalutation]]
+
+https://42evals.me/Cursus/Born2beroot/
+* General
+- [ ] check that signature.txt file is present
+- [ ] check that the signature equals matches signature of .vdi that is being evaluated
+  - get the signature in sha1sum format ([[id:08fa09d2-0013-47d1-8ff6-092fb08941df][Verifying authenticity]])
+    #+begin_src shell
+sha1sum vm.vdi
+    #+end_src
+  - maybe compare directly (adding vm.vdi) after the hash
+    #+begin_src shell
+sha1sum -c signature.txt
+    #+end_src
+- may duplicate virtual machine to keep a copy
+* Mandatory
+** Project overview
+- [ ] basic functioning of the [[id:3215f99f-5524-4986-9fc7-58eb820d946c][virtual machine]]
+  - [ ] what is a [[id:3215f99f-5524-4986-9fc7-58eb820d946c][virtual machine]]
+    - [ ] What are the [[id:b9fe227c-3dfa-4397-a06a-1bc6f141d1b7][benefits of virtual machines]]
+  - [ ] What is a [[id:7b33a4a9-c577-4885-ab9c-3710818f8e0e][VirtualBox]]?
+  - [ ] Why did you choose Debian/Rocky ([[id:2cc4639c-594b-43ea-bdb8-b00fb07643c3][Differences between Centos and Debian and Rocky]])
+    - [ ] Rocky
+      - [ ] explain SELinux and DNF
+    - [ ] Debian
+      - [ ] difference between [[id:b52d3445-d59d-4d43-bc92-3e9a70e5afe3][apt]] and [[id:b52d3445-d59d-4d43-bc92-3e9a70e5afe3][aptitude]]
+      - [ ] what is [[id:ae006e35-647d-4e8d-9b71-85ff017c2cec][AppArmor]]
+** Simple configuration
+- [ ] verify that there is no graphical environment at startup
+- [ ] password is requested before any connection attempt to the machine
+- [ ] login with a non-root user
+- [ ] verify that the password respects the rules imposed by the subject
+- [ ] with help of evaluator verify that
+  - [ ] make sure that OS is indeed Debian or Rocky
+  - [ ] ufw is launched correctly
+  - [ ] ssh service is launched properly
+** User
+-
+* script - [[id:b35074bc-77bd-4e23-9f0a-83e706499a6b][monitoring sh]]
