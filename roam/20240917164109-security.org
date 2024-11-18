@@ -15,7 +15,6 @@ https://www.debian.org/doc/manuals/debian-reference/ch04.en.html
 * changing passwords
 - change with passwd command
 * applying changes to already existing users
-
 =sudo chage --maxdays 30 kfreyer42=
 =sudo chage --mindays 1 <username>=
 =sudo chage --warndays 7 <username>=

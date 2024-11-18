@@ -5,10 +5,8 @@
 #+date: [2024-09-18 Wed 12:35]
 #+startup: overview
 
-
 - label assigned to that machine
 - is used to identify it on a network
-
 - can be a simple alphanumeric name that helps differentiate one machine from another in a networked environment
 
 - typically set during the operating system installation

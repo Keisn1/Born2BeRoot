@@ -28,12 +28,9 @@ https://en.wikipedia.org/wiki/Disk_partitioning
 ** logical partitions
 - Logical partitions are created within an extended partition, which is a special type of primary partition that can hold multiple logical partitions.
 - allow for more than four partitions on a disk and are commonly used for data storage rather than booting an operating system
-
 * [[id:e9d57b8a-ac31-490a-9e31-2cbfa65ac836][boot]] partition
 - necessary files for booting an operating system are typically stored in the boot partition
   - which is a specific partition that holds the bootloader and other essential system files required for the system to start up
 - boot partition is usually separate from the partition that contains the core system files and user data
 - some operating systems may use a single partition for both boot files and system files
-
-
 * [[id:775e81a9-36e2-41b9-8f61-0da557f12468][commands related to partitioning]]

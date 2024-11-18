@@ -8,7 +8,7 @@
 - also *VM-monitor*
 - creates and manages VM's
 - allocates resources like *CPU*, *memory*, and *storage* from the physical host to each virtual machine
-*
+
 * Types
 [[file:~/workspace/Born2BeRoot/imgs/hypervisor_types.png]]
 ** Bare-Metal - Type 1

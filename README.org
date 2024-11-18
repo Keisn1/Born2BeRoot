@@ -13,7 +13,9 @@
 
 * What is virutal Box
 VirtualBox is an open-source virtualization software developed by Oracle.
+
 It allows users to run multiple operating systems simultaneously on a single physical machine by creating and managing virtual machines.
+
 This can be useful for testing, development, and running applications that require different environments.
 
 * The Project
@@ -22,13 +24,10 @@ We need to setup a server.
 - 2 encrypted partitions using *LVM* (Logical Volume Manager)
 [[file:imgs/partition_scheme.png]]
 ** What to turn in?
-Only need to turn in a =signature.txt= file at the root of the repository.
-
-Will contain the signature of the machine's virtual disk, e.g.: =sha256sum yourdisk.vdi=
-
-The VM's signature may be altered after first evluation, need to virtual machin or use save state.
-
-During Evaluation, signature will be compared to the one of the virtual machine.
+- Only need to turn in a =signature.txt= file at the root of the repository.
+- Will contain the signature of the machine's virtual disk, e.g.: =sha256sum yourdisk.vdi=
+- The VM's signature may be altered after first evluation, need to virtual machin or use save state.
+- During Evaluation, signature will be compared to the one of the virtual machine.
 ** Questions
 *** TODO theoretical
 - [X] How does a virtual machine work ? And what its purpose ?
@@ -138,8 +137,7 @@ During Evaluation, signature will be compared to the one of the virtual machine.
 - [X] Check that the signature contained is identical to that of the ".vdi" file of the virtual machine to be evaluated.
 ** TODO Test
 ** TODO Bonus
-- [ ] setup LVM
-
+- [X] setup LVM
 - [ ] Set up a functional WordPress website with the following services:
   - [ ] lighttpd, MariaDB, and PHP.
 - [ ] Set up a service of your choice that you think is useful (NGINX / Apache2 excluded!)

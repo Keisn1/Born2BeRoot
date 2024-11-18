@@ -20,4 +20,7 @@
 ** volume groups
 - LEs are pooled into a /volume group/ (combining extents)
 - pooled LEs can be concatenated into virtual disk partitions (*logical volumes*)
+* Renaming a logical volume
+=lvrename kfreyer42--vg var--log var-log=
+- dashes ~-~ inside the name of the logical volumes become ~--~ double-dashes
 * [[id:775e81a9-36e2-41b9-8f61-0da557f12468][commands related to partitioning]]

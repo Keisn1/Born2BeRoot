@@ -7,7 +7,7 @@
 
 https://averagelinuxuser.com/ssh-into-virtualbox/#prepare-virtualbox
 
-* when i want to connect to my virtualmachine (VirtualBox), do I need to configure something in the settings of VirtualBox?
+* when i want to connect to my virtualmachine ([[id:7b33a4a9-c577-4885-ab9c-3710818f8e0e][VirtualBox]]), do I need to configure something in the settings of VirtualBox?
 
 Yes, you need to configure network settings in VirtualBox to connect to your virtual machine. Ensure that the network adapter is enabled and set to the appropriate mode (such as NAT, Bridged, or Host-only) based on your networking requirements.
 

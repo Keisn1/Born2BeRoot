@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       d5801ab6-8b2a-493b-9c84-c4c31db77359
+:END:
+#+title: docker
+#+date: [2024-11-16 Sa 12:51]
+#+startup: overview
+
+Containerization software
+
+* what is meant by isolating applications in user-space?
+:PROPERTIES:
+:ID:       9d247105-0272-499a-a700-519761282898
+:END:
+- what is user-space?
+  - space in memory that is seperated from kernel-space
+- applications have their own seperate execution environment
+  - by using containers like in [[id:d5801ab6-8b2a-493b-9c84-c4c31db77359][docker]]
+  - without direct acess to kernel or hardware
+  - each application has its own filesystem, libraries, configuration and network interfaces
+
+This isolation in user-space means:
+1. *Resource Management*: Each application can be limited to specific CPU, memory, and disk resources.
+2. *Security*: Each container is typically sandboxed, reducing the risk that a vulnerability in one application will affect others or the host system.
+3. *Independence*: Applications can run with different configurations, dependencies, or versions without conflicting with each other.
+4. *Consistency*: Containers can be moved and run consistently across different environments, as they encapsulate everything needed for the application to run.
+
+This approach contrasts with virtual machines, where each VM includes its own full operating system, running both user-space and kernel-space components.

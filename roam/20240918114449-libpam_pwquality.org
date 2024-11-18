@@ -5,8 +5,11 @@
 #+date: [2024-09-18 Wed 11:44]
 #+startup: overview
 
+- setting password rules in etc/login.defs and /etc/pam.d/common-passwd
+
 https://www.server-world.info/en/note?os=Debian_12&p=pam&f=1
 https://manpages.debian.org/testing/libpam-pwquality/pam_pwquality.8.en.html
+
 
 * min 10 chars long
 since using credits

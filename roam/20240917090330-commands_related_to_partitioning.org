@@ -51,6 +51,3 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 #+end_example
 * parted
-* Renaming a logical volume
-=lvrename kfreyer42--vg var--log var-log=
-- dashes ~-~ inside the name of the logical volumes become ~--~ double-dashes

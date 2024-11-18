@@ -1,0 +1,54 @@
+:PROPERTIES:
+:ID:       08fa09d2-0013-47d1-8ff6-092fb08941df
+:END:
+#+title: Verifying authenticity
+#+date: [2024-11-16 Sa 10:24]
+#+startup: overview
+
+* Check checksum
+https://linuxcommandlibrary.com/man/sha512sum
+** What are checksums
+- checksums are results of hashing algorithms, that allow to compare two objects to eachother and test for equalness
+- hashing algorithms, are algorithms that map input data from any size into fixed-size output
+  - while it is easy to calculate the mapping from input to output it is mathematically extremely intensive to calculate the inverse
+    - with big enough output size, it allows for very low probablity that the same output is calculated twice from 2 different inputs (*collision*)
+** Why
+- used to check that the images have not been corrupted during download
+- Data integrity
+- it would be very difficult to alter the data and have the hash-algorithm produce the same output
+** How to
+- Different approaches, that all include 2 steps
+  1. create checksum from the downloaded file with the appropriate hashing algorithm, e.g. ~sha512sum debian.iso~
+  2. compare the created checksum to the checksums provided by the source of the data e.g. with your eyes (better way in next <p>)
+- more concrete
+  1. download the data
+  2. download the checksums
+  3. check the sums
+       #+begin_src shell
+  sha512sum -c checksums
+       #+end_src
+
+* signature
+** What are signatures (example explanation with Debian public keyserver)
+- data may be accompanied by a signature (e.g. the ~SHA512SUMS~ is accompanied by ~signature~)
+- signature is created using a ~private key~ and a ~public key~
+- the ~public key~ is stored on the Debian Public Key server
+- the ~signatures~ in combination with the ~public key~ provide for data's authenticity
+*** Process
+1. Create a digital signature be generating a hash of the data and then encrypt the hash with the ~private key~
+2. data (that was signed) and signature are distributed
+3. user side:
+   - signature is decrypted with the public-key, retrieving the original hash
+   - compute the hash of the received message (hash-algorithm is part of signatures metadata)
+   - if the 2 hashes match, it confirms that the message is authentic and untampered
+** Why
+- signatures allow to confirm that the images are the ones created and released by Debian
+** How to
+([[https://www.debian.org/CD/verify][Verifying authenticity of Debian images]])
+1. Download the files (e.g. via =wget= or =curl=)
+2. Find out the public key to import
+   =gpg --verify data.sig data=
+3. imoprt the key
+   =gpg --keyserver keyring.debian.org --recv-keys <key_id>=
+4. verify the signature
+   =gpg --verify data.sig data=

@@ -11,7 +11,6 @@
 - a robust package management system (APT)
 - a strong commitment to free software
 - a rigorous release cycle that emphasizes reliability
-
 * Why Debian
 - Have been experimenting with linux OS before (including ubuntu)
   - interested in what Debian offers
@@ -22,17 +21,17 @@
 - community - a lot of online help and information
 - very reliable
 - stable release cycle
-
 * Debian package manager
-[[id:b52d3445-d59d-4d43-bc92-3e9a70e5afe3][apt package manager]]
+[[id:b52d3445-d59d-4d43-bc92-3e9a70e5afe3][apt package manager (and aptitude)]]
 * [[id:ae006e35-647d-4e8d-9b71-85ff017c2cec][AppArmor]]
-* Differences between Centos and Debian
 
-|                    | Debian                   | Centos                                   |
-|--------------------+--------------------------+------------------------------------------|
-| *Package Management* | DEB and APT              | RPM and YUM/DNF                          |
-| *Release Cycle*      | stable release cycle     | rolling-release                          |
-| *Base Distribution*  | independent project      | based on Red Hat Enterprise Linux (RHEL) |
-| *Community Support*  | larger global user base  | also strong community                    |
+* Differences between Centos and Debian and Rocky
+
+|                    | Debian                  | Centos                                   | Rocky                                             |
+|--------------------+-------------------------+------------------------------------------+---------------------------------------------------|
+| *Package Management* | DEB and APT             | RPM and YUM/DNF                          | RPM (Redhat), Flatpack                            |
+| *Release Cycle*      | stable release cycle    | rolling-release                          | stable releases but not fixed                     |
+| *Base Distribution*  | independent project     | based on Red Hat Enterprise Linux (RHEL) | based on Red Hat Enterprise Linux (RHEL)          |
+| *Community Support*  | larger global user base | also strong community                    | self-imposed (not for profit), enterprise support |
 
 * [[id:e0d10334-00c4-4a7a-9530-4afa99b69ba5][Installation Debian]]

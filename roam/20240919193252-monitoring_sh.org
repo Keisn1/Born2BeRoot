@@ -144,7 +144,6 @@ echo "#Network: IP $ipv4 ($ipv6)"
 =journalctl _COMM=sudo | grep -c 'COMMAND'=
 - there are many variations of using grep and journalctl together
 * wall - write to all users
-
 * Cron
 - -u
   Specifies the name of the user whose crontab is to  be  modified.

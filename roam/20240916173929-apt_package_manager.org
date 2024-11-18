@@ -6,7 +6,6 @@
 #+startup: overview
 
 - =aptitude= and =apt= are both package management tools in Debian-based systems
-
 * =apt=
 - cli
 - simple and user-friendly
