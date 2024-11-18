@@ -77,7 +77,7 @@ We need to setup a server.
   - [X] root password has to comply with this policy
 **** TODO hostname and user
 - [X] hostname = kfreyer42
-- [X] in addition to root user, a user with your login as username has to be present
+- [X] a user with your login as username has to be present
   - [X] user has to belong to the \user42 and \sudo groups
   - during defense, you will have to create a new user and assign it to a group
 **** TODO ssh and ufw

@@ -20,7 +20,10 @@ https://wiki.archlinux.org/title/Sudo
 - editable by [[id:7b9b8d69-6acb-475e-b5cd-a0b6f61ab888][visudo]]
 - *default*: execute command as "[[id:a425d48c-03c5-481f-97ef-5d7ff2732d65][superuser]]"
 
-* behavior
+* behavior and why
+:PROPERTIES:
+:ID:       4fe552a3-a369-4dd1-a292-a3a897e0fe2f
+:END:
 - users must supply their own password, rather than the password of the target user (different to [[id:32e44f1e-6e8d-4cbb-8bec-ca3fa4151231][su]])
 - allows authorized users to exercise altered privileges without compromising the secrecy of the other account's password
 - after authentification, and it [[id:ec59c6bb-a199-4fc2-8f73-9e2319212005][/etc/sudoers]] permits the user access, system executes requested commands
@@ -31,6 +34,9 @@ https://wiki.archlinux.org/title/Sudo
 - exception indication can be configured
 - root user may be alerted via mail
 * Installation
+:PROPERTIES:
+:ID:       d5402011-e78b-4127-9cee-6a8374ad616e
+:END:
 1. =su --login=
    - shell as a login shell (see man)
 2. =apt install sudo=

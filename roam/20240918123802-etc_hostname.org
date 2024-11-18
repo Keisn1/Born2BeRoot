@@ -6,3 +6,11 @@
 #+startup: overview
 
 hostname - Local hostname configuration file
+* change hostname temporarly
+#+begin_src shell
+hostname <new_name>
+#+end_src
+* change hostname permanently
+#+begin_src shell
+hostnamectl set-hostname <new_name>
+#+end_src

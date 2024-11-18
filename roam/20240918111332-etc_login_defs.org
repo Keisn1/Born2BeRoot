@@ -14,14 +14,23 @@ It contains parameters such as password expiration policy, password complexity r
 Modifying this file allows system administrators to customize how user logins are managed on the system.
 
 * Maximum password age
+:PROPERTIES:
+:ID:       ac413508-6bae-4dfa-834b-a32b81900895
+:END:
 #+begin_src sh
 PASS_MAX_DAYS 30
 #+end_src
 * Minimum password age
+:PROPERTIES:
+:ID:       05412f5b-b0de-4575-bdbc-dd3d0027e5b1
+:END:
 #+begin_src sh
 PASS_MIN_DAYS 2
 #+end_src
 * Nbr of days warning given before a password expires
+:PROPERTIES:
+:ID:       0c3250d5-0020-4d8f-8749-5d800ce98788
+:END:
 #+begin_src sh
 PASS_WARN_AGE 2
 #+end_src

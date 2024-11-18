@@ -15,3 +15,13 @@ identify user by a value called *user identifier* (UID)
 
 * users command
 users - print the user names of users currently logged in to the current host
+* useradd
+:PROPERTIES:
+:ID:       fb8cc514-3231-44bb-b75f-e68f34ed3c77
+:END:
+=useradd <username>=
+* usermod
+:PROPERTIES:
+:ID:       5b69c790-b6b5-44e8-b639-116852023e08
+:END:
+=sudo usermod -aG <group_name> <username>=

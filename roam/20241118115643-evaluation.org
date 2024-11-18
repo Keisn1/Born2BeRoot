@@ -8,6 +8,8 @@
 [[id:4e0d7e76-9216-44ac-ae4c-dc200d174a20][template_evalutation]]
 
 https://42evals.me/Cursus/Born2beroot/
+
+* [[id:76d882e5-2492-4b30-b7da-128b4dbb7fdc][adding /sbin to PATH]]
 * General
 - [ ] check that signature.txt file is present
 - [ ] check that the signature equals matches signature of .vdi that is being evaluated
@@ -42,5 +44,89 @@ sha1sum -c signature.txt
   - [ ] ufw is launched correctly
   - [ ] ssh service is launched properly
 ** User
--
+- [X] a user with the login name of the evaluated person be present on the virtual machine
+- [X] verify that the user belongs to the user42 and sudo groups
+  - [X] [[id:2a8f7b06-1518-43a5-a072-63403a5d4f14][add a new group]]
+  - [X] [[id:5b69c790-b6b5-44e8-b639-116852023e08][usermod]] , [[id:f83d268e-9fc8-42ee-a1c7-5cca096d0b7d][add user to group]]
+  - [X] [[id:69d45f6f-6430-4e3f-81db-33747ec8875b][add user to sudo group]]
+  - [X] verify (=groups <username>=)
+- [ ] Ensure the rules imposed in the subject concerning the password policy have been implemented by following the steps below.
+  - [ ] create a new user [[id:fb8cc514-3231-44bb-b75f-e68f34ed3c77][useradd]] and check that [[id:efa45dd1-828a-4fe4-a671-d4821eda00d9][password policy]] has been implemented
+  - [ ] let the student explain how they implemented the rule
+  - [ ] ask the evaluated person to create a group named "evaluating" in front of you and assign it to this user
+  - [ ] Finally, check that this user indeed belongs to the "evaluating" group.
+  - [ ] To finish, ask the evaluated person to explain the purpose of this password policy, as well as the advantages and disadvantages of its implementation. ([[id:83c2bee7-c27e-4685-b323-f16ab7200da5][why do we choose to implement a strong password policy?]])
+** [[id:c7a2fa4c-cb32-4af3-bbe4-faa3ed30543f][hostname]] and partitions
+- [X] Verify that the hostname of the machine is formatted as follows: login42 (login of the evaluated person).
+- [X] Change this hostname by replacing the login with yours, then restart the machine. If upon restarting, the hostname has not been updated, the evaluation stops here.
+- [X] You can now restore the original hostname of the machine.
+- [X] Ask the evaluated person how to display the partitions of their virtual machine.
+- [X] Compare the output with the example given in the subject. Note: if the evaluated person has done the bonuses, you should refer to the example from the bonus part.
+- [X] This part is an opportunity to discuss partitions!
+  - [X] The evaluated person must give you a brief explanation of how LVM works and why it's beneficial.
+** sudo
+- [X] Verify that the "sudo" program is indeed installed on the virtual machine.
+- [X] The evaluated person must now show how to assign your new user to the "sudo" group.
+- [ ] The subject imposes strict rules for sudo.
+  - [ ] explain the purpose and operation of [[id:4fe552a3-a369-4dd1-a292-a3a897e0fe2f][sudo]] with examples of your choice.
+  - [ ] demonstrate the implementation of the rules imposed by the subject.
+    - [ ]
+
+- [ ] Verify that the "/var/log/sudo/" directory exists and contains at least one file. Check the contents of the files in this directory; you should see a history of commands used with sudo. Finally, attempt to run a command via sudo. Check if the file(s) in the "/var/log/sudo/" directory have been updated. If something does not work as expected or is not clearly explained, the evaluation stops here.
+*** implementation
+- [X] [[id:d5402011-e78b-4127-9cee-6a8374ad616e][install]]
+** password policy
+:PROPERTIES:
+:ID:       efa45dd1-828a-4fe4-a671-d4821eda00d9
+:END:
+- [X] check [[id:9195cabf-21d7-42fb-bb12-b20e83f888dc][/etc/shadow]]
+- [X] expiration every 30 days
+- [X] minimum nbr of days allowed before modification = 2
+- [X] user receives a warning message 7 days before their password expires
+- [X] min 10 chars long
+- [X] must contain uppercase, a lowercase letter and a number
+  - [X] number
+  - [X] uppercase
+  - [X] lowercase
+- [X] must not contain more than 3 consecutive identical chars
+- [X] must not include the name of the user (gecos check)
+- [X] must have at least 7 chars that are not part of the former password
+  - this rule can't apply to the root password (no asking for old password)
+- [X] root password has to comply with this policy
+
+*** implementation
+- [[id:9195cabf-21d7-42fb-bb12-b20e83f888dc][/etc/shadow]] - contains encrypted password information
+- [[id:13126145-0f4a-4901-aa9a-3e76d3ada7f5][/etc/login.defs]] - shadow password suite configuration ()
+  - [[id:ac413508-6bae-4dfa-834b-a32b81900895][Maximum password age]]
+  - [[id:05412f5b-b0de-4575-bdbc-dd3d0027e5b1][Minimum password age]]
+  - [[id:0c3250d5-0020-4d8f-8749-5d800ce98788][Nbr of days warning given before a password expires]]
+- [[id:5cce0070-5955-476b-a029-f719517f93cd][libpam-pwquality (/etc/pam.d/common-passwd)]], [[id:3f0d3181-ddda-40fd-96ee-91f3a8fc3f1c][/etc/security/pwquality]]
+  - [[id:36a3eb13-0f13-4d6c-8381-98560971b097][min 10 chars long]]
+  - [[id:5b49181b-676a-4bdf-81bb-7ee39d6fbc4b][must contain uppercase letter, a lowercase letter and a number]]
+  - [[id:267a6139-7b83-430a-8b6c-ebabb597f621][must not contain more than 3 consecutive identical chars]]
+  - [[id:dff966ed-7c87-4391-8bff-5c9855f3930b][must not include the name of the user]]
+  - [[id:129b6aad-7a3f-499d-b9ae-15ebc8d5b98e][must have at least 7 chars that are not part of the former password]]
+  - [[id:6d2f8e0f-d1ea-4313-84ce-620e744d231b][root password has to comply with this policy]]
+- applying rules to existing users with [[id:f567a019-1852-430e-859b-7d320a8a8cd9][chage (change age)]]
+  - [X] expiration every 30 days (maximum password age)
+  - [X] minimum nbr of days allowed before modification = 2 (minimum password age)
+  - [X] user receives a warning message 7 days before their password expires
+- [[id:bad3febb-0374-4018-a727-e5e2bc73cef2][changing passwords]]
+** Sudo
+- [X] verify that sudo is installed
+- [ ] assign new user to the sudo group
+- [ ] explanations
+  - [ ] explain the purpose and operation of sudo with examples of their choice
+  - [ ] demonstrate implementation of the rules
+- [ ] configure \sudo following strict rules
+  - [ ] Authentication using \sudo has to be limited to 3 attempts (incorrect password)
+  - [ ] *custom msg* of your choice if an error due to a wrong pw occurs
+  - [ ] each action using \sudo has to be archived, both inputs and outputs
+    - [ ] log file saved in =/var/log/sudo/= folder
+  - [ ] =TTY mode= has to be enabled for security reasons
+  - [ ] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
+
+
+The subject imposes strict rules for sudo. The evaluated person must first explain the purpose and operation of sudo with examples of their choice. Then, they must demonstrate the implementation of the rules imposed by the subject.
+Verify that the "/var/log/sudo/" directory exists and contains at least one file. Check the contents of the files in this directory; you should see a history of commands used with sudo. Finally, attempt to run a command via sudo. Check if the file(s) in the "/var/log/sudo/" directory have been updated. If something does not work as expected or is not clearly explained, the evaluation stops here.
 * script - [[id:b35074bc-77bd-4e23-9f0a-83e706499a6b][monitoring sh]]

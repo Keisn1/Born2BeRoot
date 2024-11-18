@@ -9,7 +9,6 @@ https://en.wikipedia.org/wiki/Group_identifier
 
 =/etc/group=
 - putting [[id:e706d9cc-edb9-475a-bb5b-145188d0ac8c][user / user identifier]] into groups
--
 
 * delete a group
 =sudo groupdel <groupname>=
@@ -32,11 +31,18 @@ https://en.wikipedia.org/wiki/Wheel_(computing)
   - groups should see =<kfreyer42> sudo=
   - id should see =uid=1001(kfreyer42) gid=1001(kfreyer42) groups=1001(kfreyer42),27(sudo)=
 * add a new group
-** usermod
-=sudo usermod -aG <group_name> <username>=
+:PROPERTIES:
+:ID:       2a8f7b06-1518-43a5-a072-63403a5d4f14
+:END:
 ** groupadd
+:PROPERTIES:
+:ID:       41d7191c-066b-415c-83e4-a0d611c289d8
+:END:
 =groupadd user42=
 
 * add user to group
+:PROPERTIES:
+:ID:       f83d268e-9fc8-42ee-a1c7-5cca096d0b7d
+:END:
 [[id:69d45f6f-6430-4e3f-81db-33747ec8875b][add user to sudo group]]
 =sudo adduser <name> <group>=

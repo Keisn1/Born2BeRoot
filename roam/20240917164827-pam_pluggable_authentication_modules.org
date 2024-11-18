@@ -38,6 +38,5 @@ https://www.debian.org/doc/manuals/securing-debian-manual/ch04s11.en.html
 - extension directory =pam.d= to the configuration file
 - files make references to pam modules
   - in Debian under ~/user/lib/x86_64-linux-gnu/security~
-  -
 
 * [[id:5cce0070-5955-476b-a029-f719517f93cd][libpam-pwquality]]
