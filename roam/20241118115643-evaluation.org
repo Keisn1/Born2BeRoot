@@ -50,12 +50,12 @@ sha1sum -c signature.txt
   - [X] [[id:5b69c790-b6b5-44e8-b639-116852023e08][usermod]] , [[id:f83d268e-9fc8-42ee-a1c7-5cca096d0b7d][add user to group]]
   - [X] [[id:69d45f6f-6430-4e3f-81db-33747ec8875b][add user to sudo group]]
   - [X] verify (=groups <username>=)
-- [ ] Ensure the rules imposed in the subject concerning the password policy have been implemented by following the steps below.
-  - [ ] create a new user [[id:fb8cc514-3231-44bb-b75f-e68f34ed3c77][useradd]] and check that [[id:efa45dd1-828a-4fe4-a671-d4821eda00d9][password policy]] has been implemented
-  - [ ] let the student explain how they implemented the rule
-  - [ ] ask the evaluated person to create a group named "evaluating" in front of you and assign it to this user
-  - [ ] Finally, check that this user indeed belongs to the "evaluating" group.
-  - [ ] To finish, ask the evaluated person to explain the purpose of this password policy, as well as the advantages and disadvantages of its implementation. ([[id:83c2bee7-c27e-4685-b323-f16ab7200da5][why do we choose to implement a strong password policy?]])
+- [X] Ensure the rules imposed in the subject concerning the password policy have been implemented by following the steps below.
+  - [X] create a new user [[id:fb8cc514-3231-44bb-b75f-e68f34ed3c77][useradd]] and check that [[id:efa45dd1-828a-4fe4-a671-d4821eda00d9][password policy]] has been implemented
+  - [X] let the student explain how they implemented the rule
+  - [X] ask the evaluated person to create a group named "evaluating" in front of you and assign it to this user
+  - [X] Finally, check that this user indeed belongs to the "evaluating" group. ([[id:2a8f7b06-1518-43a5-a072-63403a5d4f14][add a new group]])
+  - [X] To finish, ask the evaluated person to explain the purpose of this password policy, as well as the advantages and disadvantages of its implementation. ([[id:83c2bee7-c27e-4685-b323-f16ab7200da5][why do we choose to implement a strong password policy?]])
 ** [[id:c7a2fa4c-cb32-4af3-bbe4-faa3ed30543f][hostname]] and partitions
 - [X] Verify that the hostname of the machine is formatted as follows: login42 (login of the evaluated person).
 - [X] Change this hostname by replacing the login with yours, then restart the machine. If upon restarting, the hostname has not been updated, the evaluation stops here.
@@ -67,14 +67,31 @@ sha1sum -c signature.txt
 ** sudo
 - [X] Verify that the "sudo" program is indeed installed on the virtual machine.
 - [X] The evaluated person must now show how to assign your new user to the "sudo" group.
-- [ ] The subject imposes strict rules for sudo.
-  - [ ] explain the purpose and operation of [[id:4fe552a3-a369-4dd1-a292-a3a897e0fe2f][sudo]] with examples of your choice.
-  - [ ] demonstrate the implementation of the rules imposed by the subject.
-    - [ ]
+- [X] The subject imposes strict rules for sudo.
+  - [X] explain the purpose and operation of [[id:4fe552a3-a369-4dd1-a292-a3a897e0fe2f][sudo]] with examples of your choice.
+  - [X] demonstrate the implementation of the rules imposed by the subject.
+    - [X] Authentication using \sudo has to be limited to 3 attempts (incorrect password)
+    - [X] *custom msg* of your choice if an error due to a wrong pw occurs
+    - [X] each action using \sudo has to be archived, both inputs and outputs
+      - [X] log file saved in =/var/log/sudo/= folder
+    - [X] =TTY mode= has to be enabled for security reasons
+    - [X] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
+- [X] Verify that the "/var/log/sudo/" directory exists and contains at least one file.
+- [X] Check the contents of the files in this directory; you should see a history of commands used with sudo
+- [X] Finally, attempt to run a command via sudo.
+  - [X] Check if the file(s) in the "/var/log/sudo/" directory have been updated.
 
-- [ ] Verify that the "/var/log/sudo/" directory exists and contains at least one file. Check the contents of the files in this directory; you should see a history of commands used with sudo. Finally, attempt to run a command via sudo. Check if the file(s) in the "/var/log/sudo/" directory have been updated. If something does not work as expected or is not clearly explained, the evaluation stops here.
 *** implementation
 - [X] [[id:d5402011-e78b-4127-9cee-6a8374ad616e][install]]
+- [X] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
+  - [[id:ae9bc3f4-1141-40b9-9290-263dae3e2fb4][secure_path - paths that can be used with sudo]]
+- [X] =TTY mode= has to be enabled for security reasons
+- [X] Authentication using \sudo has to be limited to 3 attempts (incorrect password) rect password.
+- [X] *custom msg* of your choice if an error due to a wrong pw occurs
+- [X] *custom msg* at failure (not part of evaluation)
+- [X] each action using \sudo has to be archived, both inputs and outputs
+  - [X] log file saved in =/var/log/sudo/= folder
+    - [[id:f82e92fc-fde4-4d0e-84de-29d9976188dc][Logging]]
 ** password policy
 :PROPERTIES:
 :ID:       efa45dd1-828a-4fe4-a671-d4821eda00d9
@@ -129,4 +146,16 @@ sha1sum -c signature.txt
 
 The subject imposes strict rules for sudo. The evaluated person must first explain the purpose and operation of sudo with examples of their choice. Then, they must demonstrate the implementation of the rules imposed by the subject.
 Verify that the "/var/log/sudo/" directory exists and contains at least one file. Check the contents of the files in this directory; you should see a history of commands used with sudo. Finally, attempt to run a command via sudo. Check if the file(s) in the "/var/log/sudo/" directory have been updated. If something does not work as expected or is not clearly explained, the evaluation stops here.
+** ssh
+- [X] Verify that the SSH service is indeed installed on the virtual machine.
+- [X] Verify that it is functioning correctly.
+  - [X] must be active when you launch your virtual machine
+  - [X] shall not be possible to connect using \SSH as root
+  - [X] Verify that the SSH service uses only port 4242
+    - =sudo ss -tlnp | grep sshd=
+- [X] The evaluated person must give you a basic explanation of what SSH is and why it's important to use it.
+- [ ] use SSH to connect with the new user
+*** implementation
+- [[id:2cadebc0-0afc-4f86-8a70-aa7ebe0ac5ff][openssh server]]
+-
 * script - [[id:b35074bc-77bd-4e23-9f0a-83e706499a6b][monitoring sh]]

@@ -93,7 +93,7 @@ Defaults passwd_tries=3
 #+begin_src sh
 Defaults authfail_message="Custom: You entered the wrong password %d times. Good bye."
 #+end_src
-** custom message  bad password
+** custom message bad password
 #+begin_src sh
 Defaults badpass_message="Can you actually type?"
 #+end_src

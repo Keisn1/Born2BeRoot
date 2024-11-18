@@ -11,15 +11,15 @@
   - provides secure encrypted communication over an unsecured network and allows authenticating remote users, executing commands, and tunneling other protocols
 
 * Installation
-- Check for installation
-  #+begin_example sh
-   sudo systemctl status ssh
-  #+end_example
-
 - Install
   #+begin_src shell
   sudo apt install openssh-server
   #+end_src
+
+- Check for installation
+  #+begin_example sh
+   sudo systemctl status ssh
+  #+end_example
 
 * Daemon
 - =sshd= stands for "Secure Shell Daemon".
