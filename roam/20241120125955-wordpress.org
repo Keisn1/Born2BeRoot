@@ -25,7 +25,10 @@
 #+begin_src sh
 mysql_secure_installation
 #+end_src
-** Install php =sudo apt install php php-cgi php-mysql=
+- not working
+  ~ERROR 1698 (28000): Access denied for user 'root'@'localhost'~
+- running with sudo resolves the issue (with root_password)
+** Install php =sudo apt install php php-cgi php-mysql php-fpm=
 - also installs apache2
 - =systemctl status apache2=
 - =systemctl stop apache2=
