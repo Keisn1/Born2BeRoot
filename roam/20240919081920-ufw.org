@@ -16,7 +16,6 @@ It provides a user-friendly interface to configure and manage firewall settings.
 =sudo ufw status=: ~Status: inactive~
 =sudo ufw enable=: ~Firewall is active and enabled on system startup~
 =sudo ufw status=: ~Status: active~
-
 * configure
 https://averagelinuxuser.com/linux-firewall/
 https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu

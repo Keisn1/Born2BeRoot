@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       a20a2fbe-4df6-4ce4-83f9-ce29f5e3bdcc
+:END:
+#+title: php-cgi
+#+date: [2024-11-20 Mi 13:35]
+#+startup: overview
+
+* what is php-cgi?
+
+=php-cgi= is the [[id:7acf0303-7eda-40ec-9f86-681f19dff55d][CGI]] (Common Gateway Interface) version of PHP.
+
+It allows PHP scripts to be executed by a web server using the CGI protocol.
+
+In this setup, the web server launches a PHP process for each request, which can be less efficient than using [[id:f08f9d57-186a-4c65-8209-d40a1bfacae9][PHP-FPM]] or a module like mod_php with Apache. However, =php-cgi= can be useful in certain environments, such as when:
+
+- A web server supports PHP only via the CGI protocol and you're unable to use more integrated methods like PHP-FPM.
+- Isolation between requests is necessary because each request runs in its own process.
+- It’s needed to test or simulate a CGI-based setup.
+
+While =php-cgi= provides basic functionality for executing PHP scripts, it generally lacks the performance optimizations and advanced features found in PHP-FPM.

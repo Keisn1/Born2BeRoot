@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       feb03d5a-9e57-4e1c-80f6-723d033567e5
+:END:
+#+title: wordpress
+#+date: [2024-11-20 Mi 12:59]
+#+startup: overview
+
+
+- with [[id:f08f9d57-186a-4c65-8209-d40a1bfacae9][php-fpm]]
+  - https://www.linkedin.com/pulse/setting-up-wordpress-our-lighttpd-web-server-execution-ionica
+  - https://www.atlantic.net/dedicated-server-hosting/how-to-install-wordpress-with-lighttpd-web-server-on-ubuntu-20-04/
+  - https://www.howtoforge.com/how-to-install-lighttpd-with-php-and-mariadb-on-debian-10/
+- with [[id:a20a2fbe-4df6-4ce4-83f9-ce29f5e3bdcc][php-cgi]]
+  - https://kucadevelopment.wordpress.com/2021/03/22/installation-lighttpd-php-mariadb-and-wordpress-to-orage-pi-zero-2/
+* Steps following [[https://www.howtoforge.com/how-to-install-lighttpd-with-php-and-mariadb-on-debian-10/
+][howToForgePhpMariaDBDebian10]]
+** Run =sudo apt update=
+** Install lighttpd =sudo apt install lighttpd=
+- probably already enabled
+- status of lighttpd with =systemctl status lighttpd=
+- start lighttpd with =systemctl start lighttpd=
+** Install [[id:8658252a-8eaa-4436-b462-20fa5ae84626][mariaDB]] server
+- =apt-get install mariadb-server mariadb-client -y=
+*** secure the MariaDB installation
+#+begin_src sh
+mysql_secure_installation
+#+end_src
+** Install php =sudo apt install php php-cgi php-mysql=
+- also installs apache2
+- =systemctl status apache2=
+- =systemctl stop apache2=
+- uninstall with =apt uninstall apache2=
+- [[id:a20a2fbe-4df6-4ce4-83f9-ce29f5e3bdcc][php-cgi]], [[id:b470ac83-a334-4a72-9950-a99e8bee5942][php-mysql]]

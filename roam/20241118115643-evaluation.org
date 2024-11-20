@@ -149,9 +149,9 @@ sha1sum -c signature.txt
 - [X] Finally, attempt to run a command via sudo.
 - [X] Check if the file(s) in the "/var/log/sudo/" directory have been updated.
 *** implementation
-- [ ] verify that sudo is installed
+- [X] verify that sudo is installed
   - =which sudo=
-- [ ] assign new user to the sudo group
+- [X] assign new user to the sudo group
   - [[id:f83d268e-9fc8-42ee-a1c7-5cca096d0b7d][add user to group]]
 - [X] explanations
   - [X] explain the purpose and operation of sudo with examples of their choice
@@ -204,7 +204,13 @@ If it executes without an error, then =requiretty= is not enforced for your user
 - [[id:2cadebc0-0afc-4f86-8a70-aa7ebe0ac5ff][openssh server]]
 - [[id:13e1987c-d974-4534-835c-cb22e38cc8eb][ssh]]
 - [[id:3384f1a8-d5ab-4151-b22d-7c7fd5d30830][/etc/ssh/sshd_config]]
-
+** [[id:bb420f28-36d8-41ce-b52b-f31c28901079][ufw]]
+- [X] Verify that the "UFW" (or "Firewalld" for rocky) program is indeed installed on the virtual machine.
+- [X] Verify that it is functioning correctly.
+- [X] The evaluated person must give you a basic explanation of what UFW (or "Firewalld") is and why it's important to use it.
+- [X] List the active rules in UFW (or "Firewalld"). There should be a rule for port 4242.
+- [X] Add a new rule to open port 8080. Verify that it has been added by listing the active rules.
+- [X] Finally, with the help of the evaluated person, delete this new rule. If something does not work as expected or is not clearly explained, the evaluation stops here.
 ** script - [[id:b35074bc-77bd-4e23-9f0a-83e706499a6b][monitoring sh]]
 [[file:~/workspace/Born2BeRoot/imgs/script_output.png]]
 

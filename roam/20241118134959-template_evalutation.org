@@ -137,6 +137,14 @@ If it executes without an error, then =requiretty= is not enforced for your user
     - =sudo ss -tlnp | grep sshd=
 - [ ] The evaluated person must give you a basic explanation of what SSH is and why it's important to use it.
 - [ ] use SSH to connect with the new user
+** ufw
+- [ ] Verify that the "UFW" (or "Firewalld" for rocky) program is indeed installed on the virtual machine.
+- [ ] Verify that it is functioning correctly.
+- [ ] The evaluated person must give you a basic explanation of what UFW (or "Firewalld") is and why it's important to use it.
+- [ ] List the active rules in UFW (or "Firewalld"). There should be a rule for port 4242.
+- [ ] Add a new rule to open port 8080. Verify that it has been added by listing the active rules.
+- [ ] Finally, with the help of the evaluated person, delete this new rule. If something does not work as expected or is not clearly explained, the evaluation stops here.
+
 
 ** script - [[id:b35074bc-77bd-4e23-9f0a-83e706499a6b][monitoring sh]]
 [[file:~/workspace/Born2BeRoot/imgs/script_output.png]]

@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       b470ac83-a334-4a72-9950-a99e8bee5942
+:END:
+#+title: php-mysql
+#+date: [2024-11-20 Mi 13:44]
+#+startup: overview
+
+https://www.w3schools.com/php/php_mysql_intro.asp
+
+mysql module for php
+https://packages.debian.org/sid/php-mysql
