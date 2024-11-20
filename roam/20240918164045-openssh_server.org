@@ -50,3 +50,5 @@ ss -ntlp | grep -i ssh
   =sudo lsof -i -P -n | grep LISTEN=
 
 * allow with [[id:bb420f28-36d8-41ce-b52b-f31c28901079][ufw]]
+* [[id:c5a64a30-877e-4868-af8d-dcd64e7a29e6][networking modes]]
+- probably need to be configured for ssh

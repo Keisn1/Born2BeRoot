@@ -10,7 +10,7 @@
 * Port Number:
 Change the default port from 22 to another number for security through obscurity.
 #+begin_example plaintext
-Port 2222
+Port 4242
 #+end_example
 * PermitRootLogin
 - read man page to see the options

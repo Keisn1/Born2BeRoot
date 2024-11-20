@@ -27,7 +27,9 @@ grep "physical id" /proc/cpuinfo | uniq | wc -l
 lscpu | grep "^CPU(s):" | awk '{print $2}'
 #+end_src
 [[id:4605613d-108c-4d0b-8c90-8ede3e1e4353][/proc/cpuinfo]]
+#+begin_src shell
 grep "^processor" /proc/cpuinfo | wc -l
+#+end_src
 * Memory usage
 [[id:63194921-1dcf-47c3-85a2-ad162cfc4028][free]]
 [[id:4241f5ee-367b-44c7-ae3f-35c9665d4a1e][/proc/meminfo]]
@@ -85,7 +87,7 @@ udisk_perc=$(awk "BEGIN { printf \"%.1f\", ($udisk_mb / $fdisk_mb * 100) }")
 using [[id:f39a3f65-bfc8-42f5-849e-1b9e79612231][top]] and [[id:235d6527-e1bd-4a75-bca1-f0bbf2c93299][awk]]
 ** consider CPU percentages
 #+begin_src shell
-top -bn1 | grep "%Cpu| cut -c 9-
+top -bn1 | grep "%Cpu" | cut -c 9-
 #+end_src
 ** sumup
 #+begin_src shell

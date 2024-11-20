@@ -133,7 +133,7 @@ We need to setup a server.
 [[file:imgs/script_output.png]]
 - =head -n 2 /etc/os-release=
 - =ss -tunlp=
-**** DONE Signature checking
+**** TODO Signature checking
 - [X] Check that the signature contained is identical to that of the ".vdi" file of the virtual machine to be evaluated.
 ** TODO Test
 ** TODO Bonus
