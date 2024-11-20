@@ -74,8 +74,9 @@ Default_Entry ::= Default_Type Parameter_List
 - default is log to syslog
   - logfile
     - Path to the sudo log file (not the syslog log file).  Setting a path turns on logging to a file; negating this option turns it off.  By default, sudo logs via syslog.
-      #+begin_src sudoers
-
+      #+begin_src sh
+#/etc/sudoers
+Defaults logfile=/var/log/sudo/sudo.log
       #+end_src
 ** logging failed attempts
 - by default I couldn't find how failed attempts are being logged

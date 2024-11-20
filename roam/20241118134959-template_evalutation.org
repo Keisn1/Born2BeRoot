@@ -39,4 +39,113 @@ sha1sum -c signature.txt
   - [ ] ufw is launched correctly
   - [ ] ssh service is launched properly
 ** User
-* script - [[id:b35074bc-77bd-4e23-9f0a-83e706499a6b][monitoring sh]]
+- [ ] a user with the login name of the evaluated person be present on the virtual machine
+- [ ] verify that the user belongs to the user42 and sudo groups
+  - [ ] [[id:2a8f7b06-1518-43a5-a072-63403a5d4f14][add a new group]]
+  - [ ] [[id:5b69c790-b6b5-44e8-b639-116852023e08][usermod]] , [[id:f83d268e-9fc8-42ee-a1c7-5cca096d0b7d][add user to group]]
+  - [ ] [[id:69d45f6f-6430-4e3f-81db-33747ec8875b][add user to sudo group]]
+  - [ ] verify (=groups <username>=)
+- [ ] Ensure the rules imposed in the subject concerning the password policy have been implemented by following the steps below.
+  - [ ] create a new user [[id:fb8cc514-3231-44bb-b75f-e68f34ed3c77][useradd]] and check that [[id:efa45dd1-828a-4fe4-a671-d4821eda00d9][password policy]] has been implemented
+  - [ ] let the student explain how they implemented the rule
+  - [ ] ask the evaluated person to create a group named "evaluating" in front of you and assign it to this user
+  - [ ] Finally, check that this user indeed belongs to the "evaluating" group. ([[id:2a8f7b06-1518-43a5-a072-63403a5d4f14][add a new group]])
+  - [ ] To finish, ask the evaluated person to explain the purpose of this password policy, as well as the advantages and disadvantages of its implementation. ([[id:83c2bee7-c27e-4685-b323-f16ab7200da5][why do we choose to implement a strong password policy?]])
+** [[id:c7a2fa4c-cb32-4af3-bbe4-faa3ed30543f][hostname]] and partitions
+- [ ] Verify that the hostname of the machine is formatted as follows: login42 (login of the evaluated person).
+- [ ] Change this hostname by replacing the login with yours, then restart the machine. If upon restarting, the hostname has not been updated, the evaluation stops here.
+- [ ] You can now restore the original hostname of the machine.
+- [ ] Ask the evaluated person how to display the partitions of their virtual machine.
+- [ ] Compare the output with the example given in the subject. Note: if the evaluated person has done the bonuses, you should refer to the example from the bonus part.
+- [ ] This part is an opportunity to discuss partitions!
+  - [ ] The evaluated person must give you a brief explanation of how LVM works and why it's beneficial.
+*** implementation
+- [[id:77dc2229-daa6-4d46-8f26-898967385f5e][change hostname permanently]]
+** sudo
+- [ ] Verify that the "sudo" program is indeed installed on the virtual machine.
+- [ ] The evaluated person must now show how to assign your new user to the "sudo" group.
+- [ ] The subject imposes strict rules for sudo.
+  - [ ] explain the purpose and operation of [[id:4fe552a3-a369-4dd1-a292-a3a897e0fe2f][sudo]] with examples of your choice.
+  - [ ] demonstrate the implementation of the rules imposed by the subject.
+    - [ ] Authentication using \sudo has to be limited to 3 attempts (incorrect password)
+    - [ ] *custom msg* of your choice if an error due to a wrong pw occurs
+    - [ ] each action using \sudo has to be archived, both inputs and outputs
+      - [ ] log file saved in =/var/log/sudo/= folder
+    - [ ] =TTY mode= has to be enabled for security reasons
+    - [ ] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
+- [ ] Verify that the "/var/log/sudo/" directory exists and contains at least one file.
+- [ ] Check the contents of the files in this directory; you should see a history of commands used with sudo
+- [ ] Finally, attempt to run a command via sudo.
+  - [ ] Check if the file(s) in the "/var/log/sudo/" directory have been updated.
+** password policy
+- [ ] check [[id:9195cabf-21d7-42fb-bb12-b20e83f888dc][/etc/shadow]]
+- [ ] expiration every 30 days
+- [ ] minimum nbr of days allowed before modification = 2
+- [ ] user receives a warning message 7 days before their password expires
+- [ ] min 10 chars long
+- [ ] must contain uppercase, a lowercase letter and a number
+  - [ ] number
+  - [ ] uppercase
+  - [ ] lowercase
+- [ ] must not contain more than 3 consecutive identical chars
+- [ ] must not include the name of the user (gecos check)
+- [ ] must have at least 7 chars that are not part of the former password
+  - this rule can't apply to the root password (no asking for old password)
+- [ ] root password has to comply with this policy
+** Sudo
+- [[id:8b70efb6-c0b2-4beb-b9c2-6672cfbe3f70][sudo]]  / [[id:73cae452-a7c0-4a97-8bb7-38d85ec5b83f][sudo group]] / [[id:ec59c6bb-a199-4fc2-8f73-9e2319212005][/etc/sudoers]]
+- [ ] verify that sudo is installed
+  - =which sudo=
+- [ ] assign new user to the sudo group
+- [ ] explanations
+  - [ ] explain the purpose and operation of sudo with examples of their choice
+  - [ ] demonstrate implementation of the rules
+- [ ] configure \sudo following strict rules
+  - [ ] Authentication using \sudo has to be limited to 3 attempts (incorrect password)
+  - [ ] *custom msg* of your choice if an error due to a wrong pw occurs
+  - [ ] each action using \sudo has to be archived, both inputs and outputs
+    - [ ] log file saved in =/var/log/sudo/= folder
+  - [ ] =TTY mode= has to be enabled for security reasons
+  - [ ] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
+- [ ] Verify that the "/var/log/sudo/" directory exists and contains at least one file. Check the contents of the files in this directory; you should see a history of commands used with sudo.
+- [ ] Finally, attempt to run a command via sudo.
+- [ ] Check if the file(s) in the "/var/log/sudo/" directory have been updated.
+*** how can I check in a simple way that requiretty for sudo is enforced in my virtualmachine. (But not by looking at /etc/sudoers)
+
+You can test if =requiretty= is enforced by attempting to run a command with =sudo= in a non-interactive shell. Here’s a simple approach:
+
+1. Use =ssh= to run a command on your local machine as your user (replace =localhost= with your machine's actual hostname if necessary).
+
+   #+begin_src bash
+   ssh localhost 'sudo echo This works'
+   #+end_src
+
+2. If =requiretty= is enforced, you will get an error message like:
+
+   #+begin_src
+   sudo: sorry, you must have a tty to run sudo
+   #+end_src
+
+If it executes without an error, then =requiretty= is not enforced for your user. Make sure that =ssh= is configured to allow local connections without passwords, or this check might not work as expected.
+
+** ssh
+- [ ] Verify that the SSH service is indeed installed on the virtual machine.
+- [ ] Verify that it is functioning correctly.
+  - [ ] must be active when you launch your virtual machine
+  - [ ] shall not be possible to connect using \SSH as root
+  - [ ] Verify that the SSH service uses only port 4242
+    - =sudo ss -tlnp | grep sshd=
+- [ ] The evaluated person must give you a basic explanation of what SSH is and why it's important to use it.
+- [ ] use SSH to connect with the new user
+
+** script - [[id:b35074bc-77bd-4e23-9f0a-83e706499a6b][monitoring sh]]
+[[file:~/workspace/Born2BeRoot/imgs/script_output.png]]
+
+- [ ] explain operations of their script (must display their code)
+- [ ] explain what =cron= is
+- [ ]  How they have set up their script to execute every 10 minutes from server launch.
+  - [ ] the evaluated person must make sure that this script executes every minute.
+  - [ ] You can launch whatever you wish to ensure that the script runs correctly with dynamic values.
+  - [ ] Finally, the evaluated person must ensure that the script no longer runs at server launch, without modifying the script itself.
+    - [ ] To verify this point, the server will need to be restarted one last time.
+    - [ ] At startup, it must be verified that the script still exists in the same place, that its permissions have remained unchanged, and that it has not been modified.
