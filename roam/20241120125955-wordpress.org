@@ -10,12 +10,14 @@
   - https://www.linkedin.com/pulse/setting-up-wordpress-our-lighttpd-web-server-execution-ionica
   - https://www.atlantic.net/dedicated-server-hosting/how-to-install-wordpress-with-lighttpd-web-server-on-ubuntu-20-04/
   - https://www.howtoforge.com/how-to-install-lighttpd-with-php-and-mariadb-on-debian-10/
+
 - with [[id:a20a2fbe-4df6-4ce4-83f9-ce29f5e3bdcc][php-cgi]]
   - https://kucadevelopment.wordpress.com/2021/03/22/installation-lighttpd-php-mariadb-and-wordpress-to-orage-pi-zero-2/
+
 * Steps following [[https://www.howtoforge.com/how-to-install-lighttpd-with-php-and-mariadb-on-debian-10/
 ][howToForgePhpMariaDBDebian10]]
 ** Run =sudo apt update=
-** Install lighttpd =sudo apt install lighttpd=
+** Install [[id:05b8debd-000f-4971-99d2-10fb5dd58d28][lighttpd]] =sudo apt install lighttpd=
 - probably already enabled
 - status of lighttpd with =systemctl status lighttpd=
 - start lighttpd with =systemctl start lighttpd=
@@ -27,10 +29,156 @@ mysql_secure_installation
 #+end_src
 - not working
   ~ERROR 1698 (28000): Access denied for user 'root'@'localhost'~
-- running with sudo resolves the issue (with root_password)
+- running with =sudo= resolves the issue (with root_password)
+
 ** Install php =sudo apt install php php-cgi php-mysql php-fpm=
 - also installs apache2
 - =systemctl status apache2=
 - =systemctl stop apache2=
 - uninstall with =apt uninstall apache2=
 - [[id:a20a2fbe-4df6-4ce4-83f9-ce29f5e3bdcc][php-cgi]], [[id:b470ac83-a334-4a72-9950-a99e8bee5942][php-mysql]]
+*** Configure fpm
+**** cig.fix_pathinfo
+#+begin_src shell
+#/etc/php/8.2/fpm/php.ini
+cgi.fix_pathinfo=1
+#+end_src
+**** make php listen to TCP socket instead of the UNIX Socket
+#+begin_src shell
+# /etc/php/8.2/fpm/pool.d/www.conf
+# listen = /run/php/php7.3-fpm.sock
+# to
+listen = 127.0.0.1:9000
+#+end_src
+*** configure fast-cgi
+#+begin_src shell
+# /etc/lighttpd/conf-available/15-fastcgi-php.conf
+# "bin-path" => "/usr/bin/php-cgi",
+# "socket" => "/var/run/lighttpd/php.socket",
+# And replace them with the following:
+"host" => "127.0.0.1",
+"port" => "9000",
+#+end_src
+*** enable fastcgi and Fastcgi-php
+#+begin_src shell
+lighty-enable-mod fastcgi
+lighty-enable-mod fastcgi-php
+#+end_src
+*** restart lighttpd
+#+begin_src shell
+systemclt restart lighttpd
+#+end_src
+
+** Create a database for wordpress
+- =mysql=
+#+begin_src sql
+CREATE DATABASE wpdb;
+GRANT ALL PRIVILEGES on wpdb.* TO 'wpuser'@'localhost' IDENTIFIED BY 'password';
+#+end_src
+- Next, flush the privileges and exit from the MariaDB:
+#+begin_src sql
+FLUSH PRIVILEGES;
+EXIT;
+#+end_src
+** install wordpress
+#+begin_src shell
+cd /var/www/html
+wget https://wordpress.org/latest.tar.gz
+#+end_src
+*** untar
+#+begin_src shell
+tar -xvzf latest.tar.gz
+#+end_src
+*** rename sample configuration
+#+begin_src shell
+cd wordpress
+mv wp-config-sample.php wp-config.php
+#+end_src
+*** edit the configuration
+- change lines
+#+begin_src php
+/** The name of the database for WordPress */
+define( 'DB_NAME', 'wpdb' );
+
+/** MySQL database username */
+define( 'DB_USER', 'wpuser' );
+
+/** MySQL database password */
+define( 'DB_PASSWORD', 'password' );
+
+/** MySQL hostname */
+define( 'DB_HOST', 'localhost' );
+
+/** Database Charset to use in creating database tables. */
+define( 'DB_CHARSET', 'utf8' );
+#+end_src
+*** change ownership of lighttpd document root directory to www-data
+#+begin_src shell
+chown -R www-data:www-data /var/www/html/
+chmod -R 755 /var/www/html/wordpress
+#+end_src
+*** restart lighttpd
+#+begin_src shell
+systemclt restart lighttpd
+#+end_src
+** configure [[id:05b8debd-000f-4971-99d2-10fb5dd58d28][lighttpd]] for wordpress
+*** First, create a directory to store the virtual host configuration file:
+#+begin_src shell
+mkdir -p /etc/lighttpd/vhosts.d/
+#+end_src
+*** edit the Lighttpd configuration file:
+- Add mod_rewrite in the following block:
+#+begin_src shell
+# /etc/lighttpd/lighttpd.conf
+server.modules = (
+        "mod_access",
+        "mod_alias",
+        "mod_compress",
+        "mod_redirect",
+        "mod_rewrite",
+)
+#+end_src
+- define the path of your virtual host configuration directory:
+#+begin_src shell
+include_shell "cat /etc/lighttpd/vhosts.d/*.conf"
+#+end_src
+*** Create a new virtual host configuration file for WordPress
+#+begin_src shell
+# /etc/lighttpd/vhosts.d/wordpress.conf
+$HTTP["host"] =~ "(^|.)wordpress.example.com$" {
+server.document-root = "/var/www/html/wordpress"
+server.errorlog = "/var/log/lighttpd/wordpress-error.log"
+}
+#+end_src
+
+** Create Lighttpd Virtual Host (I've done this but I couldn't figure out how to access the site from my host)
+#+begin_src shell
+#/etc/lighttpd/conf-available/example.com.conf
+# add the following lines
+$HTTP["host"] == "www.example.com" {
+    server.document-root = "/var/www/html/"
+    server.errorlog      = "/var/log/lighttpd/example.com-error.log"
+}
+#+end_src
+*** enable virtual host with
+#+begin_src shell
+ln -s /etc/lighttpd/conf-available/example.com.conf /etc/lighttpd/conf-enabled/
+#+end_src
+*** create sample index.php
+#+begin_src php
+# /var/www/html/index.php
+<?php phpinfo(); ?>
+#+end_src
+*** change ownership of lighttpd document root directory to www-data
+#+begin_src shell
+chown -R www-data:www-data /var/www/html/
+#+end_src
+*** restart lighttpd
+#+begin_src shell
+systemclt restart lighttpd
+#+end_src
+** access the site from within the virtual machine with  curl
+#+begin_src shell
+curl -H "Host: www.example.com" http://localhost
+#+end_src
+** change NAT adapter setup in VMbox
