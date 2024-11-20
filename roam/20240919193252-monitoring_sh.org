@@ -127,7 +127,7 @@ lsblk | grep "lvm" | wc -l | awk '{if ($1 > 0) {print "yes"} else {print "no"}}'
 =netstat -t | grep ESTABLISHED | wc -l=
 * number of users
 ** with [[id:e706d9cc-edb9-475a-bb5b-145188d0ac8c][users]]
-=users | wc -l=
+=users | wc -w=
 * Ip address
 ** with [[id:50ddf3ad-2281-4455-b13f-ef4e2a29c014][hostname]]
 IPv4 =hostname -I | cut -d ' ' -f 1=

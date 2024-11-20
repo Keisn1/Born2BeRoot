@@ -21,3 +21,23 @@ echo "#Disk Usage: ${fdisk_mb}/${fdisk_gb}GB (${udisk_perc}%)"
 
 cpu_load=$(top -bn1 | grep "%Cpu" | awk '{printf("%.1f\n", $2 + $4 + $6)}')
 echo "#CPU load: ${cpu_load}%"
+
+date_last_reboot=$(last reboot --time-format iso  | head -n 1 | awk '{print $5}' | cut -d 'T' -f 1)
+time_last_reboot=$(last reboot --time-format iso  | head -n 1 | awk '{print $5}' | cut -d 'T' -f 2 | cut -d '+' -f 1 | cut -c -5)
+echo "#Last boot: $date_last_reboot $time_last_reboot"
+
+lvm_active=$(lsblk | grep "lvm" | wc -l | awk '{if ($1 > 0) {print "yes"} else {print "no"}}')
+echo "#LVM use: $lvm_active"
+
+tcp_conns=$(ss -tn | grep ESTAB | wc -l)
+echo "#Connections TCP: ${tcp_conns} ESTABLISHED"
+
+users_logged=$(users | wc -w)
+echo "#User log: $users_logged"
+
+ipv4=$(ip address show $(ip route show default | cut -d ' ' -f5) | grep 'inet ' | awk '{print $2}' | cut -d '/' -f1)
+ipv6=$(ip address show $(ip route show default | cut -d ' ' -f5) | grep 'inet6' | awk '{print $2}' | cut -d '/' -f1)
+echo "#Network: IP $ipv4 ($ipv6)"
+
+sudos=$(journalctl _COMM=sudo | grep -c 'COMMAND')
+echo "#Sudo : ${sudos}"

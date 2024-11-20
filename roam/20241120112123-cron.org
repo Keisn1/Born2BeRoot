@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       cbe9b7bf-40d9-4cdb-b2c9-e55d10156c51
+:END:
+#+title: Cron / Crontab
+#+date: [2024-11-20 Mi 11:21]
+#+startup: overview
+
+* what is crontab, how do i configure it?
+
+=crontab= is a utility for scheduling and managing recurring tasks, also known as cron jobs, on Unix-like operating systems.
+
+These tasks can be set to run at specific intervals, such as daily, weekly, or monthly.
+
+To configure =crontab=, follow these steps:
+
+1. *Open the Crontab Editor:*
+   Run =crontab -e=. This will open the crontab file for editing using your default text editor.
+
+2. *Add Jobs:*
+   Each line in the file represents a cron job and follows this format:
+   #+begin_src
+   *    *    *    *    *  command-to-run
+   -    -    -    -    -
+   |    |    |    |    |
+   |    |    |    |    +----- Day of the week (0 - 7) (Sunday is both 0 and 7)
+   |    |    |    +------- Month (1 - 12)
+   |    |    +--------- Day of the month (1 - 31)
+   |    +----------- Hour (0 - 23)
+   +------------- Minute (0 - 59)
+   #+end_src
+
+   For example, to run a script every day at 2 a.m., you would write:
+   #+begin_src
+   0 2 * * * /path/to/your/script
+   #+end_src
+
+3. *Save and Exit:*
+   After adding your cron jobs, save the file and exit the editor. The cron daemon will automatically pick up the changes.
+
+4. *Verify with:*
+   You can list your current cron jobs by running =crontab -l=.
+
+Remember, the paths to the commands or scripts should be absolute, and any environment variables needed by the script should either be set within the script or specified in the crontab file.

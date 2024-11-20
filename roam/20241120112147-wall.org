@@ -1,0 +1,32 @@
+:PROPERTIES:
+:ID:       f976309a-fc6c-416f-8b86-527790fd1dd7
+:END:
+#+title: wall
+#+date: [2024-11-20 Mi 11:21]
+#+startup: overview
+
+The =wall= command in Unix-like operating systems is used to send a message to all logged-in users' terminal windows.
+
+It's short for "write all."
+
+When you execute the =wall= command followed by a message or input from a file, it broadcasts that message to all users currently logged into the system, typically appearing in their terminal or console session.
+
+This can be useful for system administrators to notify all users of important information, such as upcoming system maintenance or shutdowns.
+
+Keep in mind that users can receive these messages only if they have not disabled message reception, often controlled by the =mesg= command.
+
+*  how do i message the output ot a script with wall and crontab?
+
+To send the output of a script to all logged-in users using =wall= from a cron job, you can redirect the script's output to =wall=. Here's how you can set it up in your crontab:
+
+1. *Edit the crontab* using =crontab -e=.
+
+2. *Add a cron job* that redirects the script's output to =wall=. For example:
+
+   #+begin_src bash
+   * * * * * /path/to/your/script.sh | /usr/bin/wall
+   #+end_src
+
+   This example would run the script every minute and send whatever it outputs to all logged-in users.
+
+Make sure that your script has the appropriate permissions to be executed and that it generates output to standard output (stdout). You need to specify the full paths to both the script and the =wall= command (you can find the complete path using the =which wall= command, usually =/usr/bin/wall=).
