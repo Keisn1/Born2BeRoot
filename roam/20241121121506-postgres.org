@@ -12,3 +12,8 @@ password=new_password
 https://gist.github.com/yunpengn/832aceac6998e2f894e5780229920cb5
 
 nc -vz 127.0.0.1 5432
+
+* allowing ufw
+#+begin_src shell
+sudo ufw allow 5432
+#+end_src

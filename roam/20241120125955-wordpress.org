@@ -270,6 +270,11 @@ http://127.0.0.1:8080/wordpress/?p=13
 #+begin_src shell
 sudo ufw deny 80
 #+end_src
+*** deleting ufw
+#+begin_src shell
+ufw status numbered
+ufw delete <number>
+#+end_src
 
 *** allowing ufw
 #+begin_src shell
