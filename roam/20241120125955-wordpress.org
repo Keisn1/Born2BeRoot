@@ -208,7 +208,7 @@ mysql -u root -p
 #+begin_src sql
 CREATE DATABASE wpdb;
 
-CREATE USER 'wpdbuser'@'localhost' IDENTIFIED BY 'new password';
+CREATE USER 'wpdbuser'@'localhost' IDENTIFIED BY 'new_password'; --sets password to "new password"
 
 GRANT ALL ON wpdb.* TO 'wpdbuser'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
 
@@ -262,3 +262,16 @@ tar -xvzf latest.tar.gz
 chmod 755 -R /var/www/html/wordpress/
 #+end_src
 ** port forwarding
+** current password for wpdbuser
+the current password for wpdbuser is new_password
+** the website
+http://127.0.0.1:8080/wordpress/?p=13
+*** blocking ufw
+#+begin_src shell
+sudo ufw deny 80
+#+end_src
+
+*** allowing ufw
+#+begin_src shell
+sudo ufw allow 80
+#+end_src

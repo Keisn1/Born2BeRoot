@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       769376c7-70dd-43f9-ac4b-358344256323
+:END:
+#+title: postgres
+#+date: [2024-11-21 Do 12:15]
+#+startup: overview
+
+https://dev.to/vishalpaalakurthi/how-to-set-up-a-postgresql-server-on-a-virtual-machine-473f
+
+password=new_password
+
+https://gist.github.com/yunpengn/832aceac6998e2f894e5780229920cb5
+
+nc -vz 127.0.0.1 5432

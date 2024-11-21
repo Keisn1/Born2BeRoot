@@ -222,3 +222,7 @@ If it executes without an error, then =requiretty= is not enforced for your user
   - [ ] Finally, the evaluated person must ensure that the script no longer runs at server launch, without modifying the script itself.
     - [ ] To verify this point, the server will need to be restarted one last time.
     - [ ] At startup, it must be verified that the script still exists in the same place, that its permissions have remained unchanged, and that it has not been modified.
+* bonus
+** lvm
+** [[id:feb03d5a-9e57-4e1c-80f6-723d033567e5][wordpress]]
+** [[id:769376c7-70dd-43f9-ac4b-358344256323][postgres]]
