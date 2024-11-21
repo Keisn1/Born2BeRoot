@@ -65,7 +65,7 @@ sha1sum -c signature.txt
 - [X] This part is an opportunity to discuss partitions!
   - [X] The evaluated person must give you a brief explanation of how LVM works and why it's beneficial.
 *** implementation
-- [[id:77dc2229-daa6-4d46-8f26-898967385f5e][change hostname permanently]]
+- [[id:5bc3d10d-383b-41e3-9813-8c22e6a03a25][change hostname permanently]]
 ** sudo
 - [X] Verify that the "sudo" program is indeed installed on the virtual machine.
 - [X] The evaluated person must now show how to assign your new user to the "sudo" group.
@@ -87,6 +87,13 @@ sha1sum -c signature.txt
 - [X] [[id:d5402011-e78b-4127-9cee-6a8374ad616e][install]]
 - [X] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
   - [[id:ae9bc3f4-1141-40b9-9290-263dae3e2fb4][secure_path - paths that can be used with sudo]]
+  - testing
+     #+begin_src bash
+     mkdir -p ~/test-scripts
+     echo -e '#!/bin/bash\necho "This is a test"' > ~/test-scripts/test-script.sh
+     chmod +x ~/test-scripts/test-script.sh
+     sudo ~/test-scripts/test-script.sh
+     #+end_src
 - [X] =TTY mode= has to be enabled for security reasons
 - [X] Authentication using \sudo has to be limited to 3 attempts (incorrect password) rect password.
 - [X] *custom msg* of your choice if an error due to a wrong pw occurs
@@ -131,7 +138,7 @@ sha1sum -c signature.txt
   - [X] minimum nbr of days allowed before modification = 2 (minimum password age)
   - [X] user receives a warning message 7 days before their password expires
 - [[id:bad3febb-0374-4018-a727-e5e2bc73cef2][changing passwords]]
-** Sudo
+** sudo
 - [[id:8b70efb6-c0b2-4beb-b9c2-6672cfbe3f70][sudo]]  / [[id:73cae452-a7c0-4a97-8bb7-38d85ec5b83f][sudo group]] / [[id:ec59c6bb-a199-4fc2-8f73-9e2319212005][/etc/sudoers]]
 - [X] verify that sudo is installed
 - [X] assign new user to the sudo group
@@ -179,7 +186,7 @@ You can test if =requiretty= is enforced by attempting to run a command with =su
 1. Use =ssh= to run a command on your local machine as your user (replace =localhost= with your machine's actual hostname if necessary).
 
    #+begin_src bash
-   ssh localhost 'sudo echo This works'
+   ssh -p 4242 kfreyer@localhost 'sudo echo This works'
    #+end_src
 
 2. If =requiretty= is enforced, you will get an error message like:

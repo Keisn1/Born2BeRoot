@@ -5,6 +5,8 @@
 #+date: [2024-11-18 Mo 13:49]
 #+startup: overview
 
+[[id:b9dfb26d-d8db-4481-b578-fc7c2c475842][my_evaluation]]
+
 * General
 - [ ] check that signature.txt file is present
 - [ ] check that the signature equals matches signature of .vdi that is being evaluated
@@ -145,7 +147,6 @@ If it executes without an error, then =requiretty= is not enforced for your user
 - [ ] Add a new rule to open port 8080. Verify that it has been added by listing the active rules.
 - [ ] Finally, with the help of the evaluated person, delete this new rule. If something does not work as expected or is not clearly explained, the evaluation stops here.
 
-
 ** script - [[id:b35074bc-77bd-4e23-9f0a-83e706499a6b][monitoring sh]]
 [[file:~/workspace/Born2BeRoot/imgs/script_output.png]]
 
@@ -157,3 +158,4 @@ If it executes without an error, then =requiretty= is not enforced for your user
   - [ ] Finally, the evaluated person must ensure that the script no longer runs at server launch, without modifying the script itself.
     - [ ] To verify this point, the server will need to be restarted one last time.
     - [ ] At startup, it must be verified that the script still exists in the same place, that its permissions have remained unchanged, and that it has not been modified.
+* Bonus

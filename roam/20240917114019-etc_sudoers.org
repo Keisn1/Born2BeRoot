@@ -121,5 +121,19 @@ Defaults requiretty
 #+begin_src sh
 secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
 #+end_src
+** I still can execute scripts with sudo that are present in my home directory
+
+The =secure_path= setting in the =sudoers= file only affects the search path for executable binaries when using =sudo=. It does not restrict or limit script execution based on location. Instead, it ensures that when you run a command with =sudo=, it uses the specified list of directories to search for executables.
+
+If you want to prevent scripts in a user's home directory from being executed with =sudo=, you'd need to take measures outside of the =secure_path= setting, such as:
+
+1. *File Permissions*: Ensure that sensitive scripts in home directories do not have executable permissions for users other than their owner, or leverage file permissions and ownership to control access.
+
+2. *Restrict =sudo= Access*: Use command restrictions in the =sudoers= file to limit which commands a user or group can execute with =sudo=.
+
+3. *No Execution on Home Dir*: There's no direct mechanism in =sudoers= to prevent executing scripts from specific directories. Implement custom scripts or environmental configurations that enforce such restrictions.
+
+Remember, effective security also depends on user education and ensuring only trusted users have the =sudo= access necessary for their role.
+
 * SUDOERS OPTIONS
 - modified by [[id:1deb0c89-9d71-4420-877a-cbb568be92b6][Default_Entry lines]]

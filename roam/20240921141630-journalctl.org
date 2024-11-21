@@ -10,3 +10,6 @@ journalctl - Print log entries from the systemd journal
 - filter the entries by specifying an absolute file path as an argument.
 
  If a file path refers to an executable script, a "_COMM=" match for the script name is added to the query.
+* -q
+-q, --quiet
+Suppresses all informational messages (i.e. "-- Journal begins at ...", "-- Reboot --"), any warning messages regarding inaccessible system journals when run as a normal user.
