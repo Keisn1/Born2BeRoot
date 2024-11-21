@@ -1,9 +1,0 @@
-:PROPERTIES:
-:ID:       ac795948-2113-4a15-83ab-a2762dbfc2b6
-:END:
-#+title: file
-#+date: [2024-09-17 Tue 08:53]
-#+startup: overview
-
-[[https://en.wikipedia.org/wiki/Computer_file][wiki: file]]
-- a shall be understood as a resource for recording data, identifiable by a name and can be shared and transferred

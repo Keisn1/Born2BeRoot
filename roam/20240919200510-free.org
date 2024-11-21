@@ -1,8 +1,0 @@
-:PROPERTIES:
-:ID:       63194921-1dcf-47c3-85a2-ad162cfc4028
-:END:
-#+title: free
-#+date: [2024-09-19 Thu 20:05]
-#+startup: overview
-
-free - Display amount of free and used memory in the system

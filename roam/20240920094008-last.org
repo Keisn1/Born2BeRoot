@@ -1,9 +1,0 @@
-:PROPERTIES:
-:ID:       975cee1d-9e8f-4c5c-9999-b0ef61ab223c
-:END:
-#+title: last
-#+date: [2024-09-20 Fri 09:40]
-#+startup: overview
-
-
-last, lastb - show a listing of last logged in users
