@@ -17,10 +17,7 @@
 * Steps following [[https://www.howtoforge.com/how-to-install-lighttpd-with-php-and-mariadb-on-debian-10/
 ][howToForgePhpMariaDBDebian10]]
 ** Run =sudo apt update=
-** Install [[id:05b8debd-000f-4971-99d2-10fb5dd58d28][lighttpd]] =sudo apt install lighttpd=
-- probably already enabled
-- status of lighttpd with =systemctl status lighttpd=
-- start lighttpd with =systemctl start lighttpd=
+** Install [[id:05b8debd-000f-4971-99d2-10fb5dd58d28][lighttpd]] =sudo apt install lighttpd= - probably already enabled - status of lighttpd with =systemctl status lighttpd= - start lighttpd with =systemctl start lighttpd=
 ** Install [[id:8658252a-8eaa-4436-b462-20fa5ae84626][mariaDB]] server
 - =apt-get install mariadb-server mariadb-client -y=
 *** secure the MariaDB installation
@@ -182,3 +179,86 @@ systemclt restart lighttpd
 curl -H "Host: www.example.com" http://localhost
 #+end_src
 ** change NAT adapter setup in VMbox
+* following  https://velog.io/@soongle/42-seoul-Set-up-WordPress-website-with-lighttpd-MariaDB-PHP
+** Install [[id:05b8debd-000f-4971-99d2-10fb5dd58d28][lighttpd]] =sudo apt install lighttpd= - probably already enabled - status of lighttpd with =systemctl status lighttpd= - start lighttpd with =systemctl start lighttpd=
+** Install [[id:8658252a-8eaa-4436-b462-20fa5ae84626][mariaDB]] server
+- =apt-get install mariadb-server mariadb-client -y=
+*** start services
+#+begin_src shell
+systemctl start mysql.service
+systemctl enable mysql.service
+#+end_src
+
+*** secure the MariaDB installation
+#+begin_src sh
+mysql_secure_installation
+#+end_src
+- not working
+  ~ERROR 1698 (28000): Access denied for user 'root'@'localhost'~
+- running with =sudo= resolves the issue (with root_password)
+*** restart
+#+begin_src shell
+systemctl restart mysql.service
+#+end_src
+** Create a database for wordpress
+- =mysql=
+#+begin_src shell
+mysql -u root -p
+#+end_src
+#+begin_src sql
+CREATE DATABASE wpdb;
+
+CREATE USER 'wpdbuser'@'localhost' IDENTIFIED BY 'new password';
+
+GRANT ALL ON wpdb.* TO 'wpdbuser'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
+EXIT;
+#+end_src
+
+** Install php =sudo apt install php php-cgi php-mysql php-fpm=
+- also installs apache2
+- =systemctl status apache2=
+- =systemctl stop apache2=
+- uninstall with =apt uninstall apache2=
+- [[id:a20a2fbe-4df6-4ce4-83f9-ce29f5e3bdcc][php-cgi]], [[id:b470ac83-a334-4a72-9950-a99e8bee5942][php-mysql]]
+*** Configure fpm
+**** cig.fix_pathinfo
+#+begin_src shell
+#/etc/php/8.2/fpm/php.ini
+cgi.fix_pathinfo=1
+#+end_src
+*** configure fast-cgi
+#+begin_src shell
+# /etc/lighttpd/conf-available/15-fastcgi-php.conf
+"bin-path" => "/usr/bin/php-cgi",
+"socket" => "/run/php/php8.2-fpm.sock_",
+#+end_src
+*** enable fastcgi and Fastcgi-php
+#+begin_src shell
+sudo lighttpd-enable-mod fastcgi
+sudo lighttpd-enable-mod fastcgi-php
+sudo service lighttpd force-reload
+#+end_src
+*** restart lighttpd
+#+begin_src shell
+sudo systemctl restart lighttpd
+#+end_src
+** allow ufw
+#+begin_src shell
+ufw allow 80
+#+end_src
+** install wordpress
+#+begin_src shell
+cd /var/www/html
+wget -c https://wordpress.org/latest.tar.gz
+#+end_src
+*** untar
+#+begin_src shell
+tar -xvzf latest.tar.gz
+#+end_src
+*** change mod of wordpress
+#+begin_src shell
+chmod 755 -R /var/www/html/wordpress/
+#+end_src
+** port forwarding
