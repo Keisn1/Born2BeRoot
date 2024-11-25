@@ -264,6 +264,8 @@ chmod 755 -R /var/www/html/wordpress/
 ** port forwarding
 ** current password for wpdbuser
 the current password for wpdbuser is new_password
+** password for wordpress
+- look in password manager
 ** the website
 http://127.0.0.1:8080/wordpress/?p=13
 *** blocking ufw

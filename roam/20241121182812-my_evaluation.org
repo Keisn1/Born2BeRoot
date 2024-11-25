@@ -38,7 +38,7 @@ sha1sum -c signature.txt
   - [X] make sure that OS is indeed Debian or Rocky
   - [X] ufw is launched correctly
   - [X] ssh service is launched properly
-** TODO User
+** DONE User
 - [X] a user with the login name of the evaluated person be present on the virtual machine
 - [X] verify that the user belongs to the user42 and sudo groups
   - [X] [[id:2a8f7b06-1518-43a5-a072-63403a5d4f14][add a new group]]
