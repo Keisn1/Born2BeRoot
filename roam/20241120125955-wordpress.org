@@ -263,7 +263,7 @@ chmod 755 -R /var/www/html/wordpress/
 #+end_src
 ** port forwarding
 ** current password for wpdbuser
-the current password for wpdbuser is new_password
+the current password for wpdbuser is password
 ** password for wordpress
 - look in password manager
 ** the website

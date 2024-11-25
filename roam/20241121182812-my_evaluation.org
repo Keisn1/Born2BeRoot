@@ -6,8 +6,8 @@
 #+startup: overview
 
 * General
-- [X] check that signature.txt file is present
-- [X] check that the signature equals matches signature of .vdi that is being evaluated
+- [ ] check that signature.txt file is present
+- [ ] check that the signature equals matches signature of .vdi that is being evaluated
   - get the signature in sha1sum format ([[id:08fa09d2-0013-47d1-8ff6-092fb08941df][Verifying authenticity]])
     #+begin_src shell
 sha1sum vm.vdi
@@ -51,7 +51,7 @@ sha1sum -c signature.txt
   - [X] ask the evaluated person to create a group named "evaluating" in front of you and assign it to this user
   - [X] Finally, check that this user indeed belongs to the "evaluating" group. ([[id:2a8f7b06-1518-43a5-a072-63403a5d4f14][add a new group]])
   - [X] To finish, ask the evaluated person to explain the purpose of this password policy, as well as the advantages and disadvantages of its implementation. ([[id:83c2bee7-c27e-4685-b323-f16ab7200da5][why do we choose to implement a strong password policy?]])
-** [[id:c7a2fa4c-cb32-4af3-bbe4-faa3ed30543f][hostname]] and partitions
+** DONE [[id:c7a2fa4c-cb32-4af3-bbe4-faa3ed30543f][hostname]] and partitions
 - [X] Verify that the hostname of the machine is formatted as follows: login42 (login of the evaluated person).
 - [X] Change this hostname by replacing the login with yours, then restart the machine. If upon restarting, the hostname has not been updated, the evaluation stops here.
 - [X] You can now restore the original hostname of the machine.
@@ -59,7 +59,7 @@ sha1sum -c signature.txt
 - [X] Compare the output with the example given in the subject. Note: if the evaluated person has done the bonuses, you should refer to the example from the bonus part.
 - [X] This part is an opportunity to discuss partitions!
   - [X] The evaluated person must give you a brief explanation of how LVM works and why it's beneficial.
-** DONE password policy
+** TODO password policy
 - [X] check [[id:9195cabf-21d7-42fb-bb12-b20e83f888dc][/etc/shadow]]
 - [X] expiration every 30 days
 - [X] minimum nbr of days allowed before modification = 2
@@ -70,11 +70,11 @@ sha1sum -c signature.txt
   - [X] uppercase
   - [X] lowercase
 - [X] must not contain more than 3 consecutive identical chars
-- [X] must not include the name of the user (gecos check)
+- [X] must not include the name of the user (gecos check/user check)
 - [X] must have at least 7 chars that are not part of the former password
   - this rule can't apply to the root password (no asking for old password)
 - [X] root password has to comply with this policy
-** DONE Sudo
+** TODO Sudo
 - [[id:8b70efb6-c0b2-4beb-b9c2-6672cfbe3f70][sudo]]  / [[id:73cae452-a7c0-4a97-8bb7-38d85ec5b83f][sudo group]] / [[id:ec59c6bb-a199-4fc2-8f73-9e2319212005][/etc/sudoers]]
 - [X] verify that sudo is installed
   - =which sudo=
@@ -110,7 +110,7 @@ You can test if =requiretty= is enforced by attempting to run a command with =su
 
 If it executes without an error, then =requiretty= is not enforced for your user. Make sure that =ssh= is configured to allow local connections without passwords, or this check might not work as expected.
 
-** DONE ssh
+** TODO ssh
 - [X] Verify that the SSH service is indeed installed on the virtual machine.
 - [X] Verify that it is functioning correctly.
   - [X] must be active when you launch your virtual machine
@@ -122,7 +122,7 @@ If it executes without an error, then =requiretty= is not enforced for your user
      #+end_src
 - [X] The evaluated person must give you a basic explanation of what SSH is and why it's important to use it.
 - [X] use SSH to connect with the new user
-** DONE ufw
+** TODO ufw
 - [X] Verify that the "UFW" (or "Firewalld" for rocky) program is indeed installed on the virtual machine.
 - [X] Verify that it is functioning correctly.
 - [X] The evaluated person must give you a basic explanation of what UFW (or "Firewalld") is and why it's important to use it.

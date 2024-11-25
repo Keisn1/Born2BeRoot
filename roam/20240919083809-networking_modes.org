@@ -16,6 +16,7 @@ NAT stands for Network Address Translation. It is a technology used in computer 
 ** When in VirtualBox the enable network adapter is enabled and attached to NAT, what does it mean?
 
 When a network adapter in VirtualBox is enabled and attached to NAT, it means that the virtual machine can access the internet through the host computer's network connection. The host computer acts as a gateway, handling the translation of network addresses for the virtual machine.
+
 ** How to connect via NAT
 - one needs to configure the ports
 

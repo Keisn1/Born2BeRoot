@@ -23,17 +23,17 @@ sha1sum -c signature.txt
     #+end_src
 - may duplicate virtual machine to keep a copy
 * Mandatory
-** Project overview
-- [ ] basic functioning of the [[id:3215f99f-5524-4986-9fc7-58eb820d946c][virtual machine]]
-  - [ ] what is a [[id:3215f99f-5524-4986-9fc7-58eb820d946c][virtual machine]]
-    - [ ] What are the [[id:b9fe227c-3dfa-4397-a06a-1bc6f141d1b7][benefits of virtual machines]]
-  - [ ] What is a [[id:7b33a4a9-c577-4885-ab9c-3710818f8e0e][VirtualBox]]?
-  - [ ] Why did you choose Debian/Rocky ([[id:2cc4639c-594b-43ea-bdb8-b00fb07643c3][Differences between Centos and Debian and Rocky]])
-    - [ ] Rocky
-      - [ ] explain SELinux and DNF
-    - [ ] Debian
-      - [ ] difference between [[id:b52d3445-d59d-4d43-bc92-3e9a70e5afe3][apt]] and [[id:b52d3445-d59d-4d43-bc92-3e9a70e5afe3][aptitude]]
-      - [ ] what is [[id:ae006e35-647d-4e8d-9b71-85ff017c2cec][AppArmor]]
+** DONE Project overview
+- [X] basic functioning of the [[id:3215f99f-5524-4986-9fc7-58eb820d946c][virtual machine]]
+  - [X] what is a [[id:3215f99f-5524-4986-9fc7-58eb820d946c][virtual machine]]
+    - [X] What are the [[id:b9fe227c-3dfa-4397-a06a-1bc6f141d1b7][benefits of virtual machines]]
+  - [X] What is a [[id:7b33a4a9-c577-4885-ab9c-3710818f8e0e][VirtualBox]]?
+  - [X] Why did you choose Debian/Rocky ([[id:2cc4639c-594b-43ea-bdb8-b00fb07643c3][Differences between Centos and Debian and Rocky]])
+    - [X] Rocky
+      - [X] explain SELinux and DNF
+    - [X] Debian
+      - [X] difference between [[id:b52d3445-d59d-4d43-bc92-3e9a70e5afe3][apt]] and [[id:b52d3445-d59d-4d43-bc92-3e9a70e5afe3][aptitude]]
+      - [X] what is [[id:ae006e35-647d-4e8d-9b71-85ff017c2cec][AppArmor]]
 ** Simple configuration
 - [ ] verify that there is no graphical environment at startup
 - [ ] password is requested before any connection attempt to the machine
@@ -44,48 +44,48 @@ sha1sum -c signature.txt
   - [ ] ufw is launched correctly
   - [ ] ssh service is launched properly
 ** User
-- [X] a user with the login name of the evaluated person be present on the virtual machine
-- [X] verify that the user belongs to the user42 and sudo groups
-  - [X] [[id:2a8f7b06-1518-43a5-a072-63403a5d4f14][add a new group]]
-  - [X] [[id:5b69c790-b6b5-44e8-b639-116852023e08][usermod]] , [[id:f83d268e-9fc8-42ee-a1c7-5cca096d0b7d][add user to group]]
-  - [X] [[id:69d45f6f-6430-4e3f-81db-33747ec8875b][add user to sudo group]]
-  - [X] verify (=groups <username>=)
-- [X] Ensure the rules imposed in the subject concerning the password policy have been implemented by following the steps below.
-  - [X] create a new user [[id:fb8cc514-3231-44bb-b75f-e68f34ed3c77][useradd]] and check that [[id:efa45dd1-828a-4fe4-a671-d4821eda00d9][password policy]] has been implemented
-  - [X] let the student explain how they implemented the rule
-  - [X] ask the evaluated person to create a group named "evaluating" in front of you and assign it to this user
-  - [X] Finally, check that this user indeed belongs to the "evaluating" group. ([[id:2a8f7b06-1518-43a5-a072-63403a5d4f14][add a new group]])
-  - [X] To finish, ask the evaluated person to explain the purpose of this password policy, as well as the advantages and disadvantages of its implementation. ([[id:83c2bee7-c27e-4685-b323-f16ab7200da5][why do we choose to implement a strong password policy?]])
+- [ ] a user with the login name of the evaluated person be present on the virtual machine
+- [ ] verify that the user belongs to the user42 and sudo groups
+  - [ ] [[id:2a8f7b06-1518-43a5-a072-63403a5d4f14][add a new group]]
+  - [ ] [[id:5b69c790-b6b5-44e8-b639-116852023e08][usermod]] , [[id:f83d268e-9fc8-42ee-a1c7-5cca096d0b7d][add user to group]]
+  - [ ] [[id:69d45f6f-6430-4e3f-81db-33747ec8875b][add user to sudo group]]
+  - [ ] verify (=groups <username>=)
+- [ ] Ensure the rules imposed in the subject concerning the password policy have been implemented by following the steps below.
+  - [ ] create a new user [[id:fb8cc514-3231-44bb-b75f-e68f34ed3c77][useradd]] and check that [[id:efa45dd1-828a-4fe4-a671-d4821eda00d9][password policy]] has been implemented
+  - [ ] let the student explain how they implemented the rule
+  - [ ] ask the evaluated person to create a group named "evaluating" in front of you and assign it to this user
+  - [ ] Finally, check that this user indeed belongs to the "evaluating" group. ([[id:2a8f7b06-1518-43a5-a072-63403a5d4f14][add a new group]])
+  - [ ] To finish, ask the evaluated person to explain the purpose of this password policy, as well as the advantages and disadvantages of its implementation. ([[id:83c2bee7-c27e-4685-b323-f16ab7200da5][why do we choose to implement a strong password policy?]])
 ** [[id:c7a2fa4c-cb32-4af3-bbe4-faa3ed30543f][hostname]] and partitions
-- [X] Verify that the hostname of the machine is formatted as follows: login42 (login of the evaluated person).
-- [X] Change this hostname by replacing the login with yours, then restart the machine. If upon restarting, the hostname has not been updated, the evaluation stops here.
-- [X] You can now restore the original hostname of the machine.
-- [X] Ask the evaluated person how to display the partitions of their virtual machine.
-- [X] Compare the output with the example given in the subject. Note: if the evaluated person has done the bonuses, you should refer to the example from the bonus part.
-- [X] This part is an opportunity to discuss partitions!
-  - [X] The evaluated person must give you a brief explanation of how LVM works and why it's beneficial.
+- [ ] Verify that the hostname of the machine is formatted as follows: login42 (login of the evaluated person).
+- [ ] Change this hostname by replacing the login with yours, then restart the machine. If upon restarting, the hostname has not been updated, the evaluation stops here.
+- [ ] You can now restore the original hostname of the machine.
+- [ ] Ask the evaluated person how to display the partitions of their virtual machine.
+- [ ] Compare the output with the example given in the subject. Note: if the evaluated person has done the bonuses, you should refer to the example from the bonus part.
+- [ ] This part is an opportunity to discuss partitions!
+  - [ ] The evaluated person must give you a brief explanation of how LVM works and why it's beneficial.
 *** implementation
 - [[id:5bc3d10d-383b-41e3-9813-8c22e6a03a25][change hostname permanently]]
 ** sudo
-- [X] Verify that the "sudo" program is indeed installed on the virtual machine.
-- [X] The evaluated person must now show how to assign your new user to the "sudo" group.
-- [X] The subject imposes strict rules for sudo.
-  - [X] explain the purpose and operation of [[id:4fe552a3-a369-4dd1-a292-a3a897e0fe2f][sudo]] with examples of your choice.
-  - [X] demonstrate the implementation of the rules imposed by the subject.
-    - [X] Authentication using \sudo has to be limited to 3 attempts (incorrect password)
-    - [X] *custom msg* of your choice if an error due to a wrong pw occurs
-    - [X] each action using \sudo has to be archived, both inputs and outputs
-      - [X] log file saved in =/var/log/sudo/= folder
-    - [X] =TTY mode= has to be enabled for security reasons
-    - [X] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
-- [X] Verify that the "/var/log/sudo/" directory exists and contains at least one file.
-- [X] Check the contents of the files in this directory; you should see a history of commands used with sudo
-- [X] Finally, attempt to run a command via sudo.
-  - [X] Check if the file(s) in the "/var/log/sudo/" directory have been updated.
+- [ ] Verify that the "sudo" program is indeed installed on the virtual machine.
+- [ ] The evaluated person must now show how to assign your new user to the "sudo" group.
+- [ ] The subject imposes strict rules for sudo.
+  - [ ] explain the purpose and operation of [[id:4fe552a3-a369-4dd1-a292-a3a897e0fe2f][sudo]] with examples of your choice.
+  - [ ] demonstrate the implementation of the rules imposed by the subject.
+    - [ ] Authentication using \sudo has to be limited to 3 attempts (incorrect password)
+    - [ ] *custom msg* of your choice if an error due to a wrong pw occurs
+    - [ ] each action using \sudo has to be archived, both inputs and outputs
+      - [ ] log file saved in =/var/log/sudo/= folder
+    - [ ] =TTY mode= has to be enabled for security reasons
+    - [ ] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
+- [ ] Verify that the "/var/log/sudo/" directory exists and contains at least one file.
+- [ ] Check the contents of the files in this directory; you should see a history of commands used with sudo
+- [ ] Finally, attempt to run a command via sudo.
+  - [ ] Check if the file(s) in the "/var/log/sudo/" directory have been updated.
 
 *** implementation
-- [X] [[id:d5402011-e78b-4127-9cee-6a8374ad616e][install]]
-- [X] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
+- [ ] [[id:d5402011-e78b-4127-9cee-6a8374ad616e][install]]
+- [ ] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
   - [[id:ae9bc3f4-1141-40b9-9290-263dae3e2fb4][secure_path - paths that can be used with sudo]]
   - testing
      #+begin_src bash
@@ -94,31 +94,31 @@ sha1sum -c signature.txt
      chmod +x ~/test-scripts/test-script.sh
      sudo ~/test-scripts/test-script.sh
      #+end_src
-- [X] =TTY mode= has to be enabled for security reasons
-- [X] Authentication using \sudo has to be limited to 3 attempts (incorrect password) rect password.
-- [X] *custom msg* of your choice if an error due to a wrong pw occurs
-- [X] *custom msg* at failure (not part of evaluation)
-- [X] each action using \sudo has to be archived, both inputs and outputs
-  - [X] log file saved in =/var/log/sudo/= folder
+- [ ] =TTY mode= has to be enabled for security reasons
+- [ ] Authentication using \sudo has to be limited to 3 attempts (incorrect password) rect password.
+- [ ] *custom msg* of your choice if an error due to a wrong pw occurs
+- [ ] *custom msg* at failure (not part of evaluation)
+- [ ] each action using \sudo has to be archived, both inputs and outputs
+  - [ ] log file saved in =/var/log/sudo/= folder
     - [[id:f82e92fc-fde4-4d0e-84de-29d9976188dc][Logging]]
 ** password policy
 :PROPERTIES:
 :ID:       efa45dd1-828a-4fe4-a671-d4821eda00d9
 :END:
-- [X] check [[id:9195cabf-21d7-42fb-bb12-b20e83f888dc][/etc/shadow]]
-- [X] expiration every 30 days
-- [X] minimum nbr of days allowed before modification = 2
-- [X] user receives a warning message 7 days before their password expires
-- [X] min 10 chars long
-- [X] must contain uppercase, a lowercase letter and a number
-  - [X] number
-  - [X] uppercase
-  - [X] lowercase
-- [X] must not contain more than 3 consecutive identical chars
-- [X] must not include the name of the user (gecos check)
-- [X] must have at least 7 chars that are not part of the former password
+- [ ] check [[id:9195cabf-21d7-42fb-bb12-b20e83f888dc][/etc/shadow]]
+- [ ] expiration every 30 days
+- [ ] minimum nbr of days allowed before modification = 2
+- [ ] user receives a warning message 7 days before their password expires
+- [ ] min 10 chars long
+- [ ] must contain uppercase, a lowercase letter and a number
+  - [ ] number
+  - [ ] uppercase
+  - [ ] lowercase
+- [ ] must not contain more than 3 consecutive identical chars
+- [ ] must not include the name of the user (gecos check)
+- [ ] must have at least 7 chars that are not part of the former password
   - this rule can't apply to the root password (no asking for old password)
-- [X] root password has to comply with this policy
+- [ ] root password has to comply with this policy
 
 *** implementation
 - [[id:9195cabf-21d7-42fb-bb12-b20e83f888dc][/etc/shadow]] - contains encrypted password information
@@ -134,48 +134,48 @@ sha1sum -c signature.txt
   - [[id:129b6aad-7a3f-499d-b9ae-15ebc8d5b98e][must have at least 7 chars that are not part of the former password]]
   - [[id:6d2f8e0f-d1ea-4313-84ce-620e744d231b][root password has to comply with this policy]]
 - applying rules to existing users with [[id:f567a019-1852-430e-859b-7d320a8a8cd9][chage (change age)]]
-  - [X] expiration every 30 days (maximum password age)
-  - [X] minimum nbr of days allowed before modification = 2 (minimum password age)
-  - [X] user receives a warning message 7 days before their password expires
+  - [ ] expiration every 30 days (maximum password age)
+  - [ ] minimum nbr of days allowed before modification = 2 (minimum password age)
+  - [ ] user receives a warning message 7 days before their password expires
 - [[id:bad3febb-0374-4018-a727-e5e2bc73cef2][changing passwords]]
 ** sudo
 - [[id:8b70efb6-c0b2-4beb-b9c2-6672cfbe3f70][sudo]]  / [[id:73cae452-a7c0-4a97-8bb7-38d85ec5b83f][sudo group]] / [[id:ec59c6bb-a199-4fc2-8f73-9e2319212005][/etc/sudoers]]
-- [X] verify that sudo is installed
-- [X] assign new user to the sudo group
-- [X] explanations
-  - [X] explain the purpose and operation of sudo with examples of their choice
-  - [X] demonstrate implementation of the rules
-- [X] configure \sudo following strict rules
-  - [X] Authentication using \sudo has to be limited to 3 attempts (incorrect password)
-  - [X] *custom msg* of your choice if an error due to a wrong pw occurs
-  - [X] each action using \sudo has to be archived, both inputs and outputs
-    - [X] log file saved in =/var/log/sudo/= folder
-  - [X] =TTY mode= has to be enabled for security reasons
-  - [X] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
-- [X] Verify that the "/var/log/sudo/" directory exists and contains at least one file. Check the contents of the files in this directory; you should see a history of commands used with sudo.
-- [X] Finally, attempt to run a command via sudo.
-- [X] Check if the file(s) in the "/var/log/sudo/" directory have been updated.
+- [ ] verify that sudo is installed
+- [ ] assign new user to the sudo group
+- [ ] explanations
+  - [ ] explain the purpose and operation of sudo with examples of their choice
+  - [ ] demonstrate implementation of the rules
+- [ ] configure \sudo following strict rules
+  - [ ] Authentication using \sudo has to be limited to 3 attempts (incorrect password)
+  - [ ] *custom msg* of your choice if an error due to a wrong pw occurs
+  - [ ] each action using \sudo has to be archived, both inputs and outputs
+    - [ ] log file saved in =/var/log/sudo/= folder
+  - [ ] =TTY mode= has to be enabled for security reasons
+  - [ ] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
+- [ ] Verify that the "/var/log/sudo/" directory exists and contains at least one file. Check the contents of the files in this directory; you should see a history of commands used with sudo.
+- [ ] Finally, attempt to run a command via sudo.
+- [ ] Check if the file(s) in the "/var/log/sudo/" directory have been updated.
 *** implementation
-- [X] verify that sudo is installed
+- [ ] verify that sudo is installed
   - =which sudo=
-- [X] assign new user to the sudo group
+- [ ] assign new user to the sudo group
   - [[id:f83d268e-9fc8-42ee-a1c7-5cca096d0b7d][add user to group]]
-- [X] explanations
-  - [X] explain the purpose and operation of sudo with examples of their choice
+- [ ] explanations
+  - [ ] explain the purpose and operation of sudo with examples of their choice
   - [[id:8b70efb6-c0b2-4beb-b9c2-6672cfbe3f70][sudo]]
-- [X] demonstrate implementation of the rules
+- [ ] demonstrate implementation of the rules
   - [[id:ec59c6bb-a199-4fc2-8f73-9e2319212005][/etc/sudoers]]
-  - [X] Authentication using \sudo has to be limited to 3 attempts (incorrect password)
-  - [X] *custom msg* of your choice if an error due to a wrong pw occurs
-  - [X] each action using \sudo has to be archived, both inputs and outputs
-    - [X] log file saved in =/var/log/sudo/= folder
-  - [X] =TTY mode= has to be enabled for security reasons
+  - [ ] Authentication using \sudo has to be limited to 3 attempts (incorrect password)
+  - [ ] *custom msg* of your choice if an error due to a wrong pw occurs
+  - [ ] each action using \sudo has to be archived, both inputs and outputs
+    - [ ] log file saved in =/var/log/sudo/= folder
+  - [ ] =TTY mode= has to be enabled for security reasons
     - [[id:2709f27b-1863-4c76-9494-ace32b0e340a][how can I check in a simple way that requiretty for sudo is enforced in my virtualmachine. (But not by looking at /etc/sudoers)]]
-  - [X] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
+  - [ ] Paths that can be used by \sudo must be restricted e.g. =/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin=
     - demonstrate with a small script
-- [X] Verify that the "/var/log/sudo/" directory exists and contains at least one file. Check the contents of the files in this directory; you should see a history of commands used with sudo.
-- [X] Finally, attempt to run a command via sudo.
-- [X] Check if the file(s) in the "/var/log/sudo/" directory have been updated.
+- [ ] Verify that the "/var/log/sudo/" directory exists and contains at least one file. Check the contents of the files in this directory; you should see a history of commands used with sudo.
+- [ ] Finally, attempt to run a command via sudo.
+- [ ] Check if the file(s) in the "/var/log/sudo/" directory have been updated.
 **** how can I check in a simple way that requiretty for sudo is enforced in my virtualmachine. (But not by looking at /etc/sudoers)
 :PROPERTIES:
 :ID:       2709f27b-1863-4c76-9494-ace32b0e340a
@@ -198,26 +198,26 @@ You can test if =requiretty= is enforced by attempting to run a command with =su
 If it executes without an error, then =requiretty= is not enforced for your user. Make sure that =ssh= is configured to allow local connections without passwords, or this check might not work as expected.
 
 ** ssh
-- [X] Verify that the SSH service is indeed installed on the virtual machine.
-- [X] Verify that it is functioning correctly.
-  - [X] must be active when you launch your virtual machine
-  - [X] shall not be possible to connect using \SSH as root
-  - [X] Verify that the SSH service uses only port 4242
+- [ ] Verify that the SSH service is indeed installed on the virtual machine.
+- [ ] Verify that it is functioning correctly.
+  - [ ] must be active when you launch your virtual machine
+  - [ ] shall not be possible to connect using \SSH as root
+  - [ ] Verify that the SSH service uses only port 4242
     - =sudo ss -tlnp | grep sshd=
-- [X] The evaluated person must give you a basic explanation of what SSH is and why it's important to use it.
-- [X] use SSH to connect with the new user
+- [ ] The evaluated person must give you a basic explanation of what SSH is and why it's important to use it.
+- [ ] use SSH to connect with the new user
 
 *** implementation
 - [[id:2cadebc0-0afc-4f86-8a70-aa7ebe0ac5ff][openssh server]]
 - [[id:13e1987c-d974-4534-835c-cb22e38cc8eb][ssh]]
 - [[id:3384f1a8-d5ab-4151-b22d-7c7fd5d30830][/etc/ssh/sshd_config]]
 ** [[id:bb420f28-36d8-41ce-b52b-f31c28901079][ufw]]
-- [X] Verify that the "UFW" (or "Firewalld" for rocky) program is indeed installed on the virtual machine.
-- [X] Verify that it is functioning correctly.
-- [X] The evaluated person must give you a basic explanation of what UFW (or "Firewalld") is and why it's important to use it.
-- [X] List the active rules in UFW (or "Firewalld"). There should be a rule for port 4242.
-- [X] Add a new rule to open port 8080. Verify that it has been added by listing the active rules.
-- [X] Finally, with the help of the evaluated person, delete this new rule. If something does not work as expected or is not clearly explained, the evaluation stops here.
+- [ ] Verify that the "UFW" (or "Firewalld" for rocky) program is indeed installed on the virtual machine.
+- [ ] Verify that it is functioning correctly.
+- [ ] The evaluated person must give you a basic explanation of what UFW (or "Firewalld") is and why it's important to use it.
+- [ ] List the active rules in UFW (or "Firewalld"). There should be a rule for port 4242.
+- [ ] Add a new rule to open port 8080. Verify that it has been added by listing the active rules.
+- [ ] Finally, with the help of the evaluated person, delete this new rule. If something does not work as expected or is not clearly explained, the evaluation stops here.
 ** script - [[id:b35074bc-77bd-4e23-9f0a-83e706499a6b][monitoring sh]]
 [[file:~/workspace/Born2BeRoot/imgs/script_output.png]]
 
