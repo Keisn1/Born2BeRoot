@@ -96,6 +96,10 @@ Defaults log_input
 #+begin_src shell
 Defaults log_output
 #+end_src
+*** iolog_dir
+#+begin_src shell
+Defaults iolog_dir=/var/log/sudo
+#+end_src
 ** where to log
 - either to the local machine or to a remote log server
 - =iolog_dir=:
@@ -137,3 +141,5 @@ Remember, effective security also depends on user education and ensuring only tr
 
 * SUDOERS OPTIONS
 - modified by [[id:1deb0c89-9d71-4420-877a-cbb568be92b6][Default_Entry lines]]
+* sudoreplay
+- specify with ~-d~ for getting the output from /var/sudo/log
