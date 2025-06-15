@@ -41,3 +41,4 @@ To configure =crontab=, follow these steps:
    You can list your current cron jobs by running =crontab -l=.
 
 Remember, the paths to the commands or scripts should be absolute, and any environment variables needed by the script should either be set within the script or specified in the crontab file.
+* [[id:5ccd5e6a-4074-4b0b-9043-9101b44efe39][new info for crontab]]

@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       5ccd5e6a-4074-4b0b-9043-9101b44efe39
+:END:
+#+title: new info for crontab
+#+date: [2024-11-29 Fr 18:03]
+#+startup: overview
+
+
+hier is my new info
